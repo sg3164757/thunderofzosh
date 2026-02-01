@@ -12,97 +12,60 @@
         
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
         .logo { color: var(--gold); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
-        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
-        .nav-links a:hover { color: var(--gold); }
 
-        /* Premium Lightning Hero Section */
-        .hero { height: 95vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero-zosh.jpg') center/cover; padding: 0 20px; border-bottom: 3px solid var(--gold); }
-        .hero h1 { font-size: 60px; color: var(--gold); margin: 0 0 10px; font-weight: 700; text-shadow: 0 0 20px rgba(212,175,55,0.5); }
-        .hero p { font-size: 22px; max-width: 800px; margin-bottom: 35px; color: #fff; font-weight: 400; text-shadow: 2px 2px 4px #000; }
+        /* Lightning Hero Section */
+        .hero { height: 95vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-zosh.jpeg') center/cover; padding: 0 20px; border-bottom: 3px solid var(--gold); }
+        .hero h1 { font-size: 60px; color: var(--gold); margin: 0 0 10px; font-weight: 700; }
         
-        .cta-btn { padding: 20px 60px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(212,175,55,0.4); transition: 0.3s; display: inline-block; }
-        .cta-btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 6px 25px rgba(212,175,55,0.6); }
+        /* Model Image Section */
+        .model-section { display: flex; align-items: center; padding: 60px 10%; background: #050505; flex-wrap: wrap; gap: 40px; }
+        .model-img-container { flex: 1; min-width: 300px; text-align: center; }
+        .model-img-container img { width: 100%; max-width: 500px; border-radius: 15px; border: 1px solid var(--gold); }
 
-        /* Model Brand Section */
-        .about-brand { display: flex; align-items: center; padding: 80px 10%; background: #050505; flex-wrap: wrap; gap: 40px; }
-        .about-text { flex: 1; min-width: 300px; }
-        .about-img { flex: 1; min-width: 300px; text-align: center; }
-        .about-img img { width: 100%; max-width: 450px; border-radius: 20px; border: 1px solid var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.2); }
-
-        .section { padding: 80px 10%; text-align: center; }
-        .section-title { color: var(--gold); font-size: 32px; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { background: #111; padding: 25px; border-radius: 12px; border: 1px solid #222; transition: 0.3s; }
-        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .card img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; border: 1px solid #333; }
-        .card h3 { color: var(--gold); font-size: 22px; margin-bottom: 10px; }
-        .card p { font-size: 14px; color: #bbb; }
-
-        footer { padding: 50px 20px; text-align: center; background: #000; border-top: 1px solid #222; }
-        .footer-text { font-size: 12px; color: #666; margin-top: 20px; }
-        
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 40px; }
-            .hero p { font-size: 18px; }
-            .about-brand { padding: 40px 5%; text-align: center; }
-        }
+        .section { padding: 60px 10%; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .card { background: #111; padding: 20px; border-radius: 10px; border: 1px solid #222; }
+        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
     </style>
 </head>
 <body>
 
 <nav>
     <div class="logo">Thunder of Zosh</div>
-    <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#ingredients">Ingredients</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQa1JQqBhw5rNL37RLd6u5KYd4KyzGKM0ARjvQ6qbaiAK-WQ/viewform">Order Now</a>
-    </div>
 </nav>
 
 <section class="hero">
     <h1>THUNDER OF ZOSH</h1>
-    <p>Premium Ayurvedic formula for natural strength and peak performance.</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQa1JQqBhw5rNL37RLd6u5KYd4KyzGKM0ARjvQ6qbaiAK-WQ/viewform" class="cta-btn">Check Exclusive Offers</a>
+    <p>Premium Ayurvedic Formula</p>
 </section>
 
-<section class="about-brand" id="about">
-    <div class="about-text">
-        <h2 style="color: var(--gold); font-size: 30px;">ELITE PERFORMANCE FORMULA</h2>
-        <p>Crafted with the highest quality herbs to support your wellness journey. Experience the power of pure Ayurveda with Thunder of Zosh.</p>
+<section class="model-section">
+    <div class="model-img-container">
+        <img src="model-zosh.jpeg" alt="Thunder of Zosh Model">
     </div>
-    <div class="about-img">
-        <img src="model-zosh.jpg" alt="Thunder of Zosh Model">
+    <div style="flex:1;">
+        <h2 style="color:var(--gold);">Unleash Your Power</h2>
+        <p>Expertly crafted for peak vitality and confidence.</p>
     </div>
 </section>
 
-<section class="section" id="ingredients">
-    <h2 class="section-title">Natural Potency</h2>
+<section class="section">
+    <h2 style="color:var(--gold); margin-bottom:40px;">Pure Ingredients</h2>
     <div class="grid">
         <div class="card">
             <img src="ashwa.jpeg" alt="Ashwagandha">
             <h3>Ashwagandha</h3>
-            <p>Traditional herb for stress relief and vitality.</p>
         </div>
         <div class="card">
             <img src="shilajit.jpeg" alt="Shilajit">
             <h3>Shilajit</h3>
-            <p>Pure resin for enhanced stamina and energy.</p>
         </div>
         <div class="card">
             <img src="musli.jpeg" alt="Safed Musli">
             <h3>Safed Musli</h3>
-            <p>Natural strength and performance booster.</p>
         </div>
     </div>
 </section>
-
-<footer id="quality">
-    <h2 style="color: var(--gold);">PREMIUM QUALITY ASSURED</h2>
-    <p>Lab Tested • 100% Ayurvedic • Discreet Shipping</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQa1JQqBhw5rNL37RLd6u5KYd4KyzGKM0ARjvQ6qbaiAK-WQ/viewform" class="cta-btn" style="margin-top:20px;">Order Your Pack</a>
-    <p class="footer-text">&copy; 2026 Thunder of Zosh India.</p>
-</footer>
 
 </body>
 </html>
