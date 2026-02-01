@@ -15,30 +15,37 @@
         .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* Hero Section with Product Image */
-        .hero { height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('product high image.jpg') center/cover; padding: 0 20px; border-bottom: 3px solid var(--gold); }
-        .hero h1 { font-size: 55px; color: var(--gold); margin: 0 0 10px; font-weight: 700; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
-        .hero p { font-size: 20px; max-width: 700px; margin-bottom: 35px; color: #fff; font-weight: 400; }
+        /* Premium Hero Section with Lightning Image */
+        .hero { height: 95vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero-zosh.jpg') center/cover; padding: 0 20px; border-bottom: 3px solid var(--gold); }
+        .hero h1 { font-size: 60px; color: var(--gold); margin: 0 0 10px; font-weight: 700; text-shadow: 0 0 20px rgba(212,175,55,0.5); }
+        .hero p { font-size: 22px; max-width: 800px; margin-bottom: 35px; color: #fff; font-weight: 400; text-shadow: 2px 2px 4px #000; }
         
-        .cta-btn { padding: 18px 50px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(212,175,55,0.4); transition: 0.3s; border: none; cursor: pointer; display: inline-block; }
-        .cta-btn:hover { background: #fff; transform: translateY(-3px); color: #000; }
+        .cta-btn { padding: 20px 60px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(212,175,55,0.4); transition: 0.3s; border: none; cursor: pointer; display: inline-block; }
+        .cta-btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 6px 25px rgba(212,175,55,0.6); }
+
+        /* Model Section */
+        .about-brand { display: flex; align-items: center; padding: 80px 10%; background: #050505; flex-wrap: wrap; gap: 40px; }
+        .about-text { flex: 1; min-width: 300px; }
+        .about-img { flex: 1; min-width: 300px; text-align: center; }
+        .about-img img { width: 100%; max-width: 450px; border-radius: 20px; border: 1px solid var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.2); }
 
         .section { padding: 80px 10%; text-align: center; }
         .section-title { color: var(--gold); font-size: 32px; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { background: #111; padding: 25px; border-radius: 12px; border: 1px solid #222; transition: 0.3s; overflow: hidden; }
+        .card { background: #111; padding: 25px; border-radius: 12px; border: 1px solid #222; transition: 0.3s; }
         .card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; border: 1px solid #333; }
-        .card h3 { color: var(--gold); font-size: 22px; margin-bottom: 10px; text-transform: uppercase; }
+        .card img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; border: 1px solid #333; }
+        .card h3 { color: var(--gold); font-size: 22px; margin-bottom: 10px; }
         .card p { font-size: 14px; color: #bbb; margin: 0; }
 
         footer { padding: 50px 20px; text-align: center; background: #000; border-top: 1px solid #222; }
-        .footer-text { font-size: 12px; color: #666; max-width: 800px; margin: 20px auto 0; line-height: 1.8; }
+        .footer-text { font-size: 12px; color: #666; margin-top: 20px; }
         
         @media (max-width: 768px) {
-            .hero h1 { font-size: 38px; }
-            .hero p { font-size: 16px; }
+            .hero h1 { font-size: 40px; }
+            .hero p { font-size: 18px; }
+            .about-brand { padding: 40px 5%; text-align: center; }
         }
     </style>
 </head>
@@ -49,62 +56,48 @@
     <div class="nav-links">
         <a href="#ingredients">Ingredients</a>
         <a href="#quality">Quality</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQa1JQqBhw5rNL37RLd6u5KYd4KyzGKM0ARjvQ6qbaiAK-WQ/viewform">Buy Now</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQa1JQqBhw5rNL37RLd6u5KYd4KyzGKM0ARjvQ6qbaiAK-WQ/viewform">Order Now</a>
     </div>
 </nav>
 
 <section class="hero">
     <h1>THUNDER OF ZOSH</h1>
-    <p>Premium Ayurvedic formula for natural strength, peak performance, and confidence.</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQa1JQqBhw5rNL37RLd6u5KYd4KyzGKM0ARjvQ6qbaiAK-WQ/viewform" class="cta-btn">View Special Offers</a>
+    <p>Awaken Your Inner Strength with the Most Advanced Ayurvedic Formula.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQa1JQqBhw5rNL37RLd6u5KYd4KyzGKM0ARjvQ6qbaiAK-WQ/viewform" class="cta-btn">Grab Best Offer (COD)</a>
+</section>
+
+<section class="about-brand" id="about">
+    <div class="about-text">
+        <h2 style="color: var(--gold); font-size: 30px;">PREMIUM WELLNESS FOR MEN</h2>
+        <p>Thunder of Zosh is more than just a supplement; it's a commitment to your health and confidence. Our formula is crafted for those who never settle for anything but the best.</p>
+    </div>
+    <div class="about-img">
+        <img src="model-zosh.jpg" alt="Thunder of Zosh Brand">
+    </div>
 </section>
 
 <section class="section" id="ingredients">
-    <h2 class="section-title">The Power of Nature</h2>
+    <h2 class="section-title">Natural Ingredients</h2>
     <div class="grid">
-        <div class="card" style="border-top: 4px solid var(--gold);">
+        <div class="card">
             <img src="ashwa.jpeg" alt="Ashwagandha"> <h3>Ashwagandha</h3>
-            <p>A powerful herb to reduce stress and boost natural energy levels.</p>
+            <p>A natural energy booster that reduces stress and enhances strength.</p>
         </div>
-        <div class="card" style="border-top: 4px solid var(--gold);">
+        <div class="card">
             <img src="shilajit.jpeg" alt="Shilajit"> <h3>Shilajit</h3>
-            <p>Natural mineral powerhouse for enhanced stamina and vitality.</p>
+            <p>Pure mineral resin that improves stamina and overall vitality.</p>
         </div>
-        <div class="card" style="border-top: 4px solid var(--gold);">
+        <div class="card">
             <img src="musli.jpeg" alt="Safed Musli"> <h3>Safed Musli</h3>
-            <p>Traditionally used to improve overall health and men's performance.</p>
+            <p>The white gold of Ayurveda for performance and peak health.</p>
         </div>
     </div>
 </section>
 
-<section class="section" id="quality" style="background: #050505;">
-    <h2 class="section-title">Our Promise</h2>
-    <div class="grid">
-        <div class="card">
-            <span style="font-size: 45px;">📦</span>
-            <h3>Discreet Packaging</h3>
-            <p>We value your privacy. Your order arrives in plain boxes with no product label.</p>
-        </div>
-        <div class="card">
-            <span style="font-size: 45px;">🔬</span>
-            <h3>Lab Verified</h3>
-            <p>100% Ayurvedic formulation, tested for purity and zero harmful chemicals.</p>
-        </div>
-        <div class="card">
-            <span style="font-size: 45px;">🚚</span>
-            <h3>Fast Delivery</h3>
-            <p>Quick shipping across India with secure Cash on Delivery option.</p>
-        </div>
-    </div>
-</section>
-
-<section class="section" style="background: var(--gold); color: #000; padding: 60px 20px;">
-    <h2 style="margin:0 0 20px; font-size: 30px;">READY TO FEEL THE POWER?</h2>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQa1JQqBhw5rNL37RLd6u5KYd4KyzGKM0ARjvQ6qbaiAK-WQ/viewform" class="cta-btn" style="background: #000; color: var(--gold);">Order Now - COD Available</a>
-</section>
-
-<footer>
-    <div class="logo">Thunder of Zosh</div>
+<footer id="quality">
+    <h2 style="color: var(--gold);">WHY THUNDER OF ZOSH?</h2>
+    <p>Lab Tested • 100% Ayurvedic • Discreet Packaging • Fast Delivery</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQa1JQqBhw5rNL37RLd6u5KYd4KyzGKM0ARjvQ6qbaiAK-WQ/viewform" class="cta-btn" style="margin-top:20px;">Order Now</a>
     <p class="footer-text">&copy; 2026 Thunder of Zosh India. Results may vary from person to person.</p>
 </footer>
 
