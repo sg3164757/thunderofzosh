@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thunder of Zosh | Premium Gel Formula</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #000; color: #fff; margin: 0; text-align: center; }
+        .hero-section { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero-zosh.jpeg') center/cover; padding: 80px 20px; border-bottom: 3px solid #d4af37; }
+        .gold { color: #d4af37; }
+        .content { padding: 40px 10%; background: #050505; }
+        .product-img { width: 100%; max-width: 400px; border-radius: 15px; border: 1px solid #d4af37; margin: 20px 0; }
+        .cta-btn { background: linear-gradient(45deg, #d4af37, #b8860b); color: #000; padding: 20px; text-decoration: none; font-weight: bold; display: inline-block; border-radius: 5px; font-size: 22px; width: 90%; max-width: 350px; box-shadow: 0 4px 15px rgba(212,175,55,0.4); margin-top: 20px; }
+        .timer { color: #ff4444; font-size: 18px; margin: 15px 0; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="hero-section">
+        <h1 class="gold" style="font-size: 45px; margin-bottom: 10px;">THUNDER OF ZOSH</h1>
+        <p style="font-size: 22px;">Power. Performance. Purity. ⚡</p>
+    </div>
+
+    <div class="content">
+        <img src="model-zosh.jpeg" class="product-img" alt="Zosh Gel Formula">
+        <h2 class="gold">Ayurvedic Gel Formula</h2>
+        <p style="font-size: 18px; color: #ccc;">Experience fast-acting results with our premium natural formula.</p>
+        
+        <div class="timer">OFFER EXPIRES IN: <span id="countdown">10:00</span></div>
+
+        <ul style="text-align: left; display: inline-block; line-height: 2; margin-bottom: 30px;">
+            <li>✅ 100% Ayurvedic & Safe</li>
+            <li>✅ Non-Greasy & Fast Absorbing</li>
+            <li>✅ Discreet Packaging</li>
+            <li>✅ Cash on Delivery (COD)</li>
+        </ul>
+
+        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">ORDER NOW - CASH ON DELIVERY</a>
+    </div>
+
+    <script>
+        var timeInMinutes = 10;
+        var currentTime = Date.parse(new Date());
+        var deadline = new Date(currentTime + timeInMinutes*60*1000);
+        function getTimeRemaining(endtime){
+            var t = Date.parse(endtime) - Date.parse(new Date());
+            var seconds = Math.floor( (t/1000) % 60 );
+            var minutes = Math.floor( (t/1000/60) % 60 );
+            return { 'total': t, 'minutes': minutes, 'seconds': seconds };
+        }
+        function startTimer(id, endtime){
+            var clock = document.getElementById(id);
+            function updateTimer(){
+                var t = getTimeRemaining(endtime);
+                clock.innerHTML = t.minutes + ":" + (t.seconds < 10 ? '0' + t.seconds : t.seconds);
+                if(t.total<=0){ clearInterval(timeinterval); }
+            }
+            updateTimer();
+            var timeinterval = setInterval(updateTimer,1000);
+        }
+        startTimer('countdown', deadline);
+    </script>
+</body>
+</html>
