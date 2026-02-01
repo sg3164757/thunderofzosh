@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thunder of Zosh | Official Brand Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #d4af37; --gold-dark: #b8860b; --white: #ffffff; --dark: #0a0a0a; }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--white); margin: 0; line-height: 1.6; }
+        
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
+        .logo { color: var(--gold); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        .hero { height: 85vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('hero-bg.jpg') center/cover; padding: 0 20px; border-bottom: 2px solid var(--gold); }
+        .hero h1 { font-size: 50px; color: var(--gold); margin: 0 0 15px; font-weight: 700; }
+        .hero p { font-size: 18px; max-width: 700px; margin-bottom: 35px; color: #ddd; }
+        
+        .cta-btn { padding: 18px 50px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(212,175,55,0.3); transition: 0.3s; }
+        .cta-btn:hover { background: #fff; transform: translateY(-3px); }
+
+        .section { padding: 80px 10%; text-align: center; }
+        .section-title { color: var(--gold); font-size: 32px; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: #111; padding: 40px 25px; border-radius: 12px; border: 1px solid #222; transition: 0.3s; }
+        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .card .icon { font-size: 45px; margin-bottom: 20px; display: block; }
+        .card h3 { color: var(--gold); font-size: 20px; margin-bottom: 15px; }
+        .card p { font-size: 14px; color: #999; margin: 0; }
+
+        footer { padding: 50px 20px; text-align: center; background: #000; border-top: 1px solid #222; }
+        .footer-text { font-size: 12px; color: #555; max-width: 800px; margin: 20px auto 0; line-height: 1.8; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">Thunder of Zosh</div>
+    <div class="nav-links">
+        <a href="#ingredients">Ingredients</a>
+        <a href="#quality">Commitment</a>
+        <a href="https://order.thunderofzosh.in">Buy Now</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>THUNDER OF ZOSH</h1>
+    <p>Premium Ayurvedic formula designed to unlock your natural strength, vitality, and confidence.</p>
+    <a href="https://order.thunderofzosh.in" class="cta-btn">Check Exclusive Offers</a>
+</section>
+
+<section class="section" id="ingredients">
+    <h2 class="section-title">The Power of Nature</h2>
+    <div class="grid">
+        <div class="card" style="border-top: 4px solid var(--gold);">
+            <span class="icon">🌿</span>
+            <h3>Ashwagandha</h3>
+            <p>A legendary herb known to reduce stress and boost natural energy levels significantly.</p>
+        </div>
+        <div class="card" style="border-top: 4px solid var(--gold);">
+            <span class="icon">💎</span>
+            <h3>Shilajit</h3>
+            <p>Rich in minerals to enhance stamina and overall performance.</p>
+        </div>
+        <div class="card" style="border-top: 4px solid var(--gold);">
+            <span class="icon">🍂</span>
+            <h3>Safed Musli</h3>
+            <p>Traditionally used for improving vitality and strength in men.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="quality">
