@@ -3,62 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thunder of Zosh | Premium Gel Formula</title>
+    <title>Thunder of Zosh | Premium Ayurvedic Gel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; background: #000; color: #fff; margin: 0; text-align: center; }
-        .hero-section { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero-zosh.jpeg') center/cover; padding: 80px 20px; border-bottom: 3px solid #d4af37; }
-        .gold { color: #d4af37; }
-        .content { padding: 40px 10%; background: #050505; }
-        .product-img { width: 100%; max-width: 400px; border-radius: 15px; border: 1px solid #d4af37; margin: 20px 0; }
-        .cta-btn { background: linear-gradient(45deg, #d4af37, #b8860b); color: #000; padding: 20px; text-decoration: none; font-weight: bold; display: inline-block; border-radius: 5px; font-size: 22px; width: 90%; max-width: 350px; box-shadow: 0 4px 15px rgba(212,175,55,0.4); margin-top: 20px; }
-        .timer { color: #ff4444; font-size: 18px; margin: 15px 0; font-weight: bold; }
+        body { font-family: 'Poppins', sans-serif; background: #000; color: #fff; margin: 0; text-align: center; overflow-x: hidden; }
+        
+        /* Hero Section with Lightning Background */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-zosh.jpeg') center/cover; 
+            padding: 100px 20px; 
+            border-bottom: 3px solid #d4af37;
+        }
+        
+        .gold { color: #d4af37; text-shadow: 0 0 10px rgba(212,175,55,0.5); }
+        
+        .section { padding: 50px 10%; background: #050505; border-bottom: 1px solid #1a1a1a; }
+        
+        .product-img { 
+            width: 100%; 
+            max-width: 450px; 
+            border-radius: 15px; 
+            border: 1px solid #d4af37; 
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(212,175,55,0.2);
+        }
+
+        /* Order Button */
+        .cta-btn { 
+            background: linear-gradient(45deg, #d4af37, #b8860b); 
+            color: #000; 
+            padding: 22px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            display: inline-block; 
+            border-radius: 8px; 
+            font-size: 24px; 
+            width: 90%; 
+            max-width: 450px; 
+            box-shadow: 0 5px 20px rgba(212,175,55,0.4); 
+            margin: 30px 0;
+            transition: transform 0.3s;
+        }
+        .cta-btn:hover { transform: scale(1.05); }
+
+        /* Usage Steps */
+        .usage-card { 
+            background: #111; 
+            padding: 20px; 
+            margin: 15px 0; 
+            border-left: 5px solid #d4af37; 
+            text-align: left; 
+            border-radius: 5px;
+        }
+
+        /* Professional Footer */
+        footer { background: #0a0a0a; padding: 50px 20px; color: #777; font-size: 13px; border-top: 1px solid #222; }
+        .trust-icons img { margin: 10px; opacity: 0.8; }
+        .footer-links a { color: #888; text-decoration: none; margin: 0 10px; font-size: 12px; }
+        .disclaimer { font-size: 11px; max-width: 800px; margin: 20px auto; line-height: 1.6; }
     </style>
 </head>
 <body>
 
-    <div class="hero-section">
-        <h1 class="gold" style="font-size: 45px; margin-bottom: 10px;">THUNDER OF ZOSH</h1>
-        <p style="font-size: 22px;">Power. Performance. Purity. ⚡</p>
+    <div class="hero">
+        <h1 class="gold" style="font-size: 42px; margin: 0;">THUNDER OF ZOSH</h1>
+        <p style="font-size: 18px; margin-top: 10px;">Awaken Your Inner Strength with Premium Ayurvedic Formula</p>
     </div>
 
-    <div class="content">
-        <img src="model-zosh.jpeg" class="product-img" alt="Zosh Gel Formula">
-        <h2 class="gold">Ayurvedic Gel Formula</h2>
-        <p style="font-size: 18px; color: #ccc;">Experience fast-acting results with our premium natural formula.</p>
+    <div class="section">
+        <img src="model-zosh.jpeg" class="product-img" alt="Zosh Gel Premium">
+        <h2 class="gold">Premium Gel Formula</h2>
+        <p style="font-size: 17px; line-height: 1.8; color: #ccc;">Experience the power of 100% natural ingredients. Fast-acting, safe, and designed for results.</p>
         
-        <div class="timer">OFFER EXPIRES IN: <span id="countdown">10:00</span></div>
-
-        <ul style="text-align: left; display: inline-block; line-height: 2; margin-bottom: 30px;">
-            <li>✅ 100% Ayurvedic & Safe</li>
-            <li>✅ Non-Greasy & Fast Absorbing</li>
-            <li>✅ Discreet Packaging</li>
-            <li>✅ Cash on Delivery (COD)</li>
-        </ul>
-
-        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">ORDER NOW - CASH ON DELIVERY</a>
+        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">BUY NOW (CASH ON DELIVERY)</a>
     </div>
 
-    <script>
-        var timeInMinutes = 10;
-        var currentTime = Date.parse(new Date());
-        var deadline = new Date(currentTime + timeInMinutes*60*1000);
-        function getTimeRemaining(endtime){
-            var t = Date.parse(endtime) - Date.parse(new Date());
-            var seconds = Math.floor( (t/1000) % 60 );
-            var minutes = Math.floor( (t/1000/60) % 60 );
-            return { 'total': t, 'minutes': minutes, 'seconds': seconds };
-        }
-        function startTimer(id, endtime){
-            var clock = document.getElementById(id);
-            function updateTimer(){
-                var t = getTimeRemaining(endtime);
-                clock.innerHTML = t.minutes + ":" + (t.seconds < 10 ? '0' + t.seconds : t.seconds);
-                if(t.total<=0){ clearInterval(timeinterval); }
-            }
-            updateTimer();
-            var timeinterval = setInterval(updateTimer,1000);
-        }
-        startTimer('countdown', deadline);
-    </script>
+    <div class="section">
+        <h2 class="gold">How To Use (Kaise Use Karein)</h2>
+        <div class="usage-card"><strong>1. Clean:</strong> Prabhavit hisse ko gungune paani se saaf karke sukha lein.</div>
+        <div class="usage-card"><strong>2. Apply:</strong> Gel ki thodi si maatra ungliyon par lein aur halki massage karein.</div>
+        <div class="usage-card"><strong>3. Absorb:</strong> 2-3 minute tak chhod dein taaki gel tvacha mein achhi tarah sama jaye.</div>
+        <p style="margin-top: 25px; color: #d4af37; font-weight: bold;">*Behtar results ke liye rozana raat ko sone se pehle istemal karein.</p>
+    </div>
+
+    <footer>
+        <div class="trust-icons">
+            <p style="color: #d4af37; font-weight: bold; margin-bottom: 20px;">SECURE & PRIVATE CHECKOUT</p>
+            <img src="https://img.icons8.com/color/48/000000/visa.png" width="40" alt="Visa">
+            <img src="https://img.icons8.com/color/48/000000/mastercard.png" width="40" alt="Mastercard">
+            <img src="https://img.icons8.com/color/48/000000/google-pay.png" width="40" alt="GPay">
+            <img src="https://img.icons8.com/fluency/48/000000/shield.png" width="40" alt="Secure">
+        </div>
+
+        <div class="disclaimer">
+            <p>*DISCLAIMER: These statements have not been evaluated by any medical authority. This product is not intended to diagnose, treat, cure, or prevent any disease. Results may vary from person to person.</p>
+        </div>
+
+        <div class="footer-links">
+            <strong class="gold">THUNDER OF ZOSH</strong><br><br>
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms & Conditions</a> | 
+            <a href="#">Shipping Policy</a> |
+            <a href="#">Contact Us</a>
+        </div>
+
+        <p style="margin-top: 30px; font-size: 11px;">&copy; 2026 Thunder of Zosh. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
