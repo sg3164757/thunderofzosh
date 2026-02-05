@@ -3,24 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thunder of Zosh | Official Landing Page</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <title>Thunder of Zosh | Elite Performance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #000; color: #fff; margin: 0; text-align: center; }
-        .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero-zosh.jpeg') center/cover; }
-        h1 { color: #d4af37; font-size: 50px; text-transform: uppercase; margin-bottom: 10px; }
-        p { font-size: 20px; max-width: 600px; margin-bottom: 30px; }
-        .cta-btn { padding: 15px 40px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 5px; text-transform: uppercase; }
-        .cta-btn:hover { background: #fff; }
+        :root { --gold: #d4af37; --white: #ffffff; --dark: #0a0a0a; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--white); margin: 0; line-height: 1.6; }
+        
+        /* Hero Section */
+        .hero { height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero-zosh.jpeg') center/cover; padding: 20px; border-bottom: 2px solid var(--gold); }
+        .hero h1 { color: var(--gold); font-size: 45px; margin: 0; text-transform: uppercase; }
+        .hero p { font-size: 18px; max-width: 700px; margin-bottom: 30px; }
+
+        /* Usage Section (How to Use) */
+        .how-to-use { padding: 60px 10%; background: #111; text-align: center; }
+        .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .step-card { padding: 20px; border: 1px solid #333; border-radius: 10px; transition: 0.3s; }
+        .step-card:hover { border-color: var(--gold); }
+        .step-num { font-size: 40px; color: var(--gold); font-weight: 700; display: block; }
+
+        /* Payment & Security Badges */
+        .secure-section { padding: 40px; text-align: center; background: #050505; border-top: 1px solid #222; }
+        .badge-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-top: 20px; }
+        .badge { background: #1a1a1a; padding: 15px 25px; border-radius: 5px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 14px; }
+
+        /* CTA Button */
+        .cta-btn { padding: 18px 50px; background: var(--gold); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; display: inline-block; margin-top: 20px; box-shadow: 0 5px 15px rgba(212,175,55,0.3); }
+
+        footer { padding: 40px; text-align: center; font-size: 12px; color: #666; }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <h1>Thunder of Zosh</h1>
-        <p>Premium Male Wellness Solution for Elite Performance and Confidence.</p>
-        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">Buy Now (Cash on Delivery)</a>
+        <h1>THUNDER OF ZOSH</h1>
+        <p>Expertly crafted for peak vitality and confidence. The commitment to your best self.</p>
+        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">Order Now - Cash on Delivery</a>
     </section>
+
+    <section class="how-to-use">
+        <h2 style="color: var(--gold);">USE KARNE KA TARIKA</h2>
+        <div class="step-grid">
+            <div class="step-card">
+                <span class="step-num">01</span>
+                <h3>Clean Area</h3>
+                <p>Upyog se pehle prabhavit hisse ko saaf paani se dho lein.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-num">02</span>
+                <h3>Apply Gel</h3>
+                <p>Thodi matra mein gel lein aur halke haathon se massage karein.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-num">03</span>
+                <h3>Wait 5-10 Mins</h3>
+                <p>Ise poori tarah absorb hone dein behtar result ke liye.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="secure-section">
+        <h2 style="color: var(--gold);">SECURE PAYMENT & TRUST</h2>
+        <div class="badge-grid">
+            <div class="badge">🔒 SECURE CHECKOUT</div>
+            <div class="badge">🚚 DISCREET SHIPPING</div>
+            <div class="badge">📦 CASH ON DELIVERY</div>
+            <div class="badge">🌿 100% AYURVEDIC</div>
+        </div>
+        <p style="margin-top: 30px; color: #888;">Aapki privacy hamari priority hai. Parcel par product ka naam nahi hoga.</p>
+        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">Get Started Today</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Thunder of Zosh India. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
