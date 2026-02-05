@@ -6,93 +6,79 @@
     <title>Thunder of Zosh | Elite Performance</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --gold-dark: #b8860b; --white: #ffffff; --dark: #0a0a0a; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--white); margin: 0; line-height: 1.6; }
+        :root { --gold: #d4af37; --white: #ffffff; }
         
-        /* Hero Section */
-        .hero { height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero-zosh.jpeg') center/cover; padding: 20px; border-bottom: 2px solid var(--gold); }
-        .hero h1 { color: var(--gold); font-size: 40px; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+        /* Poori body par ek permanent background image set kar di hai */
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('touch_image.jpeg') center/cover no-repeat fixed; 
+            color: var(--white); 
+            margin: 0; 
+        }
 
-        /* Brand Model Section */
-        .brand-story { display: flex; align-items: center; padding: 60px 10%; background: #050505; flex-wrap: wrap; gap: 40px; }
-        .brand-text { flex: 1; min-width: 300px; }
-        .brand-img { flex: 1; min-width: 300px; text-align: center; }
-        .brand-img img { width: 100%; max-width: 400px; border-radius: 15px; border: 1px solid var(--gold); }
+        /* Black boxes ko remove karke transparent kar diya gaya hai */
+        .section, .brand-story, .use-grid, footer { 
+            background: transparent !important; 
+            padding: 60px 10%; 
+            text-align: center; 
+        }
 
-        /* Usage Section */
-        .section { padding: 60px 10%; text-align: center; }
-        .use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
-        .use-card { background: #111; padding: 25px; border-radius: 12px; border: 1px solid #222; }
-        .step { color: var(--gold); font-size: 24px; font-weight: 700; }
+        .hero { height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom: 2px solid var(--gold); }
+        .hero h1 { color: var(--gold); font-size: 45px; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* New Lifestyle Background Sections */
-        .lifestyle-section { min-height: 500px; display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center; background-attachment: fixed; position: relative; border-top: 1px solid #222; }
-        .lifestyle-1 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('touch_image.jpeg'); }
-        .lifestyle-2 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('smile_image.jpeg'); }
-        .lifestyle-content { padding: 40px; text-align: center; max-width: 800px; }
-        .lifestyle-content h2 { color: var(--gold); font-size: 32px; text-transform: uppercase; }
+        .brand-story { display: flex; align-items: center; flex-wrap: wrap; gap: 40px; }
+        .brand-img img { width: 100%; max-width: 400px; border-radius: 15px; border: 1px solid var(--gold); box-shadow: 0 0 30px rgba(0,0,0,0.5); }
 
-        /* Security Badges */
+        /* Card background ko thoda sa dark rakha hai taaki text readable rahe */
+        .use-card { background: rgba(0,0,0,0.7); padding: 30px; border-radius: 12px; border: 1px solid var(--gold); }
+        .step { color: var(--gold); font-size: 30px; font-weight: 700; }
+
         .badge-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
-        .badge { background: #1a1a1a; padding: 12px 25px; border: 1px solid var(--gold); color: var(--gold); border-radius: 5px; font-size: 13px; }
+        .badge { background: rgba(212,175,55,0.1); padding: 12px 25px; border: 1px solid var(--gold); color: var(--gold); border-radius: 5px; font-weight: 600; }
 
-        .cta-btn { padding: 18px 50px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; display: inline-block; margin-top: 25px; }
-        footer { padding: 40px; text-align: center; background: #000; border-top: 1px solid #222; color: #666; font-size: 11px; }
-
-        @media (max-width: 768px) { .lifestyle-section { background-attachment: scroll; } .hero h1 { font-size: 30px; } }
+        .cta-btn { padding: 20px 60px; background: var(--gold); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; display: inline-block; margin-top: 30px; }
+        
+        @media (max-width: 768px) { .brand-story { padding: 40px 5%; text-align: center; } .hero h1 { font-size: 35px; } }
     </style>
 </head>
 <body>
 
 <section class="hero">
     <h1>THUNDER OF ZOSH</h1>
-    <p>Premium Ayurvedic Formula for Peak Vitality.</p>
-    <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">Order Now</a>
+    <p>Premium Ayurvedic Formula for Peak Vitality and Power.</p>
+    <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">Order Now (COD Available)</a>
 </section>
 
 <section class="brand-story">
     <div class="brand-img"><img src="model-zosh.jpeg" alt="Thunder of Zosh"></div>
     <div class="brand-text">
-        <h2 style="color: var(--gold);">ELITE PERFORMANCE</h2>
-        <p>Thunder of Zosh is crafted for those who demand more. Experience vitality like never before.</p>
+        <h2 style="color: var(--gold); font-size: 32px;">ELITE PERFORMANCE</h2>
+        <p>Expertly crafted for men who refuse to settle. Restore your vitality with 100% natural extracts.</p>
     </div>
 </section>
 
 <section class="section">
     <h2 style="color: var(--gold);">KAISE UPYOG KAREIN?</h2>
-    <div class="use-grid">
-        <div class="use-card"><span class="step">01</span><h3>Clean</h3><p>Halke gungune paani se saaf karein.</p></div>
+    <div class="use-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        <div class="use-card"><span class="step">01</span><h3>Clean</h3><p>Area ko saaf karke sukhayein.</p></div>
         <div class="use-card"><span class="step">02</span><h3>Apply</h3><p>Thodi matra mein gel se massage karein.</p></div>
-        <div class="use-card"><span class="step">03</span><h3>Enjoy</h3><p>Ise poori tarah absorb hone dein.</p></div>
+        <div class="use-card"><span class="step">03</span><h3>Absorb</h3><p>Ise 5-10 minute tak absorb hone dein.</p></div>
     </div>
 </section>
 
-<section class="lifestyle-section lifestyle-1">
-    <div class="lifestyle-content">
-        <h2>Unleash Your Potential</h2>
-        <p>Expertly designed to ignite your confidence and enhance your natural vitality.</p>
-    </div>
-</section>
-
-<section class="lifestyle-section lifestyle-2">
-    <div class="lifestyle-content">
-        <h2>Deeper Connections</h2>
-        <p>Build stronger bonds and a more vibrant lifestyle with lasting results.</p>
-        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">Get Started</a>
-    </div>
-</section>
-
-<section class="section" style="background: #050505;">
-    <h2 style="color: var(--gold);">SECURE & PRIVATE</h2>
+<section class="section">
+    <h2 style="color: var(--gold);">TRUST & SECURITY</h2>
     <div class="badge-grid">
-        <div class="badge">🔒 SECURE CHECKOUT</div>
+        <div class="badge">🛡️ LAB TESTED</div>
         <div class="badge">🚚 DISCREET SHIPPING</div>
         <div class="badge">📦 CASH ON DELIVERY</div>
     </div>
-    <p style="margin-top: 30px; color: #888;">Privacy hamari priority hai. Parcel par product ka naam nahi hoga.</p>
+    <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">Buy Now Today</a>
 </section>
 
-<footer><p>&copy; 2026 Thunder of Zosh India.</p></footer>
+<footer style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.1); padding: 30px;">
+    <p>&copy; 2026 Thunder of Zosh India. Your Privacy is our Priority.</p>
+</footer>
 
 </body>
 </html>
