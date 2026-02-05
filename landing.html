@@ -1,93 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thunder of Zosh | Official Site</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --gold: #d4af37; --gold-dark: #b8860b; --white: #ffffff; --dark: #0a0a0a; }
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--white); margin: 0; line-height: 1.6; }
-        
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
-        .logo { color: var(--gold); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thunder of Zosh | Official Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #d4af37; --gold-dark: #b8860b; --white: #ffffff; --dark: #0a0a0a; }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--white); margin: 0; line-height: 1.6; }
+        
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
+        .logo { color: var(--gold); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Lightning Hero Section (First Page - NO CHANGE) */
-        .hero { height: 95vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-zosh.jpeg') center/cover; padding: 0 20px; border-bottom: 3px solid var(--gold); }
-        .hero h1 { font-size: 60px; color: var(--gold); margin: 0 0 10px; font-weight: 700; text-shadow: 0 0 20px rgba(212,175,55,0.5); }
-        .hero p { font-size: 22px; max-width: 800px; margin-bottom: 35px; color: #fff; text-shadow: 2px 2px 4px #000; }
-        
-        .cta-btn { padding: 20px 60px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(212,175,55,0.4); transition: 0.3s; display: inline-block; }
-        .cta-btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 6px 25px rgba(212,175,55,0.6); }
+        /* Lightning Hero Section */
+        .hero { height: 95vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-zosh.jpeg') center/cover; padding: 0 20px; border-bottom: 3px solid var(--gold); }
+        .hero h1 { font-size: 60px; color: var(--gold); margin: 0 0 10px; font-weight: 700; text-shadow: 0 0 20px rgba(212,175,55,0.5); }
+        .hero p { font-size: 22px; max-width: 800px; margin-bottom: 35px; color: #fff; text-shadow: 2px 2px 4px #000; }
+        
+        .cta-btn { padding: 20px 60px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(212,175,55,0.4); transition: 0.3s; display: inline-block; }
+        .cta-btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 6px 25px rgba(212,175,55,0.6); }
 
-        /* Model Brand Section */
-        .about-brand { display: flex; align-items: center; padding: 80px 10%; background: #050505; flex-wrap: wrap; gap: 40px; }
-        .about-text { flex: 1; min-width: 300px; }
-        .about-img { flex: 1; min-width: 300px; text-align: center; }
-        .about-img img { width: 100%; max-width: 450px; border-radius: 20px; border: 1px solid var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.2); }
+        /* Model Brand Section */
+        .about-brand { display: flex; align-items: center; padding: 80px 10%; background: #050505; flex-wrap: wrap; gap: 40px; }
+        .about-text { flex: 1; min-width: 300px; }
+        .about-img { flex: 1; min-width: 300px; text-align: center; }
+        .about-img img { width: 100%; max-width: 450px; border-radius: 20px; border: 1px solid var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.2); }
 
-        .section { padding: 80px 10%; text-align: center; }
-        .section-title { color: var(--gold); font-size: 32px; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
+        .section { padding: 80px 10%; text-align: center; }
+        .section-title { color: var(--gold); font-size: 32px; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { background: #111; padding: 25px; border-radius: 12px; border: 1px solid #222; transition: 0.3s; }
-        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .card img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; border: 1px solid #333; }
-        .card h3 { color: var(--gold); font-size: 22px; margin-bottom: 10px; }
-        .card p { font-size: 14px; color: #bbb; margin: 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: #111; padding: 25px; border-radius: 12px; border: 1px solid #222; transition: 0.3s; }
+        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .card img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; border: 1px solid #333; }
+        .card h3 { color: var(--gold); font-size: 22px; margin-bottom: 10px; }
+        .card p { font-size: 14px; color: #bbb; margin: 0; }
 
-        /* --- NEW LIFESTYLE SECTIONS (Updated for .jpeg) --- */
-        .lifestyle-section {
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            position: relative;
-            border-top: 2px solid var(--gold);
-        }
-        
-        /* Using .jpeg extension as seen in GitHub screenshot */
-        .lifestyle-1 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('touch_image.jpeg'); }
-        .lifestyle-2 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('smile_image.jpeg'); }
-
-        .lifestyle-content { padding: 40px; text-align: center; max-width: 850px; }
-        .lifestyle-content h2 { color: var(--gold); font-size: 42px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
-        .lifestyle-content p { font-size: 20px; color: #f0f0f0; margin-bottom: 25px; font-weight: 300; }
-
-        footer { padding: 60px 20px; text-align: center; background: #000; border-top: 1px solid #222; }
-        .footer-text { font-size: 12px; color: #666; margin-top: 20px; }
-        
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 40px; }
-            .hero p { font-size: 18px; }
-            .about-brand { padding: 40px 5%; text-align: center; }
-            .lifestyle-section { background-attachment: scroll; min-height: 450px; }
-            .lifestyle-content h2 { font-size: 30px; }
-        }
-    </style>
+        footer { padding: 50px 20px; text-align: center; background: #000; border-top: 1px solid #222; }
+        .footer-text { font-size: 12px; color: #666; margin-top: 20px; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 40px; }
+            .hero p { font-size: 18px; }
+            .about-brand { padding: 40px 5%; text-align: center; }
+        }
+    </style>
 </head>
 <body>
 
 <nav>
-    <div class="logo">Thunder of Zosh</div>
-    <div class="nav-links">
-        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn" style="padding: 10px 20px; font-size: 12px;">Order Now</a>
-    </div>
+    <div class="logo">Thunder of Zosh</div>
+    <div class="nav-links">
+        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn" style="padding: 10px 20px; font-size: 12px;">Order Now</a>
+    </div>
 </nav>
 
 <section class="hero">
-    <h1>THUNDER OF ZOSH</h1>
-    <p>Awaken Your Inner Strength with Premium Ayurvedic Formula.</p>
-    <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">Buy Now (Cash on Delivery)</a>
+    <h1>THUNDER OF ZOSH</h1>
+    <p>Awaken Your Inner Strength with Premium Ayurvedic Formula.</p>
+    <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">Buy Now (Cash on Delivery)</a>
 </section>
 
 <section class="about-brand" id="about">
-    <div class="about-text">
-        <h2 style="color: var(--gold); font-size: 30px;">ELITE PERFORMANCE FOR MEN</h2>
-        <p>Expertly crafted for peak vitality and confidence. Thunder of Zosh is the commitment to your best self.</p>
-        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn" style="margin-top: 20px;">Get Started</a>
-    </div>
+    <div class="about-text">
+        <h2 style="color: var(--gold); font-size: 30px;">ELITE PERFORMANCE FOR MEN</h2>
+        <p>Expertly crafted for peak vitality and confidence. Thunder of Zosh is the commitment to your best self.</p>
+        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn" style="margin-top: 20px;">Get Started</a>
+    </div>
+    <div class="about-img">
+        <img src="model-zosh.jpeg" alt="Thunder of Zosh Model">
+    </div>
+</section>
+
+<section class="section" id="ingredients">
+    <h2 class="section-title">Natural Ingredients</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="ashwa.jpeg" alt="Ashwagandha">
+            <h3>Ashwagandha</h3>
+            <p>Reduces stress and enhances overall strength.</p>
+        </div>
+        <div class="card">
+            <img src="shilajit.jpeg" alt="Shilajit">
+            <h3>Shilajit</h3>
+            <p>Improves stamina and natural vitality.</p>
+        </div>
+        <div class="card">
+            <img src="musli.jpeg" alt="Safed Musli">
+            <h3>Safed Musli</h3>
+            <p>Traditional booster for energy and performance.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <h2 style="color: var(--gold);">WHY THUNDER OF ZOSH?</h2>
+    <p>Lab Tested • 100% Ayurvedic • Discreet Shipping</p>
+    <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn" style="margin-top:20px;">Order Your Pack</a>
+    <p class="footer-text">&copy; 2026 Thunder of Zosh India.</p>
+</footer>
+
+</body>
+</html>
