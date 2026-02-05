@@ -3,82 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thunder of Zosh | Elite Performance</title>
+    <title>Thunder of Zosh | Official Site</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --white: #ffffff; }
+        :root { --gold: #d4af37; --gold-dark: #b8860b; --white: #ffffff; --dark: #0a0a0a; }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--white); margin: 0; line-height: 1.6; }
         
-        /* Poori body par ek permanent background image set kar di hai */
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('touch_image.jpeg') center/cover no-repeat fixed; 
-            color: var(--white); 
-            margin: 0; 
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
+        .logo { color: var(--gold); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- Page 1: Main Product Hero (NO CHANGE) --- */
+        .hero { height: 95vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-zosh.jpeg') center/cover; padding: 0 20px; border-bottom: 3px solid var(--gold); }
+        .hero h1 { font-size: 60px; color: var(--gold); margin: 0 0 10px; font-weight: 700; text-shadow: 0 0 20px rgba(212,175,55,0.5); }
+        .hero p { font-size: 22px; max-width: 800px; margin-bottom: 35px; color: #fff; text-shadow: 2px 2px 4px #000; }
+        
+        .cta-btn { padding: 20px 60px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(212,175,55,0.4); transition: 0.3s; display: inline-block; }
+        .cta-btn:hover { background: #fff; transform: translateY(-3px); }
+
+        /* --- Page 2: Touch Image Background --- */
+        .page-2 { 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('touch_image.jpeg') center/cover no-repeat fixed;
+            text-align: center;
+            padding: 40px;
+            border-bottom: 2px solid var(--gold);
         }
 
-        /* Black boxes ko remove karke transparent kar diya gaya hai */
-        .section, .brand-story, .use-grid, footer { 
-            background: transparent !important; 
-            padding: 60px 10%; 
-            text-align: center; 
+        /* --- Page 3: Smile Image Background --- */
+        .page-3 { 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('smile_image.jpeg') center/cover no-repeat fixed;
+            text-align: center;
+            padding: 40px;
         }
 
-        .hero { height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom: 2px solid var(--gold); }
-        .hero h1 { color: var(--gold); font-size: 45px; text-transform: uppercase; letter-spacing: 2px; }
+        .content-box { max-width: 800px; }
+        .content-box h2 { color: var(--gold); font-size: 45px; text-transform: uppercase; margin-bottom: 20px; }
+        .content-box p { font-size: 20px; margin-bottom: 30px; }
 
-        .brand-story { display: flex; align-items: center; flex-wrap: wrap; gap: 40px; }
-        .brand-img img { width: 100%; max-width: 400px; border-radius: 15px; border: 1px solid var(--gold); box-shadow: 0 0 30px rgba(0,0,0,0.5); }
-
-        /* Card background ko thoda sa dark rakha hai taaki text readable rahe */
-        .use-card { background: rgba(0,0,0,0.7); padding: 30px; border-radius: 12px; border: 1px solid var(--gold); }
-        .step { color: var(--gold); font-size: 30px; font-weight: 700; }
-
-        .badge-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
-        .badge { background: rgba(212,175,55,0.1); padding: 12px 25px; border: 1px solid var(--gold); color: var(--gold); border-radius: 5px; font-weight: 600; }
-
-        .cta-btn { padding: 20px 60px; background: var(--gold); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; display: inline-block; margin-top: 30px; }
-        
-        @media (max-width: 768px) { .brand-story { padding: 40px 5%; text-align: center; } .hero h1 { font-size: 35px; } }
-    </style>
-</head>
-<body>
-
-<section class="hero">
-    <h1>THUNDER OF ZOSH</h1>
-    <p>Premium Ayurvedic Formula for Peak Vitality and Power.</p>
-    <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">Order Now (COD Available)</a>
-</section>
-
-<section class="brand-story">
-    <div class="brand-img"><img src="model-zosh.jpeg" alt="Thunder of Zosh"></div>
-    <div class="brand-text">
-        <h2 style="color: var(--gold); font-size: 32px;">ELITE PERFORMANCE</h2>
-        <p>Expertly crafted for men who refuse to settle. Restore your vitality with 100% natural extracts.</p>
-    </div>
-</section>
-
-<section class="section">
-    <h2 style="color: var(--gold);">KAISE UPYOG KAREIN?</h2>
-    <div class="use-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-        <div class="use-card"><span class="step">01</span><h3>Clean</h3><p>Area ko saaf karke sukhayein.</p></div>
-        <div class="use-card"><span class="step">02</span><h3>Apply</h3><p>Thodi matra mein gel se massage karein.</p></div>
-        <div class="use-card"><span class="step">03</span><h3>Absorb</h3><p>Ise 5-10 minute tak absorb hone dein.</p></div>
-    </div>
-</section>
-
-<section class="section">
-    <h2 style="color: var(--gold);">TRUST & SECURITY</h2>
-    <div class="badge-grid">
-        <div class="badge">🛡️ LAB TESTED</div>
-        <div class="badge">🚚 DISCREET SHIPPING</div>
-        <div class="badge">📦 CASH ON DELIVERY</div>
-    </div>
-    <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">Buy Now Today</a>
-</section>
-
-<footer style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.1); padding: 30px;">
-    <p>&copy; 2026 Thunder of Zosh India. Your Privacy is our Priority.</p>
-</footer>
-
-</body>
-</html>
+        /* Sections for Model & Ingredients (Surakshit) */
+        .section { padding: 80px 10%; text-align: center; background: #0a0a0a; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: #111; padding: 25px; border-radius:
