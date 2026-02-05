@@ -3,112 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thunder of Zosh | Premium Ayurvedic Gel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Thunder of Zosh | Official Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; background: #000; color: #fff; margin: 0; text-align: center; overflow-x: hidden; }
+        :root { --gold: #d4af37; --gold-dark: #b8860b; --white: #ffffff; --dark: #0a0a0a; }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--white); margin: 0; line-height: 1.6; }
         
-        /* Hero Section with Lightning Background */
-        .hero { 
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-zosh.jpeg') center/cover; 
-            padding: 100px 20px; 
-            border-bottom: 3px solid #d4af37;
-        }
-        
-        .gold { color: #d4af37; text-shadow: 0 0 10px rgba(212,175,55,0.5); }
-        
-        .section { padding: 50px 10%; background: #050505; border-bottom: 1px solid #1a1a1a; }
-        
-        .product-img { 
-            width: 100%; 
-            max-width: 450px; 
-            border-radius: 15px; 
-            border: 1px solid #d4af37; 
-            margin: 20px 0;
-            box-shadow: 0 10px 30px rgba(212,175,55,0.2);
-        }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
+        .logo { color: var(--gold); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Order Button */
-        .cta-btn { 
-            background: linear-gradient(45deg, #d4af37, #b8860b); 
-            color: #000; 
-            padding: 22px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            display: inline-block; 
-            border-radius: 8px; 
-            font-size: 24px; 
-            width: 90%; 
-            max-width: 450px; 
-            box-shadow: 0 5px 20px rgba(212,175,55,0.4); 
-            margin: 30px 0;
-            transition: transform 0.3s;
-        }
-        .cta-btn:hover { transform: scale(1.05); }
+        /* Lightning Hero Section (First Page - NO CHANGE) */
+        .hero { height: 95vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-zosh.jpeg') center/cover; padding: 0 20px; border-bottom: 3px solid var(--gold); }
+        .hero h1 { font-size: 60px; color: var(--gold); margin: 0 0 10px; font-weight: 700; text-shadow: 0 0 20px rgba(212,175,55,0.5); }
+        .hero p { font-size: 22px; max-width: 800px; margin-bottom: 35px; color: #fff; text-shadow: 2px 2px 4px #000; }
+        
+        .cta-btn { padding: 20px 60px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(212,175,55,0.4); transition: 0.3s; display: inline-block; }
+        .cta-btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 6px 25px rgba(212,175,55,0.6); }
 
-        /* Usage Steps */
-        .usage-card { 
-            background: #111; 
-            padding: 20px; 
-            margin: 15px 0; 
-            border-left: 5px solid #d4af37; 
-            text-align: left; 
-            border-radius: 5px;
-        }
+        /* Model Brand Section */
+        .about-brand { display: flex; align-items: center; padding: 80px 10%; background: #050505; flex-wrap: wrap; gap: 40px; }
+        .about-text { flex: 1; min-width: 300px; }
+        .about-img { flex: 1; min-width: 300px; text-align: center; }
+        .about-img img { width: 100%; max-width: 450px; border-radius: 20px; border: 1px solid var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.2); }
 
-        /* Professional Footer */
-        footer { background: #0a0a0a; padding: 50px 20px; color: #777; font-size: 13px; border-top: 1px solid #222; }
-        .trust-icons img { margin: 10px; opacity: 0.8; }
-        .footer-links a { color: #888; text-decoration: none; margin: 0 10px; font-size: 12px; }
-        .disclaimer { font-size: 11px; max-width: 800px; margin: 20px auto; line-height: 1.6; }
+        .section { padding: 80px 10%; text-align: center; }
+        .section-title { color: var(--gold); font-size: 32px; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: #111; padding: 25px; border-radius: 12px; border: 1px solid #222; transition: 0.3s; }
+        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .card img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; border: 1px solid #333; }
+        .card h3 { color: var(--gold); font-size: 22px; margin-bottom: 10px; }
+        .card p { font-size: 14px; color: #bbb; margin: 0; }
+
+        /* --- NEW LIFESTYLE SECTIONS (Updated for .jpeg) --- */
+        .lifestyle-section {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            border-top: 2px solid var(--gold);
+        }
+        
+        /* Using .jpeg extension as seen in GitHub screenshot */
+        .lifestyle-1 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('touch_image.jpeg'); }
+        .lifestyle-2 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('smile_image.jpeg'); }
+
+        .lifestyle-content { padding: 40px; text-align: center; max-width: 850px; }
+        .lifestyle-content h2 { color: var(--gold); font-size: 42px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        .lifestyle-content p { font-size: 20px; color: #f0f0f0; margin-bottom: 25px; font-weight: 300; }
+
+        footer { padding: 60px 20px; text-align: center; background: #000; border-top: 1px solid #222; }
+        .footer-text { font-size: 12px; color: #666; margin-top: 20px; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 40px; }
+            .hero p { font-size: 18px; }
+            .about-brand { padding: 40px 5%; text-align: center; }
+            .lifestyle-section { background-attachment: scroll; min-height: 450px; }
+            .lifestyle-content h2 { font-size: 30px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <h1 class="gold" style="font-size: 42px; margin: 0;">THUNDER OF ZOSH</h1>
-        <p style="font-size: 18px; margin-top: 10px;">Awaken Your Inner Strength with Premium Ayurvedic Formula</p>
+<nav>
+    <div class="logo">Thunder of Zosh</div>
+    <div class="nav-links">
+        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn" style="padding: 10px 20px; font-size: 12px;">Order Now</a>
     </div>
+</nav>
 
-    <div class="section">
-        <img src="model-zosh.jpeg" class="product-img" alt="Zosh Gel Premium">
-        <h2 class="gold">Premium Gel Formula</h2>
-        <p style="font-size: 17px; line-height: 1.8; color: #ccc;">Experience the power of 100% natural ingredients. Fast-acting, safe, and designed for results.</p>
-        
-        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">BUY NOW (CASH ON DELIVERY)</a>
+<section class="hero">
+    <h1>THUNDER OF ZOSH</h1>
+    <p>Awaken Your Inner Strength with Premium Ayurvedic Formula.</p>
+    <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">Buy Now (Cash on Delivery)</a>
+</section>
+
+<section class="about-brand" id="about">
+    <div class="about-text">
+        <h2 style="color: var(--gold); font-size: 30px;">ELITE PERFORMANCE FOR MEN</h2>
+        <p>Expertly crafted for peak vitality and confidence. Thunder of Zosh is the commitment to your best self.</p>
+        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn" style="margin-top: 20px;">Get Started</a>
     </div>
-
-    <div class="section">
-        <h2 class="gold">How To Use (Kaise Use Karein)</h2>
-        <div class="usage-card"><strong>1. Clean:</strong> Prabhavit hisse ko gungune paani se saaf karke sukha lein.</div>
-        <div class="usage-card"><strong>2. Apply:</strong> Gel ki thodi si maatra ungliyon par lein aur halki massage karein.</div>
-        <div class="usage-card"><strong>3. Absorb:</strong> 2-3 minute tak chhod dein taaki gel tvacha mein achhi tarah sama jaye.</div>
-        <p style="margin-top: 25px; color: #d4af37; font-weight: bold;">*Behtar results ke liye rozana raat ko sone se pehle istemal karein.</p>
-    </div>
-
-    <footer>
-        <div class="trust-icons">
-            <p style="color: #d4af37; font-weight: bold; margin-bottom: 20px;">SECURE & PRIVATE CHECKOUT</p>
-            <img src="https://img.icons8.com/color/48/000000/visa.png" width="40" alt="Visa">
-            <img src="https://img.icons8.com/color/48/000000/mastercard.png" width="40" alt="Mastercard">
-            <img src="https://img.icons8.com/color/48/000000/google-pay.png" width="40" alt="GPay">
-            <img src="https://img.icons8.com/fluency/48/000000/shield.png" width="40" alt="Secure">
-        </div>
-
-        <div class="disclaimer">
-            <p>*DISCLAIMER: These statements have not been evaluated by any medical authority. This product is not intended to diagnose, treat, cure, or prevent any disease. Results may vary from person to person.</p>
-        </div>
-
-        <div class="footer-links">
-            <strong class="gold">THUNDER OF ZOSH</strong><br><br>
-            <a href="#">Privacy Policy</a> | 
-            <a href="#">Terms & Conditions</a> | 
-            <a href="#">Shipping Policy</a> |
-            <a href="#">Contact Us</a>
-        </div>
-
-        <p style="margin-top: 30px; font-size: 11px;">&copy; 2026 Thunder of Zosh. All Rights Reserved.</p>
-    </footer>
-
-</body>
-</html>
