@@ -10,7 +10,6 @@
         * { box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--white); margin: 0; line-height: 1.6; }
         
-        /* Navigation */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
         .logo { color: var(--gold); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
 
@@ -19,49 +18,35 @@
         .hero h1 { font-size: 60px; color: var(--gold); margin: 0 0 10px; font-weight: 700; text-shadow: 0 0 20px rgba(212,175,55,0.5); }
         .hero p { font-size: 22px; max-width: 800px; margin-bottom: 35px; color: #fff; text-shadow: 2px 2px 4px #000; }
         
-        .cta-btn { padding: 18px 50px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; display: inline-block; }
-        .cta-btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 6px 25px rgba(212,175,55,0.6); }
+        .cta-btn { padding: 18px 50px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; display: inline-block; transition: 0.3s; }
 
         /* Full Page Lifestyle Sections */
-        .lifestyle-section { 
-            min-height: 100vh; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            background-size: cover; 
-            background-position: center; 
-            background-attachment: fixed; 
-            text-align: center;
-            padding: 40px;
-        }
+        .lifestyle-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center; background-attachment: fixed; text-align: center; padding: 40px; }
         .lifestyle-1 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('touch_image.jpeg'); border-bottom: 2px solid var(--gold); }
         .lifestyle-2 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('smile_image.jpeg'); }
 
         .lifestyle-content h2 { color: var(--gold); font-size: 45px; text-transform: uppercase; margin-bottom: 20px; }
-        .lifestyle-content p { font-size: 20px; max-width: 750px; margin: 0 auto 30px; }
 
         /* Model Brand Section */
         .about-brand { display: flex; align-items: center; padding: 80px 10%; background: #050505; flex-wrap: wrap; gap: 40px; }
-        .about-img img { width: 100%; max-width: 450px; border-radius: 20px; border: 1px solid var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.2); }
+        .about-img img { width: 100%; max-width: 450px; border-radius: 20px; border: 1px solid var(--gold); }
 
-        /* Ingredients */
+        /* Ingredients with Images (Fixed) */
         .section { padding: 80px 10%; text-align: center; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { background: #111; padding: 25px; border-radius: 12px; border: 1px solid #222; }
+        .card { background: #111; padding: 25px; border-radius: 12px; border: 1px solid #222; transition: 0.3s; }
+        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .card img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; border: 1px solid #333; }
         .card h3 { color: var(--gold); margin-bottom: 10px; }
 
-        /* Clean Professional Footer */
+        /* Professional Footer */
         .footer-main { background-color: var(--footer-bg); padding: 60px 10% 30px; color: #ffffff; text-align: left; }
         .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
         .footer-brand { flex: 2; min-width: 300px; }
         .footer-brand h2 { color: #00bfff; font-size: 28px; margin-bottom: 15px; }
-        .footer-brand p { font-size: 13px; color: #ced4da; line-height: 1.8; }
-        
         .footer-badges { flex: 1; text-align: center; min-width: 200px; }
-        .secure-title { background: #343a40; padding: 8px 15px; border-radius: 5px; margin-bottom: 20px; display: inline-block; font-size: 14px; }
+        .secure-title { background: #343a40; padding: 8px 15px; border-radius: 5px; margin-bottom: 20px; display: inline-block; }
         .payment-icons img { height: 30px; margin: 5px; }
-
-        .footer-bottom { border-top: 1px solid #343a40; padding-top: 20px; text-align: center; font-size: 13px; color: #adb5bd; }
 
         @media (max-width: 768px) {
             .hero h1, .lifestyle-content h2 { font-size: 35px; }
@@ -87,36 +72,44 @@
 
 <section class="lifestyle-section lifestyle-1">
     <div class="lifestyle-content">
-        <h2>Unleash Your True Potential</h2>
-        <p>Expertly designed to ignite your confidence and enhance your natural vitality. Don't just exist, dominate every moment.</p>
-        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">Experience Power</a>
+        <h2>Unleash Your Power</h2>
+        <p>Expertly designed to ignite your confidence and enhance your natural vitality.</p>
     </div>
 </section>
 
-<section class="about-brand" id="about">
+<section class="about-brand">
     <div style="flex: 1; min-width: 300px;">
         <h2 style="color: var(--gold); font-size: 30px;">ELITE PERFORMANCE FOR MEN</h2>
         <p>Expertly crafted for peak vitality and confidence. Thunder of Zosh is the commitment to your best self.</p>
     </div>
-    <div class="about-img">
-        <img src="model-zosh.jpeg" alt="Thunder of Zosh Model">
-    </div>
+    <div class="about-img"><img src="model-zosh.jpeg" alt="Model"></div>
 </section>
 
 <section class="lifestyle-section lifestyle-2">
     <div class="lifestyle-content">
-        <h2>Stronger Bonds, Happier Life</h2>
-        <p>Our formula is crafted to not just enhance performance, but to bring back the spark in your relationship.</p>
-        <a href="https://sg3164757.github.io/zosh-store/" class="cta-btn">Shop Now</a>
+        <h2>Stronger Bonds</h2>
+        <p>Bring back the spark in your relationship with 100% natural Ayurvedic care.</p>
     </div>
 </section>
 
 <section class="section" id="ingredients">
     <h2 style="color: var(--gold); font-size: 32px; text-transform: uppercase; margin-bottom: 50px;">Natural Ingredients</h2>
     <div class="grid">
-        <div class="card"><h3>Ashwagandha</h3><p>Reduces stress and enhances strength.</p></div>
-        <div class="card"><h3>Shilajit</h3><p>Improves stamina and vitality.</p></div>
-        <div class="card"><h3>Safed Musli</h3><p>Traditional booster for energy.</p></div>
+        <div class="card">
+            <img src="ashwa.jpeg" alt="Ashwagandha">
+            <h3>Ashwagandha</h3>
+            <p>Reduces stress and enhances overall strength.</p>
+        </div>
+        <div class="card">
+            <img src="shilajit.jpeg" alt="Shilajit">
+            <h3>Shilajit</h3>
+            <p>Improves stamina and natural vitality.</p>
+        </div>
+        <div class="card">
+            <img src="musli.jpeg" alt="Safed Musli">
+            <h3>Safed Musli</h3>
+            <p>Traditional booster for energy and performance.</p>
+        </div>
     </div>
 </section>
 
@@ -124,7 +117,7 @@
     <div class="footer-top">
         <div class="footer-brand">
             <h2>THUNDER OF ZOSH</h2>
-            <p>Thunder of Zosh is a health and wellness company that strives to make daily supplements easy for all. We create products with a deep rooted commitment of providing men with easy access to products that can help which are innovative, Vegan and 100% Ayurvedic.</p>
+            <p>A health and wellness company striving to make daily supplements easy, innovative, and 100% Ayurvedic.</p>
         </div>
         <div class="footer-badges">
             <div class="secure-title">Private & Secure</div>
@@ -135,8 +128,8 @@
             </div>
         </div>
     </div>
-    <div class="footer-bottom">
-        <p>Copyright © 2026 THUNDER OF ZOSH India. All rights reserved.</p>
+    <div style="text-align: center; border-top: 1px solid #343a40; padding-top: 20px;">
+        <p style="font-size: 13px; color: #adb5bd;">Copyright © 2026 THUNDER OF ZOSH India. All rights reserved.</p>
     </div>
 </footer>
 
