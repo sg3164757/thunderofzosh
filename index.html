@@ -32,7 +32,7 @@
         .order-container { max-width: 600px; margin: 40px auto; background: #111; padding: 40px; border-radius: 15px; border: 1px solid var(--gold); text-align: left; display: none; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; margin-bottom: 8px; color: var(--gold); font-weight: 600; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #333; background: #000; color: #fff; font-family: 'Poppins', sans-serif; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #333; background: #000; color: #fff; }
 
         #qr-box { display: none; text-align: center; background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 20px; color: #000; }
 
@@ -51,71 +51,99 @@
 
 <nav>
     <div class="logo">Thunder of Zosh</div>
-    <a href="#product-select" class="cta-btn" style="padding: 10px 20px; font-size: 12px;">Shop Now</a>
+    <a href="#product-selection" class="cta-btn" style="padding: 10px 20px; font-size: 12px;">Shop Now</a>
 </nav>
 
 <section class="hero">
     <h1>THUNDER OF ZOSH</h1>
     <p>Awaken Your Inner Strength with Premium Ayurvedic Formula.</p>
-    <a href="#product-select" class="cta-btn">Buy Now (COD Available)</a>
+    <a href="#product-selection" class="cta-btn">Buy Now (Cash on Delivery)</a>
 </section>
 
 <section class="lifestyle-section lifestyle-1">
-    <h2 style="font-size: 45px; color: var(--gold);">Unleash Your Power</h2>
+    <div class="lifestyle-content">
+        <h2 style="font-size: 45px; color: var(--gold);">UNLEASH YOUR POWER</h2>
+        <p style="font-size: 20px; color: #fff;">Expertly designed to ignite your confidence. Experience the natural strength of Ashwagandha and Shilajit.</p>
+    </div>
 </section>
 
-<section class="section" id="product-select">
-    <h2 style="color: var(--gold); font-size: 32px; margin-bottom: 40px;">SELECT YOUR PRODUCT</h2>
+<section style="display: flex; align-items: center; padding: 80px 10%; background: #050505; flex-wrap: wrap; gap: 40px;">
+    <div style="flex: 1; min-width: 300px;">
+        <h2 style="color: var(--gold); font-size: 30px;">ELITE PERFORMANCE</h2>
+        <p>Crafted for men who demand more from life. Safe, natural, and effective.</p>
+    </div>
+    <div style="flex: 1; text-align: center;">
+        <img src="model-zosh.jpeg" alt="Model" style="width: 100%; max-width: 450px; border-radius: 20px; border: 1px solid var(--gold);">
+    </div>
+</section>
+
+<section class="section" id="product-selection">
+    <h2 style="color: var(--gold); font-size: 32px; margin-bottom: 50px;">CHOOSE YOUR PRODUCT</h2>
     <div class="grid">
         <div class="card">
             <img src="gel-product.png" alt="Zosh Gel">
             <h3>Thunder of Zosh Gel</h3>
             <p style="font-size: 24px; color: var(--gold); font-weight: 700;">₹2,999</p>
-            <button class="cta-btn" onclick="openOrder('Gel', 2999)">Order Gel</button>
+            <button class="cta-btn" onclick="openOrder('Gel', 2999)">Order Now</button>
         </div>
         <div class="card">
             <img src="tablet-photo.png" alt="Zosh Tablets">
             <h3>Zosh Tablets (30 Caps)</h3>
             <p style="font-size: 24px; color: var(--gold); font-weight: 700;">₹2,999</p>
-            <button class="cta-btn" onclick="openOrder('Tablets', 2999)">Order Tablets</button>
+            <button class="cta-btn" onclick="openOrder('Tablets', 2999)">Order Now</button>
         </div>
     </div>
 </section>
 
 <section class="lifestyle-section lifestyle-2">
-    <h2 style="font-size: 45px; color: var(--gold);">Stronger Bonds</h2>
-</section>
-
-<section id="order-form">
-    <div class="order-container" id="form-wrapper">
-        <h2 id="form-title" style="color: var(--gold); text-align: center;">COMPLETE YOUR ORDER</h2>
-        <form id="my-form">
-            <div class="form-group"><label>Name</label><input type="text" id="n" required></div>
-            <div class="form-group"><label>Mobile</label><input type="tel" id="p" pattern="[0-9]{10}" required></div>
-            <div class="form-group"><label>Address</label><textarea id="a" rows="3" required></textarea></div>
-            <div class="form-group">
-                <label>Payment Method</label>
-                <select id="pm" onchange="checkPay()">
-                    <option value="COD">Cash on Delivery</option>
-                    <option value="Online">Online UPI</option>
-                </select>
-            </div>
-            <div id="qr-box">
-                <img src="your-qr.png" style="width: 150px;"><br>
-                <a id="ulink" href="#" style="background:#28a745; color:#fff; padding:10px; display:inline-block; margin-top:10px; text-decoration:none; border-radius:5px;">Pay with App</a>
-            </div>
-            <input type="hidden" id="sp">
-            <button type="submit" class="cta-btn" id="sb" style="width: 100%;">Confirm Order</button>
-        </form>
+    <div class="lifestyle-content">
+        <h2 style="font-size: 45px; color: var(--gold);">STRONGER BONDS</h2>
+        <p style="font-size: 20px; color: #fff;">Enhance your personal life with lasting confidence and better relationships.</p>
     </div>
 </section>
 
 <section class="section">
     <h2 style="color: var(--gold); font-size: 32px; text-transform: uppercase; margin-bottom: 50px;">Natural Ingredients</h2>
     <div class="grid">
-        <div class="card"><img src="ashwa.jpeg"><h3>Ashwagandha</h3></div>
-        <div class="card"><img src="shilajit.jpeg"><h3>Shilajit</h3></div>
-        <div class="card"><img src="musli.jpeg"><h3>Safed Musli</h3></div>
+        <div class="card">
+            <img src="ashwa.jpeg" alt="Ashwagandha">
+            <h3>Ashwagandha</h3>
+            <p>Reduces stress and enhances overall strength and vitality.</p>
+        </div>
+        <div class="card">
+            <img src="shilajit.jpeg" alt="Shilajit">
+            <h3>Shilajit</h3>
+            <p>Improves stamina and natural energy levels for peak performance.</p>
+        </div>
+        <div class="card">
+            <img src="musli.jpeg" alt="Safed Musli">
+            <h3>Safed Musli</h3>
+            <p>Traditional booster for muscle growth, energy, and endurance.</p>
+        </div>
+    </div>
+</section>
+
+<section id="order-form">
+    <div class="order-container" id="form-wrapper">
+        <h2 id="ftitle" style="color: var(--gold); text-align: center; text-transform: uppercase;">COMPLETE YOUR ORDER</h2>
+        <form id="order-form-submit">
+            <div class="form-group"><label>Name</label><input type="text" id="cust-name" required></div>
+            <div class="form-group"><label>Mobile</label><input type="tel" id="cust-phone" pattern="[0-9]{10}" required></div>
+            <div class="form-group"><label>Address</label><textarea id="cust-addr" rows="3" required></textarea></div>
+            <div class="form-group">
+                <label>Payment Method</label>
+                <select id="pay-method" onchange="toggleQR()">
+                    <option value="COD">Cash on Delivery</option>
+                    <option value="Online">Online UPI</option>
+                </select>
+            </div>
+            <div id="qr-box">
+                <img src="your-qr.png" style="width: 150px;"><br>
+                <a id="upilink" href="#" style="background:#28a745; color:#fff; padding:10px; display:inline-block; margin-top:10px; text-decoration:none; border-radius:5px; font-weight:700;">PAY WITH UPI APP</a>
+            </div>
+            <input type="hidden" id="item-val">
+            <button type="submit" class="cta-btn" id="sbtn" style="width: 100%;">Confirm Order</button>
+        </form>
     </div>
 </section>
 
@@ -134,42 +162,44 @@
             </div>
         </div>
     </div>
+    <div style="text-align: center; border-top: 1px solid #343a40; padding-top: 20px;">
+        <p style="font-size: 13px; color: #adb5bd;">Copyright © 2026 THUNDER OF ZOSH India. All rights reserved.</p>
+    </div>
 </footer>
 
 <script>
-    const UPI = "YOUR_UPI_ID_HERE"; // Apni UPI ID dalein
+    const MY_UPI_ID = "shivam-gupta05@ptyes"; // UPI Updated
 
-    function openOrder(item, price) {
+    function openOrder(name, price) {
         document.getElementById('form-wrapper').style.display = 'block';
-        document.getElementById('form-title').innerText = "ORDER " + item.toUpperCase();
-        document.getElementById('sp').value = item + " (₹" + price + ")";
+        document.getElementById('ftitle').innerText = "ORDER " + name.toUpperCase();
+        document.getElementById('item-val').value = name + " (₹" + price + ")";
         window.location.hash = "order-form";
     }
 
-    function checkPay() {
+    function toggleQR() {
         const qr = document.getElementById('qr-box');
-        if(document.getElementById('pm').value === 'Online') {
+        if(document.getElementById('pay-method').value === 'Online') {
             qr.style.display = 'block';
-            document.getElementById('ulink').href = `upi://pay?pa=${UPI}&pn=Zosh&am=2999&cu=INR`;
+            document.getElementById('upilink').href = `upi://pay?pa=${MY_UPI_ID}&pn=Zosh&am=2999&cu=INR`;
         } else { qr.style.display = 'none'; }
     }
 
-    document.getElementById('my-form').addEventListener('submit', function(e) {
+    document.getElementById('order-form-submit').addEventListener('submit', function(e) {
         e.preventDefault();
-        const b = document.getElementById('sb');
-        b.innerText = "Sending...";
+        const b = document.getElementById('sbtn');
+        b.innerText = "Processing...";
         b.disabled = true;
 
         const d = {
-            "Timestamp": new Date().toLocaleString(),
-            "Name": document.getElementById('n').value,
-            "Phone": document.getElementById('p').value,
-            "Package": document.getElementById('sp').value,
-            "Address": document.getElementById('a').value,
-            "Method": document.getElementById('pm').value
+            "Timestamp": new Date().toLocaleString('en-IN'),
+            "Name": document.getElementById('cust-name').value,
+            "Phone": document.getElementById('cust-phone').value,
+            "Package": document.getElementById('item-val').value,
+            "Address": document.getElementById('cust-addr').value,
+            "Method": document.getElementById('pay-method').value
         };
 
-        // Dono jagah data bhejna: SheetDB + Formspree
         Promise.all([
             fetch('https://sheetdb.io/api/v1/2qqhwik4r33j0', {
                 method: 'POST',
@@ -182,7 +212,7 @@
                 headers: {'Accept': 'application/json', 'Content-Type': 'application/json'}
             })
         ]).then(() => {
-            document.getElementById('form-wrapper').innerHTML = "<h2 style='color:var(--gold); text-align:center;'>Order Success! ✅</h2>";
+            document.getElementById('form-wrapper').innerHTML = "<h2 style='color:var(--gold); text-align:center;'>Order Success! ✅</h2><p style='text-align:center;'>We will contact you soon.</p>";
         });
     });
 </script>
