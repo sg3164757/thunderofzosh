@@ -3,119 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thunder of Zosh | Official Premium Site</title>
+    <title>Thunder of Zosh | Official Site</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d4af37; --gold-dark: #b8860b; --white: #ffffff; --dark: #0a0a0a; --footer-bg: #162129; }
         * { box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--white); margin: 0; line-height: 1.6; }
         
-        /* Navigation */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
         .logo { color: var(--gold); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Hero */
         .hero { height: 95vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-zosh.jpeg') center/cover; padding: 0 20px; border-bottom: 3px solid var(--gold); }
-        .hero h1 { font-size: 60px; color: var(--gold); margin: 0; font-weight: 700; }
+        .hero h1 { font-size: 60px; color: var(--gold); margin: 0 0 10px; font-weight: 700; text-shadow: 0 0 20px rgba(212,175,55,0.5); }
+        .hero p { font-size: 22px; max-width: 800px; margin-bottom: 35px; color: #fff; text-shadow: 2px 2px 4px #000; }
         
-        .cta-btn { padding: 18px 50px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; border: none; cursor: pointer; }
+        .cta-btn { padding: 18px 50px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
 
-        /* Lifestyle Sections */
         .lifestyle-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center; background-attachment: fixed; text-align: center; padding: 40px; }
         .lifestyle-1 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('touch_image.jpeg'); border-bottom: 2px solid var(--gold); }
         .lifestyle-2 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('smile_image.jpeg'); }
 
-        /* Interactive Product Cards */
         .section { padding: 80px 10%; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .card { background: #111; padding: 25px; border-radius: 15px; border: 1px solid #222; transition: 0.4s; cursor: pointer; position: relative; overflow: hidden; }
-        .card:hover { border-color: var(--gold); transform: translateY(-10px); }
-        .card img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 20px; }
-        
-        /* Details Dropdown (New Feature) */
-        .details-box { display: none; background: #1a1a1a; padding: 15px; border-radius: 8px; margin-top: 15px; text-align: left; font-size: 14px; border-top: 1px solid var(--gold); }
-        .details-btn { font-size: 12px; color: var(--gold); text-decoration: underline; margin-bottom: 10px; display: block; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: #111; padding: 25px; border-radius: 12px; border: 1px solid #222; }
+        .card img { width: 100%; height: 250px; object-fit: contain; border-radius: 8px; margin-bottom: 20px; }
 
-        /* Order Form */
-        .order-container { max-width: 600px; margin: 40px auto; background: #111; padding: 40px; border-radius: 15px; border: 1px solid var(--gold); display: none; }
+        .order-container { max-width: 600px; margin: 40px auto; background: #111; padding: 40px; border-radius: 15px; border: 1px solid var(--gold); text-align: left; display: none; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; margin-bottom: 8px; color: var(--gold); font-weight: 600; }
-        input, textarea, select { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #333; background: #000; color: #fff; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #333; background: #000; color: #fff; }
 
-        /* Secure Payment Icons */
-        .footer-main { background-color: var(--footer-bg); padding: 60px 10% 30px; }
-        .payment-icons img { height: 30px; margin: 5px; opacity: 0.8; }
+        #qr-box { display: none; text-align: center; background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 20px; color: #000; }
+
+        .footer-main { background-color: var(--footer-bg); padding: 60px 10% 30px; color: #ffffff; text-align: left; }
+        .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
+        .footer-brand { flex: 2; min-width: 300px; }
+        .footer-brand h2 { color: #00bfff; font-size: 28px; margin-bottom: 15px; }
+        .footer-badges { flex: 1; text-align: center; min-width: 200px; }
+        .secure-title { background: #343a40; padding: 8px 15px; border-radius: 5px; margin-bottom: 20px; display: inline-block; }
+        .payment-icons img { height: 30px; margin: 5px; }
+
+        @media (max-width: 768px) { .hero h1 { font-size: 35px; } .lifestyle-section { background-attachment: scroll; } }
     </style>
 </head>
 <body>
 
 <nav>
     <div class="logo">Thunder of Zosh</div>
-    <a href="#products" class="cta-btn" style="padding: 10px 20px; font-size: 12px;">Shop Store</a>
+    <a href="#product-selection" class="cta-btn" style="padding: 10px 20px; font-size: 12px;">Shop Now</a>
 </nav>
 
 <section class="hero">
     <h1>THUNDER OF ZOSH</h1>
-    <p>Premium Performance. 100% Ayurvedic Formula.</p>
-    <a href="#products" class="cta-btn">Buy Now</a>
+    <p>Awaken Your Inner Strength with Premium Ayurvedic Formula.</p>
+    <a href="#product-selection" class="cta-btn">Buy Now (Cash on Delivery)</a>
 </section>
 
 <section class="lifestyle-section lifestyle-1">
-    <div>
+    <div class="lifestyle-content">
         <h2 style="font-size: 45px; color: var(--gold);">UNLEASH YOUR POWER</h2>
-        <p>Expertly designed to ignite your confidence. Experience the natural strength of Ashwagandha and Shilajit.</p>
+        <p style="font-size: 20px; color: #fff;">Expertly designed to ignite your confidence. Experience the natural strength of Ashwagandha and Shilajit.</p>
     </div>
 </section>
 
 <section style="display: flex; align-items: center; padding: 80px 10%; background: #050505; flex-wrap: wrap; gap: 40px;">
     <div style="flex: 1; min-width: 300px;">
         <h2 style="color: var(--gold); font-size: 30px;">ELITE PERFORMANCE</h2>
-        <p>Crafted for men who demand more from life. Safe, natural, and effective formula.</p>
+        <p>Crafted for men who demand more from life. Safe, natural, and effective.</p>
     </div>
     <div style="flex: 1; text-align: center;">
-        <img src="model-zosh.jpeg" style="width: 100%; max-width: 450px; border-radius: 20px; border: 1px solid var(--gold);">
+        <img src="model-zosh.jpeg" alt="Model" style="width: 100%; max-width: 450px; border-radius: 20px; border: 1px solid var(--gold);">
     </div>
 </section>
 
-<section class="section" id="products">
-    <h2 style="color: var(--gold); font-size: 32px; margin-bottom: 50px;">OUR PRODUCTS</h2>
+<section class="section" id="product-selection">
+    <h2 style="color: var(--gold); font-size: 32px; margin-bottom: 50px;">CHOOSE YOUR PRODUCT</h2>
     <div class="grid">
-        <div class="card" onclick="toggleDetails('gel-details')">
-            <img src="gel-product.png" alt="Gel">
-            <h3>Advanced Gel Formula</h3>
-            <div style="font-size: 24px; color: var(--gold); font-weight: 700;">₹2999</div>
-            <span class="details-btn">Click for Ingredients & Details</span>
-            <div id="gel-details" class="details-box">
-                <p><strong>Formula:</strong> Male enhancement formula with Icariin, Maca Root, Aloe Vera, and Vanillyl Butyl.</p>
-                <p><strong>Benefits:</strong> Gives a feeling of rejuvenation, freshness, and warmth. Offers hydration and lubrication.</p>
-            </div>
-            <button class="cta-btn" onclick="openOrder('Gel', 2999)" style="width:100%; margin-top:15px;">Order Now</button>
+        <div class="card">
+            <img src="gel-product.png" alt="Zosh Gel">
+            <h3>Thunder of Zosh Gel</h3>
+            <p style="font-size: 24px; color: var(--gold); font-weight: 700;">₹2,999</p>
+            <button class="cta-btn" onclick="openOrder('Gel', 2999)">Order Now</button>
         </div>
-
-        <div class="card" onclick="toggleDetails('tab-details')">
-            <img src="tablet-photo.png" alt="Tablets">
-            <h3>Daily Use Formula (30 pills)</h3>
-            <div style="font-size: 24px; color: var(--gold); font-weight: 700;">₹2999</div>
-            <span class="details-btn">Click for Ingredients & Details</span>
-            <div id="tab-details" class="details-box">
-                <p><strong>Ingredients:</strong> Contains natural herbal extracts such as Maca extract, Ashwagandha, and Icariin.</p>
-                <p><strong>Usage:</strong> Formulated to be used on a daily basis to help keep you in peak condition.</p>
-            </div>
-            <button class="cta-btn" onclick="openOrder('Tablets', 2999)" style="width:100%; margin-top:15px;">Order Now</button>
+        <div class="card">
+            <img src="tablet-photo.png" alt="Zosh Tablets">
+            <h3>Zosh Tablets (30 Caps)</h3>
+            <p style="font-size: 24px; color: var(--gold); font-weight: 700;">₹2,999</p>
+            <button class="cta-btn" onclick="openOrder('Tablets', 2999)">Order Now</button>
         </div>
     </div>
 </section>
 
 <section class="lifestyle-section lifestyle-2">
-    <div>
+    <div class="lifestyle-content">
         <h2 style="font-size: 45px; color: var(--gold);">STRONGER BONDS</h2>
-        <p>Enhance your personal life with lasting confidence and better relationships.</p>
+        <p style="font-size: 20px; color: #fff;">Enhance your personal life with lasting confidence and better relationships.</p>
+    </div>
+</section>
+
+<section class="section">
+    <h2 style="color: var(--gold); font-size: 32px; text-transform: uppercase; margin-bottom: 50px;">Natural Ingredients</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="ashwa.jpeg" alt="Ashwagandha">
+            <h3>Ashwagandha</h3>
+            <p>Reduces stress and enhances overall strength and vitality.</p>
+        </div>
+        <div class="card">
+            <img src="shilajit.jpeg" alt="Shilajit">
+            <h3>Shilajit</h3>
+            <p>Improves stamina and natural energy levels for peak performance.</p>
+        </div>
+        <div class="card">
+            <img src="musli.jpeg" alt="Safed Musli">
+            <h3>Safed Musli</h3>
+            <p>Traditional booster for muscle growth, energy, and endurance.</p>
+        </div>
     </div>
 </section>
 
 <section id="order-form">
     <div class="order-container" id="form-wrapper">
-        <h2 id="ftitle" style="color: var(--gold); text-align: center;">CHECKOUT</h2>
+        <h2 id="ftitle" style="color: var(--gold); text-align: center; text-transform: uppercase;">COMPLETE YOUR ORDER</h2>
         <form id="order-form-submit">
             <div class="form-group"><label>Name</label><input type="text" id="cust-name" required></div>
             <div class="form-group"><label>Mobile</label><input type="tel" id="cust-phone" pattern="[0-9]{10}" required></div>
@@ -127,38 +137,40 @@
                     <option value="Online">Online UPI</option>
                 </select>
             </div>
-            <div id="qr-box" style="display:none; text-align:center; background:#fff; padding:20px; border-radius:10px;">
-                <img src="your-qr.png" style="width: 150px;">
-                <p style="color:#000; font-weight:700;">Pay: ₹2999</p>
-                <a id="upilink" href="#" style="background:#28a745; color:#fff; padding:10px; display:inline-block; text-decoration:none; border-radius:5px;">PAY VIA UPI APP</a>
+            <div id="qr-box">
+                <img src="your-qr.png" style="width: 150px;"><br>
+                <a id="upilink" href="#" style="background:#28a745; color:#fff; padding:10px; display:inline-block; margin-top:10px; text-decoration:none; border-radius:5px; font-weight:700;">PAY WITH UPI APP</a>
             </div>
             <input type="hidden" id="item-val">
-            <button type="submit" class="cta-btn" id="sbtn" style="width: 100%; margin-top:20px;">Confirm Order</button>
+            <button type="submit" class="cta-btn" id="sbtn" style="width: 100%;">Confirm Order</button>
         </form>
     </div>
 </section>
 
 <footer class="footer-main">
-    <div style="text-align: center;">
-        <div class="payment-icons">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+    <div class="footer-top">
+        <div class="footer-brand">
+            <h2>THUNDER OF ZOSH</h2>
+            <p>A health and wellness company striving to make daily supplements easy, innovative, and 100% Ayurvedic.</p>
         </div>
-        <p style="font-size: 13px; color: #adb5bd; margin-top: 20px;">Copyright © 2026 THUNDER OF ZOSH. All rights reserved.</p>
+        <div class="footer-badges">
+            <div class="secure-title">Private & Secure</div>
+            <div class="payment-icons">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center; border-top: 1px solid #343a40; padding-top: 20px;">
+        <p style="font-size: 13px; color: #adb5bd;">Copyright © 2026 THUNDER OF ZOSH India. All rights reserved.</p>
     </div>
 </footer>
 
 <script>
-    const UPI_ID = "shivam-gupta05@ptyes";
-
-    function toggleDetails(id) {
-        const box = document.getElementById(id);
-        box.style.display = (box.style.display === 'block') ? 'none' : 'block';
-    }
+    const MY_UPI_ID = "shivam-gupta05@ptyes"; // UPI Updated
 
     function openOrder(name, price) {
-        event.stopPropagation(); // Card click detail se bachne ke liye
         document.getElementById('form-wrapper').style.display = 'block';
         document.getElementById('ftitle').innerText = "ORDER " + name.toUpperCase();
         document.getElementById('item-val').value = name + " (₹" + price + ")";
@@ -169,14 +181,15 @@
         const qr = document.getElementById('qr-box');
         if(document.getElementById('pay-method').value === 'Online') {
             qr.style.display = 'block';
-            document.getElementById('upilink').href = `upi://pay?pa=${UPI_ID}&pn=Zosh&am=2999&cu=INR`;
+            document.getElementById('upilink').href = `upi://pay?pa=${MY_UPI_ID}&pn=Zosh&am=2999&cu=INR`;
         } else { qr.style.display = 'none'; }
     }
 
     document.getElementById('order-form-submit').addEventListener('submit', function(e) {
         e.preventDefault();
         const b = document.getElementById('sbtn');
-        b.innerText = "Processing..."; b.disabled = true;
+        b.innerText = "Processing...";
+        b.disabled = true;
 
         const d = {
             "Timestamp": new Date().toLocaleString('en-IN'),
@@ -199,7 +212,7 @@
                 headers: {'Accept': 'application/json', 'Content-Type': 'application/json'}
             })
         ]).then(() => {
-            document.getElementById('form-wrapper').innerHTML = "<h2 style='color:var(--gold); text-align:center;'>Order Success! ✅</h2>";
+            document.getElementById('form-wrapper').innerHTML = "<h2 style='color:var(--gold); text-align:center;'>Order Success! ✅</h2><p style='text-align:center;'>We will contact you soon.</p>";
         });
     });
 </script>
