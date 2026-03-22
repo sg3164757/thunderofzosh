@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Form | Thunder of Zosh</title>
+    
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '881403324800547'); // Aapki Pixel ID yahan set hai
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=881403324800547&ev=PageView&noscript=1"
+    /></noscript>
     <style>
         :root { --gold: #d4af37; --gold-dark: #b8860b; --black: #0a0a0a; --success: #2ecc71; --field-bg: #1a1a1a; }
         body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: #000; color: white; margin: 0; padding: 10px; }
@@ -16,13 +32,15 @@
         form { padding: 25px; }
         .field-group { margin-bottom: 18px; }
         label { display: block; font-size: 11px; color: var(--gold); margin-bottom: 8px; font-weight: bold; text-transform: uppercase; }
-        input, select, textarea { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #333; background: var(--field-bg); color: #fff; font-size: 16px; box-sizing: border-box; }
+        input, select, textarea { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #333; background: var(--field-bg); color: #fff; font-size: 16px; box-sizing: border-box; outline: none; transition: 0.3s; }
+        input:focus, textarea:focus { border-color: var(--gold); }
         .btn-submit { width: 100%; padding: 18px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; border: none; border-radius: 10px; font-size: 18px; font-weight: 900; cursor: pointer; text-transform: uppercase; margin-top: 5px; box-shadow: 0 5px 15px rgba(212,175,55,0.3); }
         #success-msg { display: none; padding: 60px 20px; text-align: center; }
         #success-msg h3 { color: var(--success); font-size: 24px; margin-bottom: 10px; }
         .trust-badges { display: flex; justify-content: space-around; padding: 15px; background: #0a0a0a; border-top: 1px solid #222; }
         .badge { font-size: 10px; color: #888; text-align: center; }
         .badge span { display: block; font-size: 18px; margin-bottom: 5px; }
+        .secure-tag { text-align: center; font-size: 11px; color: var(--success); margin-bottom: 15px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -37,9 +55,11 @@
     </div>
 
     <form id="leadForm">
+        <div class="secure-tag">🔒 100% PRIVATE & SECURE CHECKOUT</div>
+        
         <div class="field-group">
             <label>Full Name / पूरा नाम</label>
-            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="name" placeholder="Enter your name" required>
         </div>
 
         <div class="field-group">
@@ -50,7 +70,7 @@
         <div class="field-group">
             <label>Select Pack / पैक चुनें</label>
             <select id="package">
-                <option value="Combo Pack (2 Bottles)" selected>Combo Pack (2 Bottles)</option>
+                <option value="Combo Pack (2 Bottles)" selected>Combo Pack (2 Bottles) - BEST VALUE</option>
                 <option value="Single Bottle">Single Bottle (1 Bottle)</option>
             </select>
         </div>
@@ -61,12 +81,13 @@
         </div>
 
         <button type="submit" class="btn-submit" id="submitBtn">Confirm Order (COD)</button>
+        <p style="font-size: 10px; text-align: center; color: #555; margin-top: 10px;">Safe & Discreet Delivery Guaranteed.</p>
     </form>
 
     <div id="success-msg">
         <div style="font-size: 50px;">✅</div>
         <h3>ORDER PLACED!</h3>
-        <p style="color: #ccc;">Team will call you soon for confirmation.</p>
+        <p style="color: #ccc;">Our team will call you soon for confirmation.</p>
     </div>
 
     <div class="trust-badges">
@@ -77,16 +98,15 @@
 </div>
 
 <script>
-    const scriptURL = 'https://sheetdb.io/api/v1/o0o8niq42cwl8'; 
+    const scriptURL = 'https://sheetdb.io/api/v1/o0o8niq42cwl8'; // Aapka SheetDB URL
     const form = document.getElementById('leadForm');
 
     form.addEventListener('submit', e => {
         e.preventDefault();
         const btn = document.getElementById('submitBtn');
-        btn.innerHTML = "Processing...";
+        btn.innerHTML = "Processing Order...";
         btn.disabled = true;
 
-        // MATCHING YOUR EXCEL HEADINGS EXACTLY
         const data = {
             "Timestamp": new Date().toLocaleString('en-IN'),
             "Name": document.getElementById('name').value,
@@ -96,16 +116,26 @@
             "Method": "COD"
         };
 
+        // META TRACKING: Lead Event
+        fbq('track', 'Lead', {
+            content_name: data.Package,
+            status: 'Success'
+        });
+
         fetch(scriptURL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ data: [data] })
         })
         .then(response => {
-            document.getElementById('leadForm').style.display = 'none';
-            document.getElementById('mainHeader').style.display = 'none'; 
-            document.getElementById('success-msg').style.display = 'block';
-            window.scrollTo(0, 0);
+            if(response.ok) {
+                document.getElementById('leadForm').style.display = 'none';
+                document.getElementById('mainHeader').style.display = 'none'; 
+                document.getElementById('success-msg').style.display = 'block';
+                window.scrollTo(0, 0);
+            } else {
+                throw new Error('Server error');
+            }
         })
         .catch(error => {
             alert('Error! Check connection.');
