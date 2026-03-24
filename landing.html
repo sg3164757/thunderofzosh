@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thunder of Zosh | Official Site</title>
     
-    <link rel="icon" type="image/jpeg" href="model-zosh.jpeg"> 
+    <link rel="icon" type="image/x-icon" href="favicon.png"> 
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
@@ -39,7 +39,7 @@
 
         .cta-btn { padding: 18px 50px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; display: inline-block; transition: 0.3s; }
 
-        /* Page 2 & 3: Lifestyle Sections */
+        /* Page 2 & 3: Lifestyle Sections (Same as original) */
         .full-page-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px; background-size: cover; background-position: center; background-attachment: fixed; }
         .lifestyle-1 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('touch_image.jpeg'); border-bottom: 2px solid var(--gold); }
         .lifestyle-2 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('smile_image.jpeg'); }
@@ -47,21 +47,25 @@
         .content-box h2 { color: var(--gold); font-size: 45px; margin-bottom: 20px; text-transform: uppercase; }
         .content-box p { font-size: 20px; max-width: 700px; margin: 0 auto 30px; }
 
-        /* Ingredients Section WITH IMAGES */
-        .ingredients { padding: 80px 10%; background: #050505; text-align: center; border-bottom: 1px solid #222; }
-        .ingredients-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px; }
-        .ing-item { background: #111; padding: 25px; border-radius: 15px; border: 1px solid var(--gold); width: 280px; }
-        .ing-item img { width: 120px; height: 120px; border-radius: 50%; border: 2px solid var(--gold); margin-bottom: 15px; object-fit: cover; background: #fff; }
-        .ing-item h4 { color: var(--gold); margin: 0 0 10px; font-size: 22px; }
-        .ing-item p { font-size: 14px; color: #ccc; }
+        /* Ingredients Section WITH BADI IMAGES */
+        .ingredients { padding: 80px 5%; background: #050505; text-align: center; border-bottom: 1px solid #222; }
+        .ingredients-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px; }
+        .ing-item { background: #111; padding: 40px 20px; border-radius: 20px; border: 1px solid var(--gold); width: 350px; box-shadow: 0 10px 30px rgba(212,175,55,0.1); transition: 0.3s; }
+        .ing-item:hover { transform: translateY(-10px); background: #161616; }
+        
+        /* ✅ Ingredients Image Size Increased */
+        .ing-item img { width: 220px; height: 220px; border-radius: 50%; border: 4px solid var(--gold); margin-bottom: 25px; object-fit: cover; background: #fff; box-shadow: 0 0 20px rgba(212,175,55,0.4); }
+        
+        .ing-item h4 { color: var(--gold); margin: 0 0 15px; font-size: 28px; font-weight: bold; }
+        .ing-item p { font-size: 16px; color: #ccc; margin: 0; }
 
         /* About Brand */
         .about-brand { display: flex; align-items: center; padding: 80px 10%; flex-wrap: wrap; gap: 40px; background: #000; }
         .about-img img { width: 100%; max-width: 400px; border-radius: 20px; border: 1px solid var(--gold); }
 
         /* Safety Banner */
-        .safety-strip { background: #1a1a1a; padding: 25px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; border-top: 1px solid #333; }
-        .safety-item { font-size: 14px; color: #2ecc71; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .safety-strip { background: #1a1a1a; padding: 30px; display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; border-top: 1px solid #333; }
+        .safety-item { font-size: 15px; color: #2ecc71; font-weight: bold; display: flex; align-items: center; gap: 10px; }
 
         footer { padding: 50px; text-align: center; background: #000; border-top: 1px solid #222; }
 
@@ -69,7 +73,8 @@
             .hero h1, .content-box h2 { font-size: 35px; }
             .hero p { font-size: 18px; }
             .full-page-section { background-attachment: scroll; }
-            .ing-item { width: 100%; }
+            .ing-item { width: 100%; padding: 30px 15px; }
+            .ing-item img { width: 180px; height: 180px; }
         }
     </style>
 </head>
@@ -98,22 +103,22 @@
 </section>
 
 <section class="ingredients">
-    <h2 style="color:var(--gold); font-size: 35px; text-transform: uppercase;">Natural Ingredients</h2>
+    <h2 style="color:var(--gold); font-size: 45px; text-transform: uppercase; letter-spacing: 2px;">Natural Ingredients</h2>
     <div class="ingredients-grid">
         <div class="ing-item">
             <img src="https://m.media-amazon.com/images/I/71N9GqZfVKL._SL1500_.jpg" alt="Shilajit">
             <h4>Shilajit</h4>
-            <p>Pure Himalayan extract for ultimate stamina and energy boost.</p>
+            <p>Pure Himalayan extract for ultimate stamina, energy recovery, and natural hormone balance.</p>
         </div>
         <div class="ing-item">
             <img src="https://m.media-amazon.com/images/I/61Mv1T7Y4yL._SL1500_.jpg" alt="Ashwagandha">
             <h4>Ashwagandha</h4>
-            <p>Proven herb to reduce stress and build physical strength.</p>
+            <p>Ancient herb that lowers cortisol levels while significantly boosting physical power and drive.</p>
         </div>
         <div class="ing-item">
             <img src="https://m.media-amazon.com/images/I/61+9E0mYmWL._SL1080_.jpg" alt="Safed Musli">
             <h4>Safed Musli</h4>
-            <p>Naturally enhances vitality and ensures long-lasting performance.</p>
+            <p>A natural performance enhancer that improves vitality and ensures long-lasting endurance.</p>
         </div>
     </div>
 </section>
@@ -123,7 +128,7 @@
     <div style="flex: 1;">
         <h2 style="color: var(--gold); font-size: 32px;">ELITE PERFORMANCE</h2>
         <p>Crafted for men who demand more from life. Safe, natural, and guaranteed results.</p>
-        <div style="color:#f1c40f; font-size:20px; margin-top:10px;">★★★★★ (4.9/5 User Rating)</div>
+        <div style="color:#f1c40f; font-size:22px; margin-top:10px;">★★★★★ (4.9/5 User Rating)</div>
     </div>
 </section>
 
