@@ -30,7 +30,7 @@
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
         .logo { color: var(--gold); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Page 1: Hero (Back to Original) */
+        /* Page 1: Hero (Original Image) */
         .hero { height: 95vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-zosh.jpeg') center/cover; padding: 0 20px; border-bottom: 3px solid var(--gold); }
         .hero h1 { font-size: 60px; color: var(--gold); margin: 0 0 10px; font-weight: 700; text-shadow: 0 0 20px rgba(212,175,55,0.5); }
         .hero p { font-size: 22px; max-width: 800px; margin-bottom: 35px; color: #fff; }
@@ -39,7 +39,7 @@
 
         .cta-btn { padding: 18px 50px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; display: inline-block; transition: 0.3s; }
 
-        /* Lifestyle Sections (Back to Original) */
+        /* Lifestyle Sections (Original Images) */
         .full-page-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px; background-size: cover; background-position: center; background-attachment: fixed; }
         .lifestyle-1 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('touch_image.jpeg'); border-bottom: 2px solid var(--gold); }
         .lifestyle-2 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('smile_image.jpeg'); }
@@ -47,18 +47,24 @@
         .content-box h2 { color: var(--gold); font-size: 45px; margin-bottom: 20px; text-transform: uppercase; }
         .content-box p { font-size: 20px; max-width: 700px; margin: 0 auto 30px; }
 
-        /* Updated Ingredients Section (NO IMAGES) */
-        .ingredients { padding: 80px 10%; background: #080808; text-align: center; border-bottom: 1px solid #222; }
-        .ing-title { color: var(--gold); font-size: 40px; text-transform: uppercase; margin-bottom: 40px; }
+        /* ✅ FIX: Powerful Composition Section (WITH HERBS BACKGROUND IMAGE) */
+        .ingredients { 
+            padding: 80px 10%; 
+            /* Added background image for herbs effect, made it dark for readability */
+            background: linear-gradient(rgba(8, 8, 8, 0.85), rgba(8, 8, 8, 0.85)), url('https://m.media-amazon.com/images/I/81I6oFzI78L._SL1500_.jpg') center/cover;
+            text-align: center; 
+            border-bottom: 1px solid #222; 
+        }
+        .ing-title { color: var(--gold); font-size: 40px; text-transform: uppercase; margin-bottom: 40px; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
         
         .ingredients-container { 
-            background: #111; 
+            background: rgba(17, 17, 17, 0.9); /* More transparent for background effect */
             padding: 40px; 
             border-radius: 20px; 
-            border: 1px solid var(--gold); 
+            border: 2px solid var(--gold); /* Slightly thicker border for focus */
             max-width: 900px; 
             margin: 0 auto;
-            box-shadow: 0 0 30px rgba(212,175,55,0.1);
+            box-shadow: 0 0 40px rgba(212,175,55,0.2); /* Enhanced glow */
         }
         
         .ing-grid { 
@@ -69,16 +75,16 @@
         }
         
         .ing-name { 
-            color: #ccc; 
+            color: #ddd; /* Lighter color for better contrast on background */
             font-size: 16px; 
             padding: 10px; 
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid rgba(34, 34, 34, 0.5);
             display: flex;
             align-items: center;
         }
         .ing-name::before { content: "⚡"; color: var(--gold); margin-right: 10px; font-size: 14px; }
 
-        /* About Brand (Back to Original with Model Image) */
+        /* About Brand (Original Image and Layout) */
         .about-brand { display: flex; align-items: center; padding: 80px 10%; flex-wrap: wrap; gap: 40px; background: #000; }
         .about-img img { width: 100%; max-width: 400px; border-radius: 20px; border: 1px solid var(--gold); }
 
@@ -89,9 +95,10 @@
         footer { padding: 50px; text-align: center; background: #000; border-top: 1px solid #222; }
 
         @media (max-width: 768px) {
-            .hero h1, .content-box h2 { font-size: 35px; }
+            .hero h1, .content-box h2, .ing-title { font-size: 35px; }
             .full-page-section { background-attachment: scroll; }
             .about-brand { text-align: center; justify-content: center; }
+            .ingredients-container { padding: 25px; }
         }
     </style>
 </head>
