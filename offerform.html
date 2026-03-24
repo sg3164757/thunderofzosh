@@ -14,12 +14,13 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '881403324800547'); // Aapki Pixel ID yahan set hai
+    fbq('init', '881403324800547'); 
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=881403324800547&ev=PageView&noscript=1"
     /></noscript>
+    
     <style>
         :root { --gold: #d4af37; --gold-dark: #b8860b; --black: #0a0a0a; --success: #2ecc71; --field-bg: #1a1a1a; }
         body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: #000; color: white; margin: 0; padding: 10px; }
@@ -34,6 +35,11 @@
         label { display: block; font-size: 11px; color: var(--gold); margin-bottom: 8px; font-weight: bold; text-transform: uppercase; }
         input, select, textarea { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #333; background: var(--field-bg); color: #fff; font-size: 16px; box-sizing: border-box; outline: none; transition: 0.3s; }
         input:focus, textarea:focus { border-color: var(--gold); }
+        
+        /* City and Pincode Row */
+        .address-row { display: flex; gap: 10px; margin-bottom: 18px; }
+        .address-row .field-group { flex: 1; margin-bottom: 0; }
+
         .btn-submit { width: 100%; padding: 18px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; border: none; border-radius: 10px; font-size: 18px; font-weight: 900; cursor: pointer; text-transform: uppercase; margin-top: 5px; box-shadow: 0 5px 15px rgba(212,175,55,0.3); }
         #success-msg { display: none; padding: 60px 20px; text-align: center; }
         #success-msg h3 { color: var(--success); font-size: 24px; margin-bottom: 10px; }
@@ -76,8 +82,19 @@
         </div>
 
         <div class="field-group">
-            <label>Shipping Address / पूरा पता</label>
-            <textarea id="address" rows="3" placeholder="House No, City, Pincode" required></textarea>
+            <label>House No. / Street / Area (पूरा पता)</label>
+            <textarea id="address" rows="2" placeholder="House No, Street, Landmark" required></textarea>
+        </div>
+
+        <div class="address-row">
+            <div class="field-group">
+                <label>City (शहर)</label>
+                <input type="text" id="city" placeholder="Your City" required>
+            </div>
+            <div class="field-group">
+                <label>Pincode (पिनकोड)</label>
+                <input type="text" id="pincode" placeholder="6-digit PIN" pattern="[0-9]{6}" maxlength="6" required>
+            </div>
         </div>
 
         <button type="submit" class="btn-submit" id="submitBtn">Confirm Order (COD)</button>
@@ -98,7 +115,7 @@
 </div>
 
 <script>
-    const scriptURL = 'https://sheetdb.io/api/v1/o0o8niq42cwl8'; // Aapka SheetDB URL
+    const scriptURL = 'https://sheetdb.io/api/v1/o0o8niq42cwl8'; 
     const form = document.getElementById('leadForm');
 
     form.addEventListener('submit', e => {
@@ -107,16 +124,19 @@
         btn.innerHTML = "Processing Order...";
         btn.disabled = true;
 
+        // Data collection for new separated fields
         const data = {
             "Timestamp": new Date().toLocaleString('en-IN'),
             "Name": document.getElementById('name').value,
             "Phone": document.getElementById('phone').value,
             "Package": document.getElementById('package').value,
             "Address": document.getElementById('address').value,
+            "City": document.getElementById('city').value,
+            "Pincode": document.getElementById('pincode').value,
             "Method": "COD"
         };
 
-        // META TRACKING: Lead Event
+        // META TRACKING
         fbq('track', 'Lead', {
             content_name: data.Package,
             status: 'Success'
