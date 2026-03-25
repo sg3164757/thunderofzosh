@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thunder of Zosh | Official Site</title>
+    <title>Thunder of Zosh | Premium Performance</title>
     
     <link rel="icon" type="image/x-icon" href="favicon.png"> 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
     <script>
     !function(f,b,e,v,n,t,s)
@@ -24,50 +24,54 @@
     <style>
         :root { --gold: #d4af37; --gold-dark: #b8860b; --white: #ffffff; --dark: #0a0a0a; --red: #e74c3c; --green: #2ecc71; }
         * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--white); margin: 0; line-height: 1.6; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--white); margin: 0; line-height: 1.6; overflow-x: hidden; }
         
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
-        .logo { color: var(--gold); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 12px 5%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
+        .logo { color: var(--gold); font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: 2px; }
 
-        .hero { height: 95vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-zosh.jpeg') center/cover; padding: 0 20px; position: relative; border-bottom: 3px solid var(--gold); }
-        .discount-badge { background: var(--red); color: white; padding: 20px; border-radius: 50%; font-weight: 800; font-size: 22px; position: absolute; top: 15%; right: 10%; transform: rotate(10deg); box-shadow: 0 0 25px rgba(231, 76, 60, 0.8); animation: pulse 2s infinite; z-index: 10; }
-        @keyframes pulse { 0% { transform: scale(1) rotate(10deg); } 50% { transform: scale(1.1) rotate(10deg); } 100% { transform: scale(1) rotate(10deg); } }
+        .hero { height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-zosh.jpeg') center/cover no-repeat; padding: 0 20px; position: relative; border-bottom: 3px solid var(--gold); }
+        
+        .discount-badge { background: var(--red); color: white; padding: 18px; border-radius: 50%; font-weight: 800; font-size: 20px; position: absolute; top: 10%; right: 10%; transform: rotate(10deg); box-shadow: 0 0 20px rgba(231, 76, 60, 0.6); animation: pulse 2s infinite; z-index: 10; }
+        @keyframes pulse { 0%, 100% { transform: scale(1) rotate(10deg); } 50% { transform: scale(1.05) rotate(10deg); } }
 
-        .cta-btn { padding: 18px 50px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; display: inline-block; transition: 0.3s; }
+        .cta-btn { padding: 16px 45px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; display: inline-block; transition: 0.3s; cursor: pointer; border: none; }
+        .cta-btn:hover { transform: scale(1.05); }
 
         .full-page-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px; background-size: cover; background-position: center; background-attachment: fixed; }
         .lifestyle-1 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('touch_image.jpeg'); }
         .lifestyle-2 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('smile_image.jpeg'); }
 
-        .content-box h2 { color: var(--gold); font-size: 45px; margin-bottom: 20px; text-transform: uppercase; }
-        .content-box p { font-size: 22px; max-width: 700px; margin: 0 auto 30px; }
+        .content-box h2 { color: var(--gold); font-size: clamp(30px, 5vw, 45px); margin-bottom: 20px; text-transform: uppercase; }
+        .content-box p { font-size: 18px; max-width: 700px; margin: 0 auto 30px; }
 
-        .ingredients { padding: 80px 10%; background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('herbs-bg.jpg') center/cover; text-align: center; border-bottom: 2px solid var(--gold); }
-        .ingredients-container { background: rgba(0, 0, 0, 0.85); padding: 40px; border-radius: 20px; border: 1px solid var(--gold); max-width: 900px; margin: 0 auto; }
-        .ing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; text-align: left; }
-        .ing-name { color: #fff; font-size: 16px; padding: 10px; border-bottom: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; }
-        .ing-name::before { content: "⚡"; color: var(--gold); margin-right: 10px; }
+        .ingredients { padding: 60px 5%; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('herbs-bg.jpg') center/cover; text-align: center; border-top: 2px solid var(--gold); }
+        .ingredients-container { background: rgba(0, 0, 0, 0.9); padding: 30px; border-radius: 15px; border: 1px solid var(--gold); max-width: 900px; margin: 0 auto; }
+        .ing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; text-align: left; }
+        .ing-name { color: #fff; font-size: 14px; padding: 8px; border-bottom: 1px solid rgba(212,175,55,0.2); display: flex; align-items: center; }
+        .ing-name::before { content: "⚡"; color: var(--gold); margin-right: 8px; }
 
-        .doctor-section { background: #000; padding: 80px 10%; border-bottom: 1px solid #222; }
-        .doctor-flex { display: flex; align-items: center; flex-wrap: wrap; gap: 50px; }
-        .doctor-img-box { flex: 1; min-width: 300px; text-align: center; }
-        .doctor-img-box img { width: 100%; max-width: 380px; border-radius: 20px; border: 2px solid var(--gold); }
-        .doctor-content { flex: 1; min-width: 300px; }
+        .doctor-section { background: #000; padding: 60px 5%; border-top: 1px solid #222; }
+        .doctor-flex { display: flex; align-items: center; flex-wrap: wrap; gap: 40px; max-width: 1100px; margin: 0 auto; }
+        .doctor-img-box { flex: 1; min-width: 280px; text-align: center; }
+        .doctor-img-box img { width: 100%; max-width: 350px; border-radius: 15px; border: 2px solid var(--gold); }
+        .doctor-content { flex: 1.2; min-width: 300px; }
 
-        .reviews { padding: 80px 10%; background: #050505; text-align: center; }
-        .reviews-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 40px; }
-        .review-card { background: #111; padding: 30px; border-radius: 15px; width: 320px; border: 1px solid #222; text-align: left; }
+        .reviews { padding: 60px 5%; background: #050505; text-align: center; }
+        .reviews-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px; }
+        .review-card { background: #111; padding: 25px; border-radius: 12px; width: 300px; border: 1px solid #222; text-align: left; }
+        .reviewer-info { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+        .reviewer-photo { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold); }
         .stars { color: #f1c40f; margin-bottom: 10px; }
 
-        .safety-strip { background: #111; padding: 35px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; border-top: 1px solid #333; }
-        .safety-item { font-size: 15px; color: var(--green); font-weight: bold; display: flex; align-items: center; gap: 10px; text-transform: uppercase; }
+        .safety-strip { background: #0a0a0a; padding: 30px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; border-top: 1px solid #333; }
+        .safety-item { font-size: 13px; color: var(--green); font-weight: bold; text-transform: uppercase; }
 
-        footer { padding: 60px; text-align: center; background: #000; }
+        footer { padding: 40px; text-align: center; background: #000; font-size: 12px; color: #666; }
 
         @media (max-width: 768px) {
-            .hero h1, .content-box h2 { font-size: 35px; }
             .full-page-section { background-attachment: scroll; }
-            .discount-badge { top: 12%; right: 5%; font-size: 16px; padding: 15px; }
+            .discount-badge { top: 8%; right: 5%; padding: 12px; font-size: 16px; }
+            .doctor-flex { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -75,14 +79,14 @@
 
 <nav>
     <div class="logo">Thunder of Zosh</div>
-    <a href="offerform.html" class="cta-btn" style="padding: 10px 20px; font-size: 12px;">Order Now</a>
+    <a href="offerform.html" class="cta-btn" style="padding: 8px 18px; font-size: 11px;">Order Now</a>
 </nav>
 
 <section class="hero">
     <div class="discount-badge">SAVE<br>50% OFF</div>
-    <div style="background: rgba(212,175,55,0.2); color: var(--gold); padding: 5px 20px; border-radius: 50px; margin-bottom: 15px; font-weight: bold; border: 1px solid var(--gold);">⭐ 15,000+ Happy Customers</div>
-    <h1>THUNDER OF ZOSH</h1>
-    <p style="font-size: 24px;">Premium Ayurvedic Performance Formula</p>
+    <div style="background: rgba(212,175,55,0.2); color: var(--gold); padding: 4px 15px; border-radius: 50px; margin-bottom: 10px; font-weight: 600; border: 1px solid var(--gold); font-size: 14px;">⭐ 15,000+ Happy Customers</div>
+    <h1 style="font-size: clamp(35px, 8vw, 60px); margin: 10px 0;">THUNDER OF ZOSH</h1>
+    <p style="font-size: 20px; margin-bottom: 25px;">Premium Ayurvedic Performance Formula</p>
     <a href="offerform.html" class="cta-btn">Buy Now Today</a>
 </section>
 
@@ -95,17 +99,14 @@
 </section>
 
 <section class="ingredients">
-    <h2 style="color: var(--gold); font-size: 38px; text-transform: uppercase; margin-bottom: 40px;">Powerful Composition</h2>
+    <h2 style="color: var(--gold); font-size: 32px; text-transform: uppercase; margin-bottom: 30px;">Powerful Composition</h2>
     <div class="ingredients-container">
         <div class="ing-grid">
-            <div class="ing-name">Aqua</div> <div class="ing-name">Aloe Vera leaf extract</div>
-            <div class="ing-name">Isopropyl Myristate</div> <div class="ing-name">Ethylhexyl Olivate</div>
-            <div class="ing-name">Icariin</div> <div class="ing-name">Tongat Ali</div>
-            <div class="ing-name">Maca Root Extract</div> <div class="ing-name">Phenoxyethanol</div>
-            <div class="ing-name">Purfume</div> <div class="ing-name">Polyglyceryl-4 Oleate</div>
-            <div class="ing-name">Glycerin</div> <div class="ing-name">Sodium Acrylates Copolymer</div>
-            <div class="ing-name">Myristyl Lactate</div> <div class="ing-name">BHT</div>
-            <div class="ing-name">Vanillyl Butyl Ether</div>
+            <div class="ing-name">Aqua</div> <div class="ing-name">Aloe Vera Leaf</div> <div class="ing-name">Isopropyl Myristate</div>
+            <div class="ing-name">Ethylhexyl Olivate</div> <div class="ing-name">Icariin</div> <div class="ing-name">Tongat Ali</div>
+            <div class="ing-name">Maca Root Extract</div> <div class="ing-name">Phenoxyethanol</div> <div class="ing-name">Purfume</div>
+            <div class="ing-name">Glycerin</div> <div class="ing-name">Sodium Acrylates</div> <div class="ing-name">Myristyl Lactate</div>
+            <div class="ing-name">BHT</div> <div class="ing-name">Vanillyl Butyl Ether</div> <div class="ing-name">Natural Extracts</div>
         </div>
     </div>
 </section>
@@ -113,27 +114,27 @@
 <section class="doctor-section">
     <div class="doctor-flex">
         <div class="doctor-img-box">
-            <img src="doctor-model.png" alt="Dr. Anjali Sharma">
+            <img src="doctor-model.png?v=1.1" alt="Dr. Anjali Sharma" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80'">
             <div style="margin-top: 15px;">
-                <h3 style="color: var(--gold); margin: 0; font-size: 24px;">Dr. Anjali Sharma</h3>
-                <p style="color: #ccc; font-style: italic; font-size: 16px; padding: 0 10px;">"Main Anjali Sharma, iss product ko suggest karti hoon kyunki iska formula natural aur 100% asardaar hai."</p>
+                <h3 style="color: var(--gold); margin: 0; font-size: 22px;">Dr. Anjali Sharma</h3>
+                <p style="color: #ccc; font-style: italic; font-size: 15px;">"I, Anjali Sharma, strongly recommend this formula as it is 100% natural, laboratory-tested, and specifically designed for optimal male wellness."</p>
             </div>
         </div>
         <div class="doctor-content">
-            <h2 style="color: var(--gold); font-size: 32px; text-transform: uppercase;">How It Works?</h2>
-            <div style="margin-bottom: 25px;">
-                <h4 style="color: var(--gold); margin-bottom: 8px;">🚀 Advanced Cellular Absorption</h4>
-                <p style="color: #eee; font-size: 16px;">The unique Ayurvedic complex improves cellular vitality, enabling faster absorption and visible vitality.</p>
+            <h2 style="color: var(--gold); font-size: 30px; text-transform: uppercase;">How It Works?</h2>
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: var(--gold); margin: 0 0 5px;">🚀 Advanced Absorption</h4>
+                <p style="color: #eee; font-size: 15px; margin: 0;">Our unique complex enhances nitric oxide levels, significantly improving blood flow and vitality.</p>
             </div>
-            <div style="margin-bottom: 25px;">
-                <h4 style="color: var(--gold); margin-bottom: 8px;">🔥 Hormonal Balance</h4>
-                <p style="color: #eee; font-size: 16px;">It helps optimize hormonal drive naturally, effectively reducing performance fatigue.</p>
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: var(--gold); margin: 0 0 5px;">🔥 Hormonal Balance</h4>
+                <p style="color: #eee; font-size: 15px; margin: 0;">It helps optimize hormonal drive naturally, effectively reducing stress and performance fatigue.</p>
             </div>
-            <div style="margin-bottom: 25px;">
-                <h4 style="color: var(--gold); margin-bottom: 8px;">✅ Proven Results</h4>
-                <p style="color: #eee; font-size: 16px;">Users report increased stamina and confidence within 14 days of consistent usage.</p>
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: var(--gold); margin: 0 0 5px;">✅ Proven Results</h4>
+                <p style="color: #eee; font-size: 15px; margin: 0;">Users experience a massive boost in stamina and confidence within 14 days of consistent usage.</p>
             </div>
-            <a href="offerform.html" class="cta-btn" style="padding: 15px 35px; font-size: 14px;">Order Expert Choice</a>
+            <a href="offerform.html" class="cta-btn" style="padding: 12px 30px; font-size: 13px;">Order Expert Choice</a>
         </div>
     </div>
 </section>
@@ -147,37 +148,45 @@
 </section>
 
 <section class="reviews">
-    <h2 style="color: var(--gold); font-size: 35px; text-transform: uppercase;">Real User Results</h2>
+    <h2 style="color: var(--gold); font-size: 32px; text-transform: uppercase;">Real User Results</h2>
     <div class="reviews-grid">
         <div class="review-card">
+            <div class="reviewer-info">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" class="reviewer-photo">
+                <div><strong style="color:var(--gold);">Rahul S.</strong><p style="margin:0; font-size:10px; color:#888;">Verified Buyer</p></div>
+            </div>
             <div class="stars">★★★★★</div>
-            <p>"Life changing results! I feel much more energetic."</p>
-            <strong style="color:var(--gold);">- Rahul S.</strong>
+            <p style="font-size: 13px;">"Life changing results! I feel much more energetic. Discreet packaging was a plus."</p>
         </div>
         <div class="review-card">
+            <div class="reviewer-info">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" class="reviewer-photo">
+                <div><strong style="color:var(--gold);">Amit K.</strong><p style="margin:0; font-size:10px; color:#888;">Verified Buyer</p></div>
+            </div>
             <div class="stars">★★★★★</div>
-            <p>"100% natural and safe. Delivery was very discreet."</p>
-            <strong style="color:var(--gold);">- Amit K.</strong>
+            <p style="font-size: 13px;">"100% natural and safe. I noticed results within the first week itself."</p>
         </div>
         <div class="review-card">
+            <div class="reviewer-info">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" class="reviewer-photo">
+                <div><strong style="color:var(--gold);">Vikram P.</strong><p style="margin:0; font-size:10px; color:#888;">Verified Buyer</p></div>
+            </div>
             <div class="stars">★★★★★</div>
-            <p>"Best decision. 50% discount made it even better."</p>
-            <strong style="color:var(--gold);">- Vikram P.</strong>
+            <p style="font-size: 13px;">"Best decision. The 50% discount made it a very worthy purchase."</p>
         </div>
     </div>
 </section>
 
 <div class="safety-strip">
     <div class="safety-item">🛡️ 100% Safe Delivery</div>
-    <div class="safety-item">🔒 Data Privacy Guaranteed</div>
-    <div class="safety-item">🌿 GMP Certified Quality</div>
-    <div class="safety-item">✅ Lab Tested Formula</div>
+    <div class="safety-item">🔒 Data Privacy</div>
+    <div class="safety-item">🌿 GMP Certified</div>
+    <div class="safety-item">✅ Lab Tested</div>
 </div>
 
 <footer>
-    <h3 style="color: var(--gold);">THUNDER OF ZOSH</h3>
-    <p>100% Ayurvedic • Discreet Shipping • Lab Tested</p>
-    <p style="color: #666; font-size: 13px; margin-top: 25px;">&copy; 2026 Thunder of Zosh. All Rights Reserved.</p>
+    <p style="color: var(--gold); font-weight: bold; margin-bottom: 10px;">THUNDER OF ZOSH</p>
+    <p>&copy; 2026 Thunder of Zosh. All Rights Reserved.</p>
 </footer>
 
 </body>
