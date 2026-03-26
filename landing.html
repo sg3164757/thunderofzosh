@@ -31,23 +31,14 @@
         nav { display: flex; justify-content: space-between; align-items: center; padding: 12px 5%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
         .logo { color: var(--gold); font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* NEW HERO DESIGN */
-        .hero-new { min-height: 90vh; display: flex; align-items: center; justify-content: center; padding: 40px 5%; background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%); border-bottom: 3px solid var(--gold); }
-        .hero-container { display: flex; align-items: center; max-width: 1100px; gap: 40px; flex-wrap: wrap; }
+        /* Original Hero Style */
+        .hero { height: 95vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero-zosh.jpeg') center/cover no-repeat; padding: 0 20px; position: relative; border-bottom: 3px solid var(--gold); }
         
-        .hero-image-box { flex: 1; min-width: 300px; text-align: center; position: relative; }
-        .hero-image-box img { width: 100%; max-width: 450px; border-radius: 15px; border: 2px solid var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.3); }
-        
-        .hero-content-box { flex: 1; min-width: 320px; text-align: left; }
-        .price-tag { background: var(--red); color: #fff; display: inline-block; padding: 10px 20px; border-radius: 5px; font-weight: 800; font-size: 24px; margin: 15px 0; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); }
-        .original-price { font-size: 18px; color: #888; text-decoration: line-through; margin-left: 10px; }
-        
-        .product-bullets { list-style: none; padding: 0; margin: 20px 0; }
-        .product-bullets li { margin-bottom: 10px; display: flex; align-items: center; font-size: 16px; color: #eee; }
-        .product-bullets li::before { content: "✔"; color: var(--green); margin-right: 10px; font-weight: bold; }
+        .discount-badge { background: var(--red); color: white; padding: 18px; border-radius: 50%; font-weight: 800; font-size: 20px; position: absolute; top: 10%; right: 10%; transform: rotate(10deg); box-shadow: 0 0 20px rgba(231, 76, 60, 0.6); animation: pulse 2s infinite; z-index: 10; }
+        @keyframes pulse { 0%, 100% { transform: scale(1) rotate(10deg); } 50% { transform: scale(1.05) rotate(10deg); } }
 
-        .cta-btn { padding: 16px 45px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; display: inline-block; transition: 0.3s; cursor: pointer; border: none; text-align: center; width: 100%; max-width: 300px; }
-        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--gold-dark); }
+        .cta-btn { padding: 16px 45px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; text-transform: uppercase; display: inline-block; transition: 0.3s; cursor: pointer; border: none; }
+        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--gold); }
 
         .full-page-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px; background-size: cover; background-position: center; background-attachment: fixed; }
         .lifestyle-1 { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('touch_image.jpeg'); }
@@ -57,7 +48,7 @@
         .content-box p { font-size: 18px; max-width: 700px; margin: 0 auto 30px; }
 
         .ingredients { padding: 60px 5%; background: #000; text-align: center; border-top: 2px solid var(--gold); }
-        .ingredients-container { background: rgba(20, 20, 20, 0.9); padding: 30px; border-radius: 15px; border: 1px solid var(--gold); max-width: 900px; margin: 0 auto; }
+        .ingredients-container { background: rgba(0, 0, 0, 0.9); padding: 30px; border-radius: 15px; border: 1px solid var(--gold); max-width: 900px; margin: 0 auto; }
         .ing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; text-align: left; }
         .ing-name { color: #fff; font-size: 14px; padding: 8px; border-bottom: 1px solid rgba(212,175,55,0.2); display: flex; align-items: center; }
         .ing-name::before { content: "⚡"; color: var(--gold); margin-right: 8px; }
@@ -67,6 +58,19 @@
         .doctor-img-box { flex: 1; min-width: 280px; text-align: center; }
         .doctor-img-box img { width: 100%; max-width: 350px; border-radius: 15px; border: 2px solid var(--gold); }
         .doctor-content { flex: 1.2; min-width: 300px; }
+
+        /* PRODUCT HIGHLIGHT SECTION - IMPROVED FOR CONVERSION */
+        .product-highlight { padding: 80px 5%; text-align: center; background: radial-gradient(circle at center, #111 0%, #000 100%); border-top: 1px solid #222; }
+        .product-flex { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 50px; max-width: 1100px; margin: 0 auto; }
+        .product-image-container img { max-width: 450px; width: 100%; border-radius: 15px; border: 2px solid var(--gold); box-shadow: 0 0 25px rgba(212,175,55,0.2); }
+        .product-details-container { text-align: left; max-width: 450px; }
+        .product-details-container h2 { color: var(--gold); font-size: 35px; margin: 0 0 15px; }
+        .price-box { margin-bottom: 25px; }
+        .old-price { color: #888; text-decoration: line-through; font-size: 1.2rem; }
+        .new-price { color: #fff; font-size: 3rem; font-weight: 700; display: block; }
+        .detail-list { list-style: none; padding: 0; margin-bottom: 30px; }
+        .detail-list li { margin-bottom: 12px; font-size: 1.1rem; display: flex; align-items: center; }
+        .detail-list li::before { content: "✔"; color: var(--green); margin-right: 12px; font-weight: bold; }
 
         .reviews { padding: 60px 5%; background: #050505; text-align: center; }
         .reviews-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px; }
@@ -81,11 +85,11 @@
         footer { padding: 40px; text-align: center; background: #000; font-size: 12px; color: #666; }
 
         @media (max-width: 768px) {
-            .hero-container { flex-direction: column; text-align: center; }
-            .hero-content-box { text-align: center; }
-            .cta-btn { margin: 0 auto; }
             .full-page-section { background-attachment: scroll; }
-            .doctor-flex { flex-direction: column; text-align: center; }
+            .discount-badge { top: 5%; right: 5%; padding: 12px; font-size: 16px; }
+            .doctor-flex, .product-flex { flex-direction: column; text-align: center; }
+            .product-details-container { text-align: center; }
+            .new-price { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -93,38 +97,18 @@
 
 <nav>
     <div class="logo">Thunder of Zosh</div>
-    <a href="offerform.html" class="cta-btn" style="padding: 8px 18px; font-size: 11px; width: auto;">Order Now</a>
+    <a href="offerform.html" class="cta-btn" style="padding: 8px 18px; font-size: 11px;">Order Now</a>
 </nav>
 
-<section class="hero-new">
-    <div class="hero-container">
-        <div class="hero-image-box">
-            <img src="product-new.jpg" alt="Thunder of Zosh Gel">
-            <div style="background: rgba(0,0,0,0.8); color: var(--gold); padding: 5px 15px; border-radius: 50px; display: inline-block; margin-top: 15px; border: 1px solid var(--gold); font-size: 14px;">⭐ 15,000+ Happy Customers</div>
-        </div>
-
-        <div class="hero-content-box">
-            <h1 style="color: var(--gold); font-size: 42px; margin: 0; line-height: 1.2;">THUNDER OF ZOSH</h1>
-            <p style="font-size: 18px; color: #ccc; margin: 10px 0;">Premium Male Performance Formula</p>
-            
-            <div class="price-tag">
-                ₹2,999 <span class="original-price">₹5,998</span>
-            </div>
-            
-            <ul class="product-bullets">
-                <li>100% Herbal & Ayurvedic Ingredients</li>
-                <li>Long-Lasting Confidence & Stamina</li>
-                <li>No Side Effects | Lab Tested Formula</li>
-                <li>Discreet & Private Delivery</li>
-            </ul>
-
-            <div style="margin-bottom: 20px; color: var(--green); font-weight: bold; font-size: 14px;">
-                🚚 FREE CASH ON DELIVERY AVAILABLE
-            </div>
-
-            <a href="offerform.html" class="cta-btn">Order Now - 50% Off</a>
-        </div>
-    </div>
+<section class="hero">
+    <div class="discount-badge">SAVE<br>50% OFF</div>
+    <div style="background: rgba(212,175,55,0.2); color: var(--gold); padding: 4px 15px; border-radius: 50px; margin-bottom: 10px; font-weight: 600; border: 1px solid var(--gold); font-size: 14px;">⭐ 15,000+ Happy Customers</div>
+    <h1 style="font-size: clamp(35px, 8vw, 60px); margin: 10px 0;">THUNDER OF ZOSH</h1>
+    <p style="font-size: 20px; margin-bottom: 5px;">Premium Ayurvedic Performance Formula</p>
+    
+    <p style="color: #ffd700; font-weight: bold; font-size: 26px; margin-bottom: 25px;">Grab it Now @ ₹2,999 Only</p>
+    
+    <a href="offerform.html" class="cta-btn">Buy Now Today</a>
 </section>
 
 <section class="full-page-section lifestyle-1">
@@ -171,7 +155,7 @@
                 <h4 style="color: var(--gold); margin: 0 0 5px;">✅ Proven Results</h4>
                 <p style="color: #eee; font-size: 15px; margin: 0;">Users experience a massive boost in stamina and confidence within 14 days of consistent usage.</p>
             </div>
-            <a href="offerform.html" class="cta-btn" style="padding: 12px 30px; font-size: 13px; width: auto;">Order Expert Choice</a>
+            <a href="offerform.html" class="cta-btn" style="padding: 12px 30px; font-size: 13px;">Order Expert Choice</a>
         </div>
     </div>
 </section>
@@ -181,6 +165,28 @@
         <h2>Stronger Bonds</h2>
         <p>Enhance your personal life with lasting confidence.</p>
         <a href="offerform.html" class="cta-btn">Order COD Now @ ₹2,999</a>
+    </div>
+</section>
+
+<section class="product-highlight">
+    <div class="product-flex">
+        <div class="product-image-container">
+            <img src="product-new.jpg" alt="Thunder of Zosh Product">
+        </div>
+        <div class="product-details-container">
+            <h2>Limited Time Offer</h2>
+            <div class="price-box">
+                <span class="old-price">MRP ₹5,998</span>
+                <span class="new-price">Special Price: ₹2,999</span>
+            </div>
+            <ul class="detail-list">
+                <li>Scientifically Proven Male Formula</li>
+                <li>Made with 100% Pure Herbal Extracts</li>
+                <li>Discreet & Secure Home Delivery</li>
+                <li>Easy Cash On Delivery (COD)</li>
+            </ul>
+            <a href="offerform.html" class="cta-btn" style="width: 100%; text-align: center;">Claim Your 50% Discount</a>
+        </div>
     </div>
 </section>
 
@@ -209,7 +215,7 @@
                 <div><strong style="color:var(--gold);">Vikram P.</strong><p style="margin:0; font-size:10px; color:#888;">Verified Buyer</p></div>
             </div>
             <div class="stars">★★★★★</div>
-            <p style="font-size: 13px;">"Best decision. Professional product at a fair price."</p>
+            <p style="font-size: 13px;">"Best decision. The price is worth the premium quality I received."</p>
         </div>
     </div>
 </section>
