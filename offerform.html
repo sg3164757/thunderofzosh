@@ -12,15 +12,16 @@
         body { font-family: 'Segoe UI', sans-serif; background: var(--black); color: white; margin: 0; padding: 10px; display: flex; justify-content: center; }
         .order-container { max-width: 450px; width: 100%; background: var(--card-bg); border-radius: 20px; border: 1px solid rgba(212,175,55,0.3); overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.8); }
         
-        /* Premium Header */
-        .header { background: #1a1a1a; padding: 20px; text-align: center; border-bottom: 2px solid var(--gold); }
-        .header h2 { margin: 0; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; font-size: 20px; }
+        /* Premium Header with Image */
+        .header { background: #1a1a1a; padding: 15px; text-align: center; border-bottom: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; gap: 15px; }
+        .header img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; }
+        .header h2 { margin: 0; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; font-size: 18px; }
         
         .trust-tag { background: rgba(46, 204, 113, 0.1); color: #2ecc71; font-size: 10px; text-align: center; padding: 8px; font-weight: bold; text-transform: uppercase; }
 
         /* Price Section */
         .price-box { background: #1a1a1a; margin: 15px 20px; padding: 15px; border-radius: 12px; border-left: 4px solid var(--gold); display: flex; justify-content: space-between; align-items: center; }
-        .price-box .amt { color: var(--gold); font-size: 24px; font-weight: 800; }
+        .price-box .amt { color: var(--gold); font-size: 26px; font-weight: 800; }
 
         form { padding: 0 20px 20px; }
         .group { margin-bottom: 15px; }
@@ -41,54 +42,58 @@
 <body>
 
 <div class="order-container">
-    <div class="trust-tag">🔒 256-Bit SSL Secured | Discreet Packaging Guaranteed</div>
+    <div class="trust-tag">🔒 SSL Secured Checkout | Discreet Packaging Verified</div>
+    
     <div class="header">
-        <h2>Thunder of Zosh</h2>
-        <p style="font-size:11px; color:#666; margin:5px 0 0;">Official Premium Store</p>
+        <img src="model-product.jpg" alt="Zosh"> 
+        <div>
+            <h2>Thunder of Zosh</h2>
+            <p style="font-size:11px; color:#ccc; margin:3px 0 0;">Claim Your Discount Today</p>
+        </div>
     </div>
 
     <div class="price-box">
-        <div><span style="font-size:11px; color:#888;">Order Item:</span><br><b>Gold Performance Gel</b></div>
-        <div class="amt">₹2,999</div>
+        <div><span style="font-size:11px; color:#888;">Order Item:</span><br><b>Gold Gel Formula</b></div>
+        <div class="amt" id="totalDisplay">₹2,999</div>
     </div>
 
     <form id="orderForm">
         <div class="group">
             <label>FULL NAME / पूरा नाम</label>
-            <input type="text" id="name" placeholder="Enter name" required>
+            <input type="text" id="name" placeholder="E.g. Rajesh Singh" required>
         </div>
         <div class="group">
-            <label>MOBILE NUMBER / फ़ोन नंबर</label>
+            <label>PHONE NUMBER / फ़ोन नंबर</label>
             <input type="tel" id="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
         </div>
+
         <div class="group">
-            <label>FULL ADDRESS / पूरा पता</label>
-            <textarea id="address" rows="2" placeholder="House No, Landmark, Area" required></textarea>
-        </div>
-        <div style="display:flex; gap:10px;" class="group">
-            <div style="flex:1;">
-                <label>CITY / शहर</label>
-                <input type="text" id="city" required>
-            </div>
-            <div style="flex:1;">
-                <label>PINCODE / पिनकोड</label>
-                <input type="text" id="pincode" pattern="[0-9]{6}" maxlength="6" required>
-            </div>
-        </div>
-        <div class="group">
-            <label>PAYMENT METHOD / भुगतान विधि</label>
-            <select id="method">
-                <option value="Online">Pay Online (UPI, Card, Wallet)</option>
-                <option value="COD" selected>Cash on Delivery (COD)</option>
+            <label>SELECT YOUR PACK / पैक चुनें</label>
+            <select id="package" onchange="updatePrice()">
+                <option value="Single Bottle" data-price="2999" selected>Single Bottle (1 Bottle) - ₹2,999</option>
+                <option value="Two Bottles" data-price="3999">Two Bottles (2 Bottles) - ₹3,999 (Best Value)</option>
             </select>
         </div>
-        <button type="submit" class="btn-pay" id="submitBtn">Confirm Order Now</button>
+
+        <div class="group">
+            <label>FULL DELIVERY ADDRESS / पूरा पता</label>
+            <textarea id="address" rows="2" placeholder="House No, Street, City, Pincode" required></textarea>
+        </div>
+        
+        <div class="group">
+            <label>CHOOSE PAYMENT MODE / भुगतान विधि</label>
+            <select id="method">
+                <option value="Online">Pay Online (UPI, Card, Wallet)</option>
+                <option value="COD" selected>Cash on Delivery (Standard)</option>
+            </select>
+        </div>
+        <button type="submit" class="btn-pay" id="submitBtn">Confirm Secure Order</button>
     </form>
 
     <div id="success-msg">
-        <div style="font-size: 50px;">📦</div>
-        <h2 style="color:var(--gold);">ORDER PLACED!</h2>
-        <p>Thank you! Your package will be delivered in 3-5 days in a private box.</p>
+        <div style="font-size: 50px;">💎</div>
+        <h2 style="color:var(--gold);">ORDER CONFIRMED!</h2>
+        <p>Thank you! Your package will be delivered discreetly in 3-5 days.</p>
     </div>
 
     <div class="safety-footer">
@@ -99,46 +104,62 @@
 </div>
 
 <script>
-    // image_e4ef96 se di gayi details
+    // Aapki Verify ki gayi details
     const RAZORPAY_KEY = "rzp_test_SWHwh86PML4ws8"; 
     const SHEET_URL = 'https://sheetdb.io/api/v1/o0o8niq42cwl8';
+
+    // Pricing Logic
+    const PRICES = {
+        "Single Bottle": 2999,
+        "Two Bottles": 3999
+    };
+
+    function updatePrice() {
+        const pkg = document.getElementById('package').value;
+        const price = PRICES[pkg];
+        document.getElementById('totalDisplay').innerText = "₹" + price.toLocaleString('en-IN');
+    }
+
+    // Pehle price set kijiye
+    updatePrice();
 
     document.getElementById('orderForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         const btn = document.getElementById('submitBtn');
         const method = document.getElementById('method').value;
+        const pkgName = document.getElementById('package').value;
+        const totalAmount = PRICES[pkgName];
         
         const data = {
             "Timestamp": new Date().toLocaleString('en-IN'),
             "Name": document.getElementById('name').value,
             "Phone": document.getElementById('phone').value,
             "Address": document.getElementById('address').value,
-            "City": document.getElementById('city').value,
-            "Pincode": document.getElementById('pincode').value,
+            "Package": pkgName,
             "Method": method,
             "Status": "Pending / Initialized",
-            "Price": "₹2999"
+            "Bill": "₹" + totalAmount.toLocaleString('en-IN')
         };
 
-        // STEP 1: Pehle Lead capture karein (Data Safety)
+        // STEP 1: Turant Lead capture karein (Data Safety)
         try {
             await fetch(SHEET_URL, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({data: [data]})
             });
-        } catch(err) { console.log("Local Save"); }
+        } catch(err) { console.log("Locally Saved"); }
 
         if (method === 'Online') {
-            btn.innerHTML = "Processing Secure Payment...";
+            btn.innerHTML = "Opening Secure Gateway...";
             btn.disabled = true;
 
             var options = {
                 "key": RAZORPAY_KEY,
-                "amount": 299900, // Paise mein (₹2999.00)
+                "amount": totalAmount * 100, // Paise mein (Amount * 100)
                 "currency": "INR",
                 "name": "Thunder of Zosh",
-                "description": "Premium Order",
+                "description": "Prepaid Order: " + pkgName,
                 "handler": async function (response) {
                     // Payment successful hone par update karein
                     updateSheetStatus(data.Phone, "PAID - ID: " + response.razorpay_payment_id);
@@ -148,7 +169,7 @@
                     "ondismiss": function() {
                         updateSheetStatus(data.Phone, "Cancelled/Pending");
                         btn.disabled = false;
-                        btn.innerHTML = "Confirm Order Now";
+                        btn.innerHTML = "Confirm Secure Order";
                     }
                 },
                 "prefill": {"name": data.Name, "contact": data.Phone},
@@ -162,7 +183,7 @@
             rzp.open();
         } else {
             // COD Logic
-            btn.innerHTML = "Confirming...";
+            btn.innerHTML = "Confirming COD Order...";
             await updateSheetStatus(data.Phone, "COD - Confirmed");
             finishOrder();
         }
@@ -181,6 +202,7 @@
     function finishOrder() {
         document.getElementById('orderForm').style.display = 'none';
         document.querySelector('.price-box').style.display = 'none';
+        document.querySelector('.safety-footer').style.display = 'none';
         document.getElementById('success-msg').style.display = 'block';
         window.scrollTo(0,0);
     }
