@@ -3,210 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Checkout | Thunder of Zosh</title>
+    <title>Order Form | Thunder of Zosh</title>
     
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '881403324800547'); 
+    fbq('track', 'PageView');
+    </script>
+    
     <style>
-        :root { --gold: #d4af37; --black: #050505; --card-bg: #111; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--black); color: white; margin: 0; padding: 10px; display: flex; justify-content: center; }
-        .order-container { max-width: 450px; width: 100%; background: var(--card-bg); border-radius: 20px; border: 1px solid rgba(212,175,55,0.3); overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.8); }
+        :root { --gold: #d4af37; --gold-dark: #b8860b; --black: #0a0a0a; --success: #2ecc71; --field-bg: #1a1a1a; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: #000; color: white; margin: 0; padding: 10px; }
+        .order-container { max-width: 450px; margin: 10px auto; background: #111; border-radius: 20px; border: 1px solid var(--gold); overflow: hidden; box-shadow: 0 0 40px rgba(212,175,55,0.3); }
+        .form-header { background: linear-gradient(135deg, #000, #1a1a1a); border-bottom: 2px solid var(--gold); display: flex; align-items: center; padding: 15px; color: #fff; }
+        .header-model-photo { width: 75px; height: 75px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; margin-right: 15px; box-shadow: 0 0 15px rgba(212,175,55,0.5); }
+        .header-text { flex: 1; }
+        .header-text h2 { margin: 0; font-size: 19px; text-transform: uppercase; color: var(--gold); letter-spacing: 1px; }
+        .header-text p { margin: 4px 0 0; font-size: 12px; color: #aaa; font-weight: bold; }
         
-        /* Premium Header with Image */
-        .header { background: #1a1a1a; padding: 15px; text-align: center; border-bottom: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; gap: 15px; }
-        .header img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; }
-        .header h2 { margin: 0; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; font-size: 18px; }
+        .price-box { background: rgba(212,175,55,0.1); margin: 15px 25px 0; padding: 10px; border-radius: 10px; border: 1px dashed var(--gold); text-align: center; }
+        .price-box h3 { margin: 5px 0 0; color: var(--gold); font-size: 22px; }
+
+        form { padding: 25px; }
+        .field-group { margin-bottom: 18px; }
+        label { display: block; font-size: 11px; color: var(--gold); margin-bottom: 8px; font-weight: bold; text-transform: uppercase; }
+        input, select, textarea { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #333; background: var(--field-bg); color: #fff; font-size: 16px; box-sizing: border-box; outline: none; transition: 0.3s; }
         
-        .trust-tag { background: rgba(46, 204, 113, 0.1); color: #2ecc71; font-size: 10px; text-align: center; padding: 8px; font-weight: bold; text-transform: uppercase; }
+        .address-row { display: flex; gap: 10px; margin-bottom: 18px; }
+        .address-row .field-group { flex: 1; margin-bottom: 0; }
 
-        /* Price Section */
-        .price-box { background: #1a1a1a; margin: 15px 20px; padding: 15px; border-radius: 12px; border-left: 4px solid var(--gold); display: flex; justify-content: space-between; align-items: center; }
-        .price-box .amt { color: var(--gold); font-size: 26px; font-weight: 800; }
-
-        form { padding: 0 20px 20px; }
-        .group { margin-bottom: 15px; }
-        label { display: block; font-size: 10px; color: var(--gold); margin-bottom: 5px; font-weight: bold; letter-spacing: 1px; }
-        input, select, textarea { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid #333; background: #000; color: #fff; font-size: 15px; box-sizing: border-box; }
-        input:focus { border-color: var(--gold); outline: none; }
-
-        .btn-pay { width: 100%; padding: 18px; background: linear-gradient(45deg, var(--gold), #b8860b); color: #000; border: none; border-radius: 10px; font-size: 17px; font-weight: 900; cursor: pointer; text-transform: uppercase; transition: 0.3s; margin-top: 10px; }
-        
-        /* Safety Badges */
-        .safety-footer { display: flex; justify-content: space-around; padding: 15px; background: #0a0a0a; border-top: 1px solid #222; }
-        .badge { font-size: 9px; color: #777; text-align: center; }
-        .badge b { display: block; color: var(--gold); font-size: 12px; }
-
-        #success-msg { display: none; padding: 50px 20px; text-align: center; }
+        .btn-submit { width: 100%; padding: 18px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; border: none; border-radius: 10px; font-size: 18px; font-weight: 900; cursor: pointer; text-transform: uppercase; margin-top: 5px; box-shadow: 0 5px 15px rgba(212,175,55,0.3); }
+        #success-msg { display: none; padding: 60px 20px; text-align: center; }
+        .trust-badges { display: flex; justify-content: space-around; padding: 15px; background: #0a0a0a; border-top: 1px solid #222; }
+        .badge { font-size: 10px; color: #888; text-align: center; }
+        .badge span { display: block; font-size: 18px; margin-bottom: 5px; }
+        .secure-tag { text-align: center; font-size: 11px; color: var(--success); margin-bottom: 15px; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="order-container">
-    <div class="trust-tag">🔒 SSL Secured Checkout | Discreet Packaging Verified</div>
-    
-    <div class="header">
-        <img src="model-product.jpg" alt="Zosh"> 
-        <div>
-            <h2>Thunder of Zosh</h2>
-            <p style="font-size:11px; color:#ccc; margin:3px 0 0;">Claim Your Discount Today</p>
+    <div class="form-header" id="mainHeader">
+        <img src="model-product.jpg" alt="Zosh" class="header-model-photo">
+        <div class="header-text">
+            <h2>Claim Your Pack</h2>
+            <p>⚡ Cash on Delivery Available</p>
         </div>
     </div>
 
-    <div class="price-box">
-        <div><span style="font-size:11px; color:#888;">Order Item:</span><br><b>Gold Gel Formula</b></div>
-        <div class="amt" id="totalDisplay">₹2,999</div>
+    <div class="price-box" id="priceDisplay">
+        <h3 id="billText">Total: ₹2,999</h3>
     </div>
 
-    <form id="orderForm">
-        <div class="group">
-            <label>FULL NAME / पूरा नाम</label>
-            <input type="text" id="name" placeholder="E.g. Rajesh Singh" required>
-        </div>
-        <div class="group">
-            <label>PHONE NUMBER / फ़ोन नंबर</label>
-            <input type="tel" id="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
+    <form id="leadForm">
+        <div class="secure-tag">🔒 100% PRIVATE & SECURE CHECKOUT</div>
+        
+        <div class="field-group">
+            <label>Full Name / पूरा नाम</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
         </div>
 
-        <div class="group">
-            <label>SELECT YOUR PACK / पैक चुनें</label>
-            <select id="package" onchange="updatePrice()">
+        <div class="field-group">
+            <label>Phone Number / फ़ोन नंबर</label>
+            <input type="tel" id="phone" placeholder="10-digit number" pattern="[0-9]{10}" maxlength="10" required>
+        </div>
+
+        <div class="field-group">
+            <label>Select Pack / पैक चुनें</label>
+            <select id="package" onchange="updateUI()">
                 <option value="Single Bottle" data-price="2999" selected>Single Bottle (1 Bottle) - ₹2,999</option>
                 <option value="Two Bottles" data-price="3999">Two Bottles (2 Bottles) - ₹3,999 (Best Value)</option>
             </select>
         </div>
 
-        <div class="group">
-            <label>FULL DELIVERY ADDRESS / पूरा पता</label>
-            <textarea id="address" rows="2" placeholder="House No, Street, City, Pincode" required></textarea>
-        </div>
-        
-        <div class="group">
-            <label>CHOOSE PAYMENT MODE / भुगतान विधि</label>
+        <div class="field-group">
+            <label>Payment Method / भुगतान का तरीका</label>
             <select id="method">
-                <option value="Online">Pay Online (UPI, Card, Wallet)</option>
-                <option value="COD" selected>Cash on Delivery (Standard)</option>
+                <option value="Online">Pay Online (UPI / Card / Wallet)</option>
+                <option value="COD" selected>Cash on Delivery (COD)</option>
             </select>
         </div>
-        <button type="submit" class="btn-pay" id="submitBtn">Confirm Secure Order</button>
+
+        <div class="field-group">
+            <label>House No. / Street / Area (पता)</label>
+            <textarea id="address" rows="2" placeholder="House No, Street, Landmark" required></textarea>
+        </div>
+
+        <div class="address-row">
+            <div class="field-group">
+                <label>City (शहर)</label>
+                <input type="text" id="city" placeholder="Your City" required>
+            </div>
+            <div class="field-group">
+                <label>Pincode (पिनकोड)</label>
+                <input type="text" id="pincode" placeholder="6-digit PIN" pattern="[0-9]{6}" maxlength="6" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">Confirm Order Now</button>
     </form>
 
     <div id="success-msg">
-        <div style="font-size: 50px;">💎</div>
-        <h2 style="color:var(--gold);">ORDER CONFIRMED!</h2>
-        <p>Thank you! Your package will be delivered discreetly in 3-5 days.</p>
+        <div style="font-size: 50px;">✅</div>
+        <h3>ORDER PLACED!</h3>
+        <p id="finalMsg" style="color: #ccc;">Our team will call you soon for confirmation.</p>
     </div>
 
-    <div class="safety-footer">
-        <div class="badge"><b>FREE</b>Shipping</div>
-        <div class="badge"><b>PRIVATE</b>Packaging</div>
-        <div class="badge"><b>AYURVEDIC</b>Certified</div>
+    <div class="trust-badges">
+        <div class="badge"><span>📦</span>Discreet Packing</div>
+        <div class="badge"><span>🌱</span>Ayurvedic</div>
+        <div class="badge"><span>🚚</span>Free Shipping</div>
     </div>
 </div>
 
 <script>
-    // Aapki Verify ki gayi details
     const RAZORPAY_KEY = "rzp_test_SWHwh86PML4ws8"; 
-    const SHEET_URL = 'https://sheetdb.io/api/v1/o0o8niq42cwl8';
+    const scriptURL = 'https://sheetdb.io/api/v1/o0o8niq42cwl8'; 
+    const PRICES = {"Single Bottle": 2999, "Two Bottles": 3999};
 
-    // Pricing Logic
-    const PRICES = {
-        "Single Bottle": 2999,
-        "Two Bottles": 3999
-    };
-
-    function updatePrice() {
+    function updateUI() {
         const pkg = document.getElementById('package').value;
-        const price = PRICES[pkg];
-        document.getElementById('totalDisplay').innerText = "₹" + price.toLocaleString('en-IN');
+        document.getElementById('billText').innerText = "Total: ₹" + PRICES[pkg].toLocaleString('en-IN');
     }
 
-    // Pehle price set kijiye
-    updatePrice();
-
-    document.getElementById('orderForm').addEventListener('submit', async function(e) {
+    document.getElementById('leadForm').addEventListener('submit', async e => {
         e.preventDefault();
         const btn = document.getElementById('submitBtn');
         const method = document.getElementById('method').value;
-        const pkgName = document.getElementById('package').value;
-        const totalAmount = PRICES[pkgName];
-        
+        const pkg = document.getElementById('package').value;
+        const amount = PRICES[pkg];
+
         const data = {
             "Timestamp": new Date().toLocaleString('en-IN'),
             "Name": document.getElementById('name').value,
             "Phone": document.getElementById('phone').value,
+            "Package": pkg,
             "Address": document.getElementById('address').value,
-            "Package": pkgName,
+            "City": document.getElementById('city').value,
+            "Pincode": document.getElementById('pincode').value,
             "Method": method,
             "Status": "Pending / Initialized",
-            "Bill": "₹" + totalAmount.toLocaleString('en-IN')
+            "Price": "₹" + amount
         };
 
-        // STEP 1: Turant Lead capture karein (Data Safety)
+        // Lead capture pehle
         try {
-            await fetch(SHEET_URL, {
+            await fetch(scriptURL, {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({data: [data]})
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: [data] })
             });
-        } catch(err) { console.log("Locally Saved"); }
+        } catch(err) { console.log("Data cached"); }
 
         if (method === 'Online') {
-            btn.innerHTML = "Opening Secure Gateway...";
+            btn.innerHTML = "Opening Gateway...";
             btn.disabled = true;
 
             var options = {
                 "key": RAZORPAY_KEY,
-                "amount": totalAmount * 100, // Paise mein (Amount * 100)
+                "amount": amount * 100,
                 "currency": "INR",
                 "name": "Thunder of Zosh",
-                "description": "Prepaid Order: " + pkgName,
-                "handler": async function (response) {
-                    // Payment successful hone par update karein
-                    updateSheetStatus(data.Phone, "PAID - ID: " + response.razorpay_payment_id);
-                    finishOrder();
+                "description": pkg + " Order",
+                "handler": async function (response){
+                    await updateStatus(data.Phone, "Paid - ID: " + response.razorpay_payment_id);
+                    showSuccess();
                 },
                 "modal": {
                     "ondismiss": function() {
-                        updateSheetStatus(data.Phone, "Cancelled/Pending");
+                        updateStatus(data.Phone, "Payment Cancelled");
                         btn.disabled = false;
-                        btn.innerHTML = "Confirm Secure Order";
+                        btn.innerHTML = "Confirm Order Now";
                     }
                 },
-                "prefill": {"name": data.Name, "contact": data.Phone},
-                "theme": {"color": "#d4af37"}
+                "prefill": { "name": data.Name, "contact": data.Phone },
+                "theme": { "color": "#d4af37" }
             };
             var rzp = new Razorpay(options);
-            rzp.on('payment.failed', function (resp) {
-                updateSheetStatus(data.Phone, "FAILED: " + resp.error.description);
-                alert("Payment Failed. Try again or choose COD.");
-            });
             rzp.open();
         } else {
-            // COD Logic
-            btn.innerHTML = "Confirming COD Order...";
-            await updateSheetStatus(data.Phone, "COD - Confirmed");
-            finishOrder();
+            await updateStatus(data.Phone, "COD Confirmed");
+            showSuccess();
         }
     });
 
-    async function updateSheetStatus(phone, status) {
+    async function updateStatus(phone, status) {
         try {
-            await fetch(SHEET_URL + '/Phone/' + phone, {
+            await fetch(scriptURL + '/Phone/' + phone, {
                 method: 'PATCH',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({data: {"Status": status}})
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: { "Status": status } })
             });
-        } catch(e) { console.error("Update Error"); }
+        } catch(e) {}
     }
 
-    function finishOrder() {
-        document.getElementById('orderForm').style.display = 'none';
-        document.querySelector('.price-box').style.display = 'none';
-        document.querySelector('.safety-footer').style.display = 'none';
+    function showSuccess() {
+        document.getElementById('leadForm').style.display = 'none';
+        document.getElementById('mainHeader').style.display = 'none'; 
+        document.getElementById('priceDisplay').style.display = 'none';
         document.getElementById('success-msg').style.display = 'block';
-        window.scrollTo(0,0);
+        fbq('track', 'Lead');
+        window.scrollTo(0, 0);
     }
 </script>
-
 </body>
 </html>
