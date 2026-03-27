@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Form | Thunder of Zosh</title>
     
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -30,13 +32,17 @@
         .header-text { flex: 1; }
         .header-text h2 { margin: 0; font-size: 19px; text-transform: uppercase; color: var(--gold); letter-spacing: 1px; }
         .header-text p { margin: 4px 0 0; font-size: 12px; color: #aaa; font-weight: bold; }
+        
+        .price-box { background: rgba(212,175,55,0.1); margin: 15px 25px 0; padding: 10px; border-radius: 10px; border: 1px dashed var(--gold); text-align: center; }
+        .price-box span { color: #888; font-size: 12px; }
+        .price-box h3 { margin: 5px 0 0; color: var(--gold); font-size: 22px; }
+
         form { padding: 25px; }
         .field-group { margin-bottom: 18px; }
         label { display: block; font-size: 11px; color: var(--gold); margin-bottom: 8px; font-weight: bold; text-transform: uppercase; }
         input, select, textarea { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #333; background: var(--field-bg); color: #fff; font-size: 16px; box-sizing: border-box; outline: none; transition: 0.3s; }
         input:focus, textarea:focus { border-color: var(--gold); }
         
-        /* City and Pincode Row */
         .address-row { display: flex; gap: 10px; margin-bottom: 18px; }
         .address-row .field-group { flex: 1; margin-bottom: 0; }
 
@@ -53,11 +59,16 @@
 
 <div class="order-container">
     <div class="form-header" id="mainHeader">
-        <img src="model-product.jpg" alt="Zosh" class="header-model-photo">
+        <img src="product-new.jpg" alt="Zosh" class="header-model-photo">
         <div class="header-text">
             <h2>Claim Your Pack</h2>
-            <p>⚡ Cash on Delivery Available</p>
+            <p>⚡ Fast & Discreet Shipping</p>
         </div>
+    </div>
+
+    <div class="price-box" id="priceDisplay">
+        <span>Premium Performance Gel</span>
+        <h3>Total: ₹2,999</h3>
     </div>
 
     <form id="leadForm">
@@ -74,10 +85,17 @@
         </div>
 
         <div class="field-group">
-            <label>Select Pack / पैक चुनें</label>
+            <label>Package / पैक</label>
             <select id="package">
-                <option value="Combo Pack (2 Bottles)" selected>Combo Pack (2 Bottles) - BEST VALUE</option>
-                <option value="Single Bottle">Single Bottle (1 Bottle)</option>
+                <option value="Single Bottle (₹2999)">Single Bottle (1 Bottle) - ₹2,999</option>
+            </select>
+        </div>
+
+        <div class="field-group">
+            <label>Payment Method / भुगतान का तरीका</label>
+            <select id="method">
+                <option value="Online">Online Payment (UPI / Card / Wallet)</option>
+                <option value="COD" selected>Cash on Delivery (COD)</option>
             </select>
         </div>
 
@@ -97,14 +115,14 @@
             </div>
         </div>
 
-        <button type="submit" class="btn-submit" id="submitBtn">Confirm Order (COD)</button>
+        <button type="submit" class="btn-submit" id="submitBtn">Confirm Order Now</button>
         <p style="font-size: 10px; text-align: center; color: #555; margin-top: 10px;">Safe & Discreet Delivery Guaranteed.</p>
     </form>
 
     <div id="success-msg">
         <div style="font-size: 50px;">✅</div>
         <h3>ORDER PLACED!</h3>
-        <p style="color: #ccc;">Our team will call you soon for confirmation.</p>
+        <p id="finalMsg" style="color: #ccc;">Our team will call you soon for confirmation.</p>
     </div>
 
     <div class="trust-badges">
@@ -115,25 +133,55 @@
 </div>
 
 <script>
+    const RAZORPAY_KEY = "rzp_test_SOOVD1kl9kP9Yosq"; 
     const scriptURL = 'https://sheetdb.io/api/v1/o0o8niq42cwl8'; 
     const form = document.getElementById('leadForm');
 
     form.addEventListener('submit', e => {
         e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const payMethod = document.getElementById('method').value;
+        const totalAmount = 2999;
+
+        if (payMethod === 'Online') {
+            // Razorpay Payment Logic
+            var options = {
+                "key": RAZORPAY_KEY,
+                "amount": totalAmount * 100,
+                "currency": "INR",
+                "name": "Thunder of Zosh",
+                "description": "Premium Ayurvedic Gel",
+                "handler": function (response){
+                    submitData(name, phone, "Online-Paid (ID: " + response.razorpay_payment_id + ")");
+                },
+                "prefill": { "name": name, "contact": phone },
+                "theme": { "color": "#d4af37" }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        } else {
+            // Direct COD Logic
+            submitData(name, phone, "COD");
+        }
+    });
+
+    function submitData(name, phone, methodStatus) {
         const btn = document.getElementById('submitBtn');
         btn.innerHTML = "Processing Order...";
         btn.disabled = true;
 
-        // Data collection for new separated fields
         const data = {
             "Timestamp": new Date().toLocaleString('en-IN'),
-            "Name": document.getElementById('name').value,
-            "Phone": document.getElementById('phone').value,
+            "Name": name,
+            "Phone": phone,
             "Package": document.getElementById('package').value,
             "Address": document.getElementById('address').value,
             "City": document.getElementById('city').value,
             "Pincode": document.getElementById('pincode').value,
-            "Method": "COD"
+            "Method": methodStatus,
+            "Price": "₹2999"
         };
 
         // META TRACKING
@@ -151,7 +199,11 @@
             if(response.ok) {
                 document.getElementById('leadForm').style.display = 'none';
                 document.getElementById('mainHeader').style.display = 'none'; 
+                document.getElementById('priceDisplay').style.display = 'none';
                 document.getElementById('success-msg').style.display = 'block';
+                if(methodStatus !== "COD") {
+                   document.getElementById('finalMsg').innerText = "Payment Received! We will ship your package today.";
+                }
                 window.scrollTo(0, 0);
             } else {
                 throw new Error('Server error');
@@ -159,10 +211,10 @@
         })
         .catch(error => {
             alert('Error! Check connection.');
-            btn.innerHTML = "Confirm Order (COD)";
+            btn.innerHTML = "Confirm Order Now";
             btn.disabled = false;
         });
-    });
+    }
 </script>
 
 </body>
