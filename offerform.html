@@ -142,6 +142,9 @@
         const pkg = document.getElementById('package').value;
         const amount = PRICES[pkg];
 
+        // LOGIC: Pehle initial status set karenge
+        let statusToSubmit = (method === 'Online') ? "Prepaid Pending" : "COD Confirmed";
+
         const data = {
             "Timestamp": new Date().toLocaleString('en-IN'),
             "Name": document.getElementById('name').value,
@@ -151,18 +154,18 @@
             "City": document.getElementById('city').value,
             "Pincode": document.getElementById('pincode').value,
             "Method": method,
-            "Status": "Pending / Initialized",
+            "Status": statusToSubmit, 
             "Price": "₹" + amount
         };
 
-        // Lead capture pehle
+        // Lead capture pehle (Status will be 'Prepaid Pending' or 'COD Confirmed')
         try {
             await fetch(scriptURL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ data: [data] })
             });
-        } catch(err) { console.log("Data cached"); }
+        } catch(err) { console.log("Data error"); }
 
         if (method === 'Online') {
             btn.innerHTML = "Opening Gateway...";
@@ -175,12 +178,13 @@
                 "name": "Thunder of Zosh",
                 "description": pkg + " Order",
                 "handler": async function (response){
-                    await updateStatus(data.Phone, "Paid - ID: " + response.razorpay_payment_id);
+                    // Agar payment confirm ho gayi to Status update
+                    await updateStatus(data.Phone, "Prepaid Confirm");
                     showSuccess();
                 },
                 "modal": {
                     "ondismiss": function() {
-                        updateStatus(data.Phone, "Payment Cancelled");
+                        // Agar payment nahi ki, to status sheet me 'Prepaid Pending' hi rahega
                         btn.disabled = false;
                         btn.innerHTML = "Confirm Order Now";
                     }
@@ -191,7 +195,7 @@
             var rzp = new Razorpay(options);
             rzp.open();
         } else {
-            await updateStatus(data.Phone, "COD Confirmed");
+            // Agar COD hai to direct success page
             showSuccess();
         }
     });
