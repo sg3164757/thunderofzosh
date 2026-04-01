@@ -127,7 +127,8 @@
 
 <script>
     const RAZORPAY_KEY = "rzp_test_SWHwh86PML4ws8"; 
-    const scriptURL = 'https://sheetdb.io/api/v1/o0o8niq42cwl8'; 
+    // New API Key updated below
+    const scriptURL = 'https://sheetdb.io/api/v1/jvva0bdyw2xiq'; 
     const PRICES = {"Single Bottle": 2999, "Two Bottles": 3999};
 
     function updateUI() {
@@ -142,9 +143,9 @@
         const pkg = document.getElementById('package').value;
         const amount = PRICES[pkg];
 
-        // LOGIC: 'Method' column mein kya jayega
         let methodValue = (userMethod === 'Online') ? "Prepaid Pending" : "COD";
 
+        // Mapped to your new Sheet headers
         const data = {
             "Timestamp": new Date().toLocaleString('en-IN'),
             "Name": document.getElementById('name').value,
@@ -153,18 +154,18 @@
             "Address": document.getElementById('address').value,
             "City": document.getElementById('city').value,
             "Pincode": document.getElementById('pincode').value,
-            "Method": methodValue, // Yahan 'Prepaid Pending' ya 'COD' jayega
-            "Price": "₹" + amount
+            "Method": methodValue,
+            "Price": amount, // Sent as number for Dashboard SUM
+            "Delivery Status": "New Order" // Matches your dropdown start option
         };
 
-        // Lead capture (SheetDB mein data bhej rahe hain)
         try {
             await fetch(scriptURL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ data: [data] })
             });
-        } catch(err) { console.log("Lead captured locally"); }
+        } catch(err) { console.log("Lead captured"); }
 
         if (userMethod === 'Online') {
             btn.innerHTML = "Opening Gateway...";
@@ -177,13 +178,11 @@
                 "name": "Thunder of Zosh",
                 "description": pkg + " Order",
                 "handler": async function (response){
-                    // Payment successful! Ab 'Method' column update hoga
                     await updateMethodInSheet(data.Phone, "Prepaid Confirm");
                     showSuccess();
                 },
                 "modal": {
                     "ondismiss": function() {
-                        // Payment cancel kiya to sheet mein 'Prepaid Pending' hi rahega
                         btn.disabled = false;
                         btn.innerHTML = "Confirm Order Now";
                     }
@@ -194,12 +193,10 @@
             var rzp = new Razorpay(options);
             rzp.open();
         } else {
-            // COD ke liye sidha success
             showSuccess();
         }
     });
 
-    // Method column ko update karne ka function
     async function updateMethodInSheet(phone, newMethodStatus) {
         try {
             await fetch(scriptURL + '/Phone/' + phone, {
