@@ -42,6 +42,8 @@
         .address-row .field-group { flex: 1; margin-bottom: 0; }
 
         .btn-submit { width: 100%; padding: 18px; background: linear-gradient(45deg, var(--gold), var(--gold-dark)); color: #000; border: none; border-radius: 10px; font-size: 18px; font-weight: 900; cursor: pointer; text-transform: uppercase; margin-top: 5px; box-shadow: 0 5px 15px rgba(212,175,55,0.3); }
+        .btn-submit:disabled { background: #555; cursor: not-allowed; box-shadow: none; }
+
         #success-msg { display: none; padding: 60px 20px; text-align: center; }
         .trust-badges { display: flex; justify-content: space-around; padding: 15px; background: #0a0a0a; border-top: 1px solid #222; }
         .badge { font-size: 10px; color: #888; text-align: center; }
@@ -126,8 +128,8 @@
 </div>
 
 <script>
+    // Apni Razorpay LIVE Key yahan daalna na bhoolein
     const RAZORPAY_KEY = "rzp_test_SWHwh86PML4ws8"; 
-    // New API Key updated below
     const scriptURL = 'https://sheetdb.io/api/v1/jvva0bdyw2xiq'; 
     const PRICES = {"Single Bottle": 2999, "Two Bottles": 3999};
 
@@ -139,13 +141,17 @@
     document.getElementById('leadForm').addEventListener('submit', async e => {
         e.preventDefault();
         const btn = document.getElementById('submitBtn');
+        
+        // PROTECTION: Button ko disable karna taaki double order na ho
+        btn.innerHTML = "Processing Order...";
+        btn.disabled = true;
+
         const userMethod = document.getElementById('method').value;
         const pkg = document.getElementById('package').value;
         const amount = PRICES[pkg];
 
         let methodValue = (userMethod === 'Online') ? "Prepaid Pending" : "COD";
 
-        // Mapped to your new Sheet headers
         const data = {
             "Timestamp": new Date().toLocaleString('en-IN'),
             "Name": document.getElementById('name').value,
@@ -155,8 +161,8 @@
             "City": document.getElementById('city').value,
             "Pincode": document.getElementById('pincode').value,
             "Method": methodValue,
-            "Price": amount, // Sent as number for Dashboard SUM
-            "Delivery Status": "New Order" // Matches your dropdown start option
+            "Price": amount,
+            "Delivery Status": "New Order"
         };
 
         try {
@@ -169,7 +175,6 @@
 
         if (userMethod === 'Online') {
             btn.innerHTML = "Opening Gateway...";
-            btn.disabled = true;
 
             var options = {
                 "key": RAZORPAY_KEY,
@@ -183,6 +188,7 @@
                 },
                 "modal": {
                     "ondismiss": function() {
+                        // Agar payment cancel ki, toh button wapas sahi kardein
                         btn.disabled = false;
                         btn.innerHTML = "Confirm Order Now";
                     }
