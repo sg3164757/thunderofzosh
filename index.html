@@ -45,6 +45,7 @@
             letter-spacing: 1.5px;
             position: relative;
             overflow: hidden;
+            display: inline-block;
         }
         .cta-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px var(--gold-glow); }
 
@@ -62,7 +63,7 @@
 
         /* Luxury Store Grid */
         .store { padding: 100px 10%; text-align: center; background: #080808; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 50px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; }
         
         .card { 
             background: var(--card-bg); 
@@ -75,46 +76,30 @@
             position: relative;
             overflow: hidden;
         }
-        .card::before {
-            content: "PREMIUM";
-            position: absolute;
-            top: 20px;
-            right: -35px;
-            background: var(--gold);
-            color: black;
-            font-size: 10px;
-            font-weight: 900;
-            padding: 5px 45px;
-            transform: rotate(45deg);
-            z-index: 5;
-        }
         .card:hover { border-color: var(--gold); transform: translateY(-15px); box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 20px var(--gold-glow); }
         
-        .product-img-box { width: 100%; height: 300px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, #1a1a1a 0%, #000 100%); border-radius: 20px; margin-bottom: 25px; overflow: hidden; border: 1px solid #222; }
+        .product-img-box { width: 100%; height: 280px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, #1a1a1a 0%, #000 100%); border-radius: 20px; margin-bottom: 25px; overflow: hidden; border: 1px solid #222; }
         .product-img-box img { max-width: 85%; max-height: 85%; object-fit: contain; transition: 0.6s; }
-        .card:hover .product-img-box img { transform: scale(1.1) rotate(2deg); }
+        .card:hover .product-img-box img { transform: scale(1.1); }
 
         .qty-ctrl { display: flex; align-items: center; gap: 15px; margin: 20px 0; background: #000; padding: 8px 15px; border-radius: 30px; border: 1px solid #333; width: fit-content; }
-        .qty-btn { background: none; border: none; color: var(--gold); font-size: 22px; cursor: pointer; width: 30px; font-weight: 700; transition: 0.3s; }
-        .qty-btn:hover { color: #fff; }
+        .qty-btn { background: none; border: none; color: var(--gold); font-size: 22px; cursor: pointer; width: 30px; font-weight: 700; }
         
-        .details-box { display: none; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 12px; margin-top: 15px; border: 1px solid rgba(197,160,89,0.3); font-size: 13px; color: #bbb; animation: fadeIn 0.5s; }
+        .details-box { display: none; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 12px; margin-top: 15px; border: 1px solid rgba(197,160,89,0.3); font-size: 13px; color: #bbb; }
 
         /* Checkout Box */
         .checkout { max-width: 650px; margin: 50px auto; background: #0a0a0a; padding: 45px; border-radius: 30px; border: 1px solid var(--gold); display: none; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
         .bill-sum { background: rgba(197,160,89,0.05); padding: 25px; border-radius: 15px; margin-bottom: 30px; border-left: 4px solid var(--gold); }
         
-        input, select, textarea { width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #222; background: #000; color: #fff; margin-top: 5px; transition: 0.3s; }
-        input:focus { border-color: var(--gold); box-shadow: 0 0 10px var(--gold-glow); }
+        input, select, textarea { width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #222; background: #000; color: #fff; margin-top: 5px; }
 
         /* Footer */
         footer { background: var(--footer-bg); padding: 80px 8% 40px; border-top: 1px solid #111; color: #888; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; }
         .footer-link { color: #888; text-decoration: none; font-size: 14px; display: block; margin-bottom: 12px; transition: 0.3s; }
-        .footer-link:hover { color: var(--gold); transform: translateX(5px); }
+        .footer-link:hover { color: var(--gold); padding-left: 5px; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 768px) { .lifestyle { background-attachment: scroll; } .elite-section { padding: 60px 5%; } }
+        @media (max-width: 768px) { .lifestyle { background-attachment: scroll; } }
     </style>
 </head>
 <body>
@@ -132,96 +117,109 @@
 
 <section class="lifestyle ls-1">
     <div class="ls-content">
-        <h2>Natural Vitality</h2>
-        <p>The ancient secret for modern peak performance.</p>
-    </div>
-</section>
-
-<section class="store" id="store">
-    <h2 style="color: var(--gold); font-size: 42px; text-transform: uppercase;">The Premium Collection</h2>
-    <p style="margin-bottom: 50px; color: #666; letter-spacing: 1px;">Experience the Gold Standard of Wellness</p>
-    
-    <div class="grid">
-        <div class="card" onclick="toggleDetails('gel-info')">
-            <div class="product-img-box"><img src="gel-product.png" alt="Gel"></div>
-            <h3 style="color: var(--gold); font-size: 22px; margin-bottom: 5px;">Advanced Gel Formula</h3>
-            <p style="font-size: 28px; font-weight: 600; color: #fff; margin: 10px 0;">₹2,999</p>
-            
-            <div class="qty-ctrl" onclick="event.stopPropagation()">
-                <button class="qty-btn" onclick="qty('g-v', -1)">-</button>
-                <span id="g-v" style="font-weight:700; width: 20px; text-align: center;">0</span>
-                <button class="qty-btn" onclick="qty('g-v', 1)">+</button>
-            </div>
-
-            <div id="gel-info" class="details-box">
-                <strong>COMPOSITION:</strong> Icariin Extract, Maca root, Aloe Vera base. <br><br>
-                <strong>APPLICATION:</strong> Smooth application for local rejuvenation.
-            </div>
-            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:15px; border-radius: 12px;">Add to Cart</button>
-        </div>
-
-        <div class="card" onclick="toggleDetails('tab-info')">
-            <div class="product-img-box"><img src="tablet-photo.png" alt="Tablets"></div>
-            <h3 style="color: var(--gold); font-size: 22px; margin-bottom: 5px;">Zosh Elite Tablets</h3>
-            <p style="font-size: 28px; font-weight: 600; color: #fff; margin: 10px 0;">₹2,999</p>
-            
-            <div class="qty-ctrl" onclick="event.stopPropagation()">
-                <button class="qty-btn" onclick="qty('t-v', -1)">-</button>
-                <span id="t-v" style="font-weight:700; width: 20px; text-align: center;">0</span>
-                <button class="qty-btn" onclick="qty('t-v', 1)">+</button>
-            </div>
-
-            <div id="tab-info" class="details-box">
-                <strong>HERBAL BLEND:</strong> Gold Grade Shilajit, Ashwagandha, Safed Musli. <br><br>
-                <strong>DOSAGE:</strong> One capsule daily for optimal results.
-            </div>
-            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:15px; border-radius: 12px;">Add to Cart</button>
-        </div>
+        <h2>Unleash Your Power</h2>
+        <p>Experience the natural strength of Ashwagandha and Shilajit.</p>
     </div>
 </section>
 
 <section class="elite-section">
     <div class="elite-text">
-        <h2>Elite Endurance</h2>
-        <p>Formulated for those who never settle for average. Our blend ensures maximum absorption and results.</p>
+        <h2>ELITE PERFORMANCE</h2>
+        <p>Safe, natural, and effective formula for peak endurance and lasting confidence.</p>
     </div>
-    <div class="elite-img"><img src="model-zosh.jpeg" alt="Elite"></div>
+    <div class="elite-img"><img src="model-zosh.jpeg" alt="Elite Performance"></div>
+</section>
+
+<section class="store" id="store">
+    <h2 style="color: var(--gold); font-size: 42px; text-transform: uppercase;">Premium Selection</h2>
+    <p style="margin-bottom: 50px; color: #666;">(Tap card for details | Add quantity to cart)</p>
+    
+    <div class="grid">
+        <div class="card" onclick="toggleDetails('gel-info')">
+            <div class="product-img-box"><img src="gel-product.png" alt="Gel"></div>
+            <h3 style="color: var(--gold);">Advanced Gel Formula</h3>
+            <p style="font-size: 28px; font-weight: 600;">₹2,999</p>
+            <div class="qty-ctrl" onclick="event.stopPropagation()">
+                <button class="qty-btn" onclick="qty('g-v', -1)">-</button>
+                <span id="g-v" style="font-weight:700; width:20px; text-align:center;">0</span>
+                <button class="qty-btn" onclick="qty('g-v', 1)">+</button>
+            </div>
+            <div id="gel-info" class="details-box">
+                <strong>INGREDIENTS:</strong> Icariin, Maca root, Aloe Vera. <br>
+                <strong>HOW TO USE:</strong> Apply around genital area for rejuvenation.
+            </div>
+            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px; border-radius:12px;">Add to Cart</button>
+        </div>
+
+        <div class="card" onclick="toggleDetails('tab-info')">
+            <div class="product-img-box"><img src="tablet-photo.png" alt="Tablets"></div>
+            <h3 style="color: var(--gold);">Zosh Tablets (30 Caps)</h3>
+            <p style="font-size: 28px; font-weight: 600;">₹2,999</p>
+            <div class="qty-ctrl" onclick="event.stopPropagation()">
+                <button class="qty-btn" onclick="qty('t-v', -1)">-</button>
+                <span id="t-v" style="font-weight:700; width:20px; text-align:center;">0</span>
+                <button class="qty-btn" onclick="qty('t-v', 1)">+</button>
+            </div>
+            <div id="tab-info" class="details-box">
+                <strong>INGREDIENTS:</strong> Ashwagandha, Shilajit, Icariin. <br>
+                <strong>HOW TO USE:</strong> Take one capsule daily with water.
+            </div>
+            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px; border-radius:12px;">Add to Cart</button>
+        </div>
+    </div>
+</section>
+
+<section class="lifestyle ls-2">
+    <div class="ls-content">
+        <h2>Stronger Bonds</h2>
+        <p>Lasting confidence and better relationships with natural wellness.</p>
+    </div>
 </section>
 
 <section id="checkout-section" style="padding: 20px;">
     <div class="checkout" id="order-box">
-        <h2 style="color: var(--gold); text-align: center; margin-bottom: 30px; letter-spacing: 2px;">SECURE CHECKOUT</h2>
-        <div class="bill-sum" id="bill-display">Your cart is waiting for greatness.</div>
+        <h2 style="color: var(--gold); text-align: center; margin-bottom: 30px;">SECURE CHECKOUT</h2>
+        <div class="bill-sum" id="bill-display">Cart is empty. Please add items.</div>
         
         <form id="submit-order" style="display:none;">
-            <div style="margin-bottom: 20px;">
-                <label style="color: var(--gold); font-size: 12px; font-weight: 600;">FULL NAME</label>
-                <input type="text" id="name" placeholder="Enter your name" required>
-            </div>
-            <div style="margin-bottom: 20px;">
-                <label style="color: var(--gold); font-size: 12px; font-weight: 600;">MOBILE NUMBER</label>
-                <input type="tel" id="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
-            </div>
-            <div style="margin-bottom: 20px;">
-                <label style="color: var(--gold); font-size: 12px; font-weight: 600;">SHIPPING ADDRESS</label>
-                <textarea id="addr" rows="3" placeholder="Full address with Pincode" required></textarea>
-            </div>
+            <div style="margin-bottom: 20px;"><label style="color: var(--gold); font-size: 12px;">NAME</label><input type="text" id="name" required></div>
+            <div style="margin-bottom: 20px;"><label style="color: var(--gold); font-size: 12px;">MOBILE</label><input type="tel" id="phone" pattern="[0-9]{10}" required></div>
+            <div style="margin-bottom: 20px;"><label style="color: var(--gold); font-size: 12px;">ADDRESS</label><textarea id="addr" rows="3" required></textarea></div>
             <div style="margin-bottom: 25px;">
-                <label style="color: var(--gold); font-size: 12px; font-weight: 600;">PAYMENT METHOD</label>
+                <label style="color: var(--gold); font-size: 12px;">PAYMENT METHOD</label>
                 <select id="method" onchange="qrToggle()">
-                    <option value="COD">Cash on Delivery (Standard)</option>
-                    <option value="Online">Online UPI (Fast-Track Shipping)</option>
+                    <option value="COD">Cash on Delivery</option>
+                    <option value="Online">Online UPI (Prepaid)</option>
                 </select>
             </div>
-
-            <div id="qr-section" style="display: none; text-align: center; background: #fff; padding: 30px; border-radius: 20px; color: #000; margin-bottom: 20px;">
-                <img src="your-qr.png" style="width: 180px; border: 1px solid #eee;">
-                <p id="bill-text" style="font-weight:700; color:#d32f2f; margin: 15px 0;"></p>
-                <a id="upilink" href="#" style="background:#000; color:#fff; padding:15px; display:block; text-decoration:none; border-radius:10px; font-weight:700;">PAY WITH UPI APP</a>
+            <div id="qr-section" style="display: none; text-align: center; background: #fff; padding: 25px; border-radius: 20px; color: #000; margin-bottom: 20px;">
+                <img src="your-qr.png" style="width: 160px;">
+                <p id="bill-text" style="font-weight:700; color:#d32f2f; margin: 10px 0;"></p>
+                <a id="upilink" href="#" style="background:#28a745; color:#fff; padding:12px; display:block; text-decoration:none; border-radius:8px; font-weight:700;">PAY VIA UPI APP</a>
             </div>
-
-            <button type="submit" class="cta-btn" id="sbtn" style="width: 100%;">Confirm Elite Order</button>
+            <button type="submit" class="cta-btn" id="sbtn" style="width: 100%;">Place Order Now</button>
         </form>
+    </div>
+</section>
+
+<section class="store" style="background: #000; border-top: 1px solid #111;">
+    <h2 style="color: var(--gold); font-size: 35px; text-transform: uppercase;">Natural Ingredients</h2>
+    <div class="grid">
+        <div class="card">
+            <div class="product-img-box"><img src="ashwa.jpeg" alt="Ashwagandha"></div>
+            <h3 style="color: var(--gold);">Ashwagandha</h3>
+            <p style="font-size: 14px; color: #888;">Reduces stress and enhances overall strength and stamina.</p>
+        </div>
+        <div class="card">
+            <div class="product-img-box"><img src="shilajit.jpeg" alt="Shilajit"></div>
+            <h3 style="color: var(--gold);">Shilajit</h3>
+            <p style="font-size: 14px; color: #888;">Improves natural energy levels and mineral absorption.</p>
+        </div>
+        <div class="card">
+            <div class="product-img-box"><img src="musli.jpeg" alt="Safed Musli"></div>
+            <h3 style="color: var(--gold);">Safed Musli</h3>
+            <p style="font-size: 14px; color: #888;">A traditional powerhouse for long-term endurance.</p>
+        </div>
     </div>
 </section>
 
@@ -229,22 +227,22 @@
     <div class="footer-grid">
         <div>
             <h3 style="color: var(--gold); margin-bottom: 20px;">THUNDER OF ZOSH</h3>
-            <p style="font-size: 13px; line-height: 2;">A boutique wellness brand by TZ Nature Ayurveda. We believe in the raw power of nature combined with scientific precision.</p>
+            <p style="font-size: 13px; line-height: 2;">A premium brand under TZ Nature Ayurveda. Dedicated to natural wellness and maximum performance.</p>
         </div>
         <div>
-            <h4 style="color: var(--gold); margin-bottom: 20px;">Quick Links</h4>
-            <a href="policies.html#privacy" class="footer-link">Privacy Protection</a>
-            <a href="policies.html#terms" class="footer-link">Terms of Service</a>
-            <a href="policies.html#refund" class="footer-link">Return Policy</a>
+            <h4 style="color: var(--gold); margin-bottom: 15px;">Quick Links</h4>
+            <a href="policies.html#privacy" class="footer-link">Privacy Policy</a>
+            <a href="policies.html#terms" class="footer-link">Terms & Conditions</a>
+            <a href="policies.html#refund" class="footer-link">Refund Policy</a>
         </div>
         <div>
-            <h4 style="color: var(--gold); margin-bottom: 20px;">Contact Elite Support</h4>
+            <h4 style="color: var(--gold); margin-bottom: 15px;">Support</h4>
             <p style="font-size: 13px;">Email: TZsupportayurveda@gmail.com</p>
-            <p style="font-size: 13px; margin-top: 10px;">Availability: Mon-Sat (10AM - 7PM)</p>
+            <p style="font-size: 13px; margin-top: 10px;">Mon - Sat: 10 AM to 7 PM</p>
         </div>
     </div>
-    <div style="text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #111; font-size: 11px;">
-        © 2026 Thunder of Zosh | TZ Nature Ayurveda. Handcrafted for Excellence.
+    <div style="text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #111; font-size: 11px;">
+        © 2026 Thunder of Zosh | TZ Nature Ayurveda. All Rights Reserved.
     </div>
 </footer>
 
@@ -266,23 +264,16 @@
     function addToCart() {
         cart.gel = parseInt(document.getElementById('g-v').innerText);
         cart.tab = parseInt(document.getElementById('t-v').innerText);
-        
-        if(cart.gel === 0 && cart.tab === 0) { 
-            alert("Your selection is empty. Please add a product."); 
-            return; 
-        }
-
+        if(cart.gel === 0 && cart.tab === 0) { alert("Please add items first!"); return; }
         const total = (cart.gel * 2999) + (cart.tab * 2999);
         document.getElementById('order-box').style.display = 'block';
         document.getElementById('submit-order').style.display = 'block';
-        
-        let summary = "<strong>Your Selection:</strong><br><br>";
-        if(cart.gel > 0) summary += `• Advanced Gel Pack x ${cart.gel}<br>`;
-        if(cart.tab > 0) summary += `• Elite Tablets Pack x ${cart.tab}<br>`;
-        summary += `<div style="border-top:1px solid rgba(197,160,89,0.2); margin-top:15px; padding-top:15px; color:var(--gold); font-size:22px; font-weight:700;">Grand Total: ₹${total.toLocaleString('en-IN')}</div>`;
-        
+        let summary = "<strong>Selected Package:</strong><br><br>";
+        if(cart.gel > 0) summary += `• Gel Pack x ${cart.gel}<br>`;
+        if(cart.tab > 0) summary += `• Tablets Pack x ${cart.tab}<br>`;
+        summary += `<div style="border-top:1px solid rgba(197,160,89,0.2); margin-top:15px; padding-top:15px; color:var(--gold); font-size:22px; font-weight:700;">Total: ₹${total.toLocaleString('en-IN')}</div>`;
         document.getElementById('bill-display').innerHTML = summary;
-        document.getElementById('bill-text').innerText = "Amount Payable: ₹" + total;
+        document.getElementById('bill-text').innerText = "Amount to Pay: ₹" + total;
         window.location.hash = "checkout-section";
     }
 
@@ -301,27 +292,14 @@
         const pay = document.getElementById('method').value;
         const total = (cart.gel * 2999) + (cart.tab * 2999);
         let status = (pay === 'Online') ? "Prepaid - Pending" : "COD - Confirmed";
-        
-        b.innerText = "Securing Your Order..."; b.disabled = true;
-        
-        const data = { 
-            "Timestamp": new Date().toLocaleString('en-IN'), 
-            "Name": document.getElementById('name').value, 
-            "Phone": document.getElementById('phone').value, 
-            "Package": `Gel: ${cart.gel}, Tab: ${cart.tab}`, 
-            "Bill": "₹" + total, 
-            "Address": document.getElementById('addr').value, 
-            "Method": status 
-        };
+        b.innerText = "Processing Order..."; b.disabled = true;
+        const data = { "Timestamp": new Date().toLocaleString('en-IN'), "Name": document.getElementById('name').value, "Phone": document.getElementById('phone').value, "Package": `Gel: ${cart.gel}, Tab: ${cart.tab}`, "Bill": "₹" + total, "Address": document.getElementById('addr').value, "Method": status };
         
         Promise.all([
             fetch('https://sheetdb.io/api/v1/2qqhwik4r33j0', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({data: [data]}) }),
             fetch('https://formspree.io/f/xeeazdpz', { method: 'POST', body: JSON.stringify(data), headers: {'Accept': 'application/json', 'Content-Type': 'application/json'} })
         ]).then(() => {
-            document.getElementById('order-box').innerHTML = "<div style='text-align:center; padding: 40px 0;'><h2 style='color:var(--gold);'>ORDER SECURED! ✅</h2><p>Thank you for choosing Thunder of Zosh. Our team will contact you shortly for dispatch details.</p></div>";
-        }).catch(() => {
-            alert("Something went wrong. Please try again.");
-            b.innerText = "Confirm Elite Order"; b.disabled = false;
+            document.getElementById('order-box').innerHTML = "<div style='text-align:center; padding: 40px 0;'><h2 style='color:var(--gold);'>ORDER SUCCESSFUL! ✅</h2><p>We will contact you soon for confirmation.</p></div>";
         });
     });
 </script>
