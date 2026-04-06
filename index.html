@@ -157,6 +157,40 @@
             </div>
             <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px;">Add to Cart</button>
         </div>
+
+        <div class="card" onclick="toggleDetails('p3-info')">
+            <div class="product-img-box"><img src="booster-pills-1.png" id="main-p3" alt="Pills"></div>
+            <div class="thumb-container" onclick="event.stopPropagation()">
+                <img src="booster-pills-1.png" class="thumb" onclick="changeImage('main-p3', 'booster-pills-1.png')">
+                <img src="booster-pills-2.png" class="thumb" onclick="changeImage('main-p3', 'booster-pills-2.png')">
+            </div>
+            <h3 style="color: var(--gold);">Booster 3X Pills</h3>
+            <p style="font-size: 24px; font-weight: 700;">₹2,590</p>
+            <div class="qty-ctrl" onclick="event.stopPropagation()">
+                <button class="qty-btn" onclick="qty('p3-v', -1)">-</button>
+                <span id="p3-v" style="font-weight:700;">0</span>
+                <button class="qty-btn" onclick="qty('p3-v', 1)">+</button>
+            </div>
+            <div id="p3-info" class="details-box">Advanced herbal pills for peak stamina.</div>
+            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px;">Add to Cart</button>
+        </div>
+
+        <div class="card" onclick="toggleDetails('p4-info')">
+            <div class="product-img-box"><img src="booster-cream-1.png" id="main-p4" alt="Cream"></div>
+            <div class="thumb-container" onclick="event.stopPropagation()">
+                <img src="booster-cream-1.png" class="thumb" onclick="changeImage('main-p4', 'booster-cream-1.png')">
+                <img src="booster-cream-2.png" class="thumb" onclick="changeImage('main-p4', 'booster-cream-2.png')">
+            </div>
+            <h3 style="color: var(--gold);">Booster Cream</h3>
+            <p style="font-size: 24px; font-weight: 700;">₹2,590</p>
+            <div class="qty-ctrl" onclick="event.stopPropagation()">
+                <button class="qty-btn" onclick="qty('p4-v', -1)">-</button>
+                <span id="p4-v" style="font-weight:700;">0</span>
+                <button class="qty-btn" onclick="qty('p4-v', 1)">+</button>
+            </div>
+            <div id="p4-info" class="details-box">Special cream for immediate effectiveness.</div>
+            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px;">Add to Cart</button>
+        </div>
     </div>
 </section>
 
@@ -188,7 +222,7 @@
 </section>
 
 <section class="store" style="background: #000; border-top: 1px solid #222; padding-bottom: 80px;">
-    <h2 style="color: var(--gold); font-size: 35px; text-transform: uppercase;">Natural Ingredients</h2>
+    <h2 style="color: var(--gold); font-size: 35px; text-transform: uppercase; text-align: center;">Natural Ingredients</h2>
     <div class="grid">
         <div class="card"><div class="product-img-box"><img src="ashwa.jpeg"></div><h3>Ashwagandha</h3><p>Reduces stress and enhances overall strength.</p></div>
         <div class="card"><div class="product-img-box"><img src="shilajit.jpeg"></div><h3>Shilajit</h3><p>Improves stamina and natural energy levels.</p></div>
@@ -204,7 +238,7 @@
                 <strong>Owner:</strong> Shivam Gupta<br>
                 <strong>Company:</strong> TZ Nature Ayurveda<br>
                 <strong>Address:</strong> k-19/123, streat no -19 near shiv mandir sangam vihar new delhi 110062<br>
-                <strong>Email:</strong> <a href="mailto:TZsupportayurveda@gmail.com" style="color: #fff; text-decoration: none;">TZsupportayurveda@gmail.com</a>
+                <strong>Email:</strong> TZsupportayurveda@gmail.com
             </p>
             <div class="pm-icons">
                 <img src="https://img.icons8.com/color/48/visa.png" alt="Visa">
@@ -217,17 +251,12 @@
             <p style="font-size: 13px;">• 100% Ayurvedic Formula</p>
             <p style="font-size: 13px;">• Certified Lab Tested</p>
             <p style="font-size: 13px;">• Discreet Packaging</p>
-            <p style="font-size: 13px;">• Safe & Effective</p>
         </div>
         <div>
             <h4 style="color: var(--gold); margin-bottom: 15px;">Policies</h4>
             <a href="policies.html#privacy" class="footer-link">Privacy Policy</a>
             <a href="policies.html#terms" class="footer-link">Terms & Conditions</a>
             <a href="policies.html#refund" class="footer-link">Refund Policy</a>
-        </div>
-        <div>
-            <h4 style="color: var(--gold); margin-bottom: 15px;">Contact Support</h4>
-            <p style="font-size: 13px; color: #888;">Mon - Sat: 10 AM to 7 PM</p>
         </div>
     </div>
     <div style="text-align: center; margin-top: 40px; border-top: 1px solid #222; padding-top: 20px; font-size: 12px; color: #444;">
@@ -237,41 +266,62 @@
 
 <script>
     const UPI = "shivam-gupta05@ptyes";
-    let cart = { gel: 0, tab: 0 };
+    let cart = { gel: 0, tab: 0, p3: 0, p4: 0 };
     function changeImage(targetId, newSrc) { document.getElementById(targetId).src = newSrc; }
     function toggleDetails(id) { const p = document.getElementById(id); p.style.display = (p.style.display === 'block') ? 'none' : 'block'; }
     function qty(id, change) { const el = document.getElementById(id); let v = parseInt(el.innerText) + change; if(v >= 0 && v <= 10) el.innerText = v; }
+    
     function addToCart() {
         cart.gel = parseInt(document.getElementById('g-v').innerText);
         cart.tab = parseInt(document.getElementById('t-v').innerText);
-        if(cart.gel === 0 && cart.tab === 0) { alert("Please add items first!"); return; }
-        const total = (cart.gel * 2999) + (cart.tab * 2999);
+        cart.p3 = parseInt(document.getElementById('p3-v').innerText);
+        cart.p4 = parseInt(document.getElementById('p4-v').innerText);
+        
+        if(cart.gel+cart.tab+cart.p3+cart.p4 === 0) { alert("Please add items first!"); return; }
+        
+        const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
         document.getElementById('order-box').style.display = 'block';
         document.getElementById('submit-order').style.display = 'block';
+        
         let summary = "<strong>Selected Items:</strong><br>";
         if(cart.gel > 0) summary += `• Gel Pack x ${cart.gel}<br>`;
         if(cart.tab > 0) summary += `• Tablets Pack x ${cart.tab}<br>`;
+        if(cart.p3 > 0) summary += `• Booster Pills x ${cart.p3}<br>`;
+        if(cart.p4 > 0) summary += `• Booster Cream x ${cart.p4}<br>`;
+        
         summary += `<div style="border-top:1px solid rgba(212,175,55,0.2); margin-top:10px; padding-top:10px; color:var(--gold); font-size:20px; font-weight:700;">Total Bill: ₹${total.toLocaleString('en-IN')}</div>`;
         document.getElementById('bill-display').innerHTML = summary;
         document.getElementById('bill-text').innerText = "Amount to Pay: ₹" + total;
         window.location.hash = "checkout-section";
     }
+
     function qrToggle() {
         const q = document.getElementById('qr-section');
-        const total = (cart.gel * 2999) + (cart.tab * 2999);
+        const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
         if(document.getElementById('method').value === 'Online') {
             q.style.display = 'block';
             document.getElementById('upilink').href = `upi://pay?pa=${UPI}&pn=ThunderOfZosh&am=${total}&cu=INR`;
         } else { q.style.display = 'none'; }
     }
+
     document.getElementById('submit-order').addEventListener('submit', function(e) {
         e.preventDefault();
         const b = document.getElementById('sbtn');
         const pay = document.getElementById('method').value;
-        const total = (cart.gel * 2999) + (cart.tab * 2999);
+        const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
         let status = (pay === 'Online') ? "Prepaid - Pending" : "COD - Confirmed";
         b.innerText = "Processing Order..."; b.disabled = true;
-        const data = { "Timestamp": new Date().toLocaleString('en-IN'), "Name": document.getElementById('name').value, "Phone": document.getElementById('phone').value, "Package": `Gel: ${cart.gel}, Tab: ${cart.tab}`, "Bill": "₹" + total, "Address": document.getElementById('addr').value, "Method": status };
+        
+        const data = { 
+            "Timestamp": new Date().toLocaleString('en-IN'), 
+            "Name": document.getElementById('name').value, 
+            "Phone": document.getElementById('phone').value, 
+            "Package": `Gel: ${cart.gel}, Tab: ${cart.tab}, Pills: ${cart.p3}, Cream: ${cart.p4}`, 
+            "Bill": "₹" + total, 
+            "Address": document.getElementById('addr').value, 
+            "Method": status 
+        };
+        
         Promise.all([
             fetch('https://sheetdb.io/api/v1/2qqhwik4r33j0', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({data: [data]}) }),
             fetch('https://formspree.io/f/xeeazdpz', { method: 'POST', body: JSON.stringify(data), headers: {'Accept': 'application/json', 'Content-Type': 'application/json'} })
