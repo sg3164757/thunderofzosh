@@ -68,7 +68,6 @@
         .product-img-box { width: 100%; height: 280px; display: flex; align-items: center; justify-content: center; background: #000; border-radius: 15px; margin-bottom: 10px; overflow: hidden; border: 1px solid #1a1a1a; }
         .product-img-box img { max-width: 90%; max-height: 90%; object-fit: contain; transition: 0.5s; }
 
-        /* Thumbnails Styling */
         .thumb-container { display: flex; gap: 8px; justify-content: center; margin-bottom: 15px; }
         .thumb { width: 45px; height: 45px; border: 1px solid #333; border-radius: 5px; cursor: pointer; object-fit: cover; transition: 0.3s; }
         .thumb:hover { border-color: var(--gold); }
@@ -119,13 +118,11 @@
     <div class="grid">
         <div class="card" onclick="toggleDetails('gel-info')">
             <div class="product-img-box"><img src="gel-1.png" id="main-gel" alt="Gel"></div>
-            
             <div class="thumb-container" onclick="event.stopPropagation()">
                 <img src="gel-1.png" class="thumb" onclick="changeImage('main-gel', 'gel-1.png')">
                 <img src="gel-2.png" class="thumb" onclick="changeImage('main-gel', 'gel-2.png')">
                 <img src="gel-3.png" class="thumb" onclick="changeImage('main-gel', 'gel-3.png')">
             </div>
-
             <h3 style="color: var(--gold);">Advanced Gel Formula</h3>
             <p style="font-size: 24px; font-weight: 700;">₹2,999</p>
             <div class="qty-ctrl" onclick="event.stopPropagation()">
@@ -142,13 +139,11 @@
 
         <div class="card" onclick="toggleDetails('tab-info')">
             <div class="product-img-box"><img src="tab-1.png" id="main-tab" alt="Tablets"></div>
-
             <div class="thumb-container" onclick="event.stopPropagation()">
                 <img src="tab-1.png" class="thumb" onclick="changeImage('main-tab', 'tab-1.png')">
                 <img src="tab-2.png" class="thumb" onclick="changeImage('main-tab', 'tab-2.png')">
                 <img src="tab-3.png" class="thumb" onclick="changeImage('main-tab', 'tab-3.png')">
             </div>
-
             <h3 style="color: var(--gold);">Zosh Tablets (30 Caps)</h3>
             <p style="font-size: 24px; font-weight: 700;">₹2,999</p>
             <div class="qty-ctrl" onclick="event.stopPropagation()">
@@ -205,7 +200,12 @@
     <div class="footer-grid">
         <div>
             <h3 style="color: var(--gold); margin-bottom: 15px;">THUNDER OF ZOSH</h3>
-            <p style="font-size: 14px; line-height: 1.8;">A premium brand under TZ Nature Ayurveda. Dedicated to natural wellness and strength.</p>
+            <p style="font-size: 14px; line-height: 1.8;">
+                <strong>Owner:</strong> Shivam Gupta<br>
+                <strong>Company:</strong> TZ Nature Ayurveda<br>
+                <strong>Address:</strong> k-19/123, streat no -19 near shiv mandir sangam vihar new delhi 110062<br>
+                <strong>Email:</strong> <a href="mailto:TZsupportayurveda@gmail.com" style="color: #fff; text-decoration: none;">TZsupportayurveda@gmail.com</a>
+            </p>
             <div class="pm-icons">
                 <img src="https://img.icons8.com/color/48/visa.png" alt="Visa">
                 <img src="https://img.icons8.com/color/48/mastercard.png" alt="Master">
@@ -227,8 +227,6 @@
         </div>
         <div>
             <h4 style="color: var(--gold); margin-bottom: 15px;">Contact Support</h4>
-            <p style="font-size: 14px; color: var(--gold); margin-bottom: 5px;">Company: TZ Nature Ayurveda</p>
-            <p style="font-size: 14px; margin-bottom: 10px;">Email: <a href="mailto:TZsupportayurveda@gmail.com" style="color: #fff; text-decoration: none;">TZsupportayurveda@gmail.com</a></p>
             <p style="font-size: 13px; color: #888;">Mon - Sat: 10 AM to 7 PM</p>
         </div>
     </div>
@@ -240,15 +238,9 @@
 <script>
     const UPI = "shivam-gupta05@ptyes";
     let cart = { gel: 0, tab: 0 };
-
-    // Function to change gallery image
-    function changeImage(targetId, newSrc) {
-        document.getElementById(targetId).src = newSrc;
-    }
-
+    function changeImage(targetId, newSrc) { document.getElementById(targetId).src = newSrc; }
     function toggleDetails(id) { const p = document.getElementById(id); p.style.display = (p.style.display === 'block') ? 'none' : 'block'; }
     function qty(id, change) { const el = document.getElementById(id); let v = parseInt(el.innerText) + change; if(v >= 0 && v <= 10) el.innerText = v; }
-
     function addToCart() {
         cart.gel = parseInt(document.getElementById('g-v').innerText);
         cart.tab = parseInt(document.getElementById('t-v').innerText);
@@ -264,7 +256,6 @@
         document.getElementById('bill-text').innerText = "Amount to Pay: ₹" + total;
         window.location.hash = "checkout-section";
     }
-
     function qrToggle() {
         const q = document.getElementById('qr-section');
         const total = (cart.gel * 2999) + (cart.tab * 2999);
@@ -273,7 +264,6 @@
             document.getElementById('upilink').href = `upi://pay?pa=${UPI}&pn=ThunderOfZosh&am=${total}&cu=INR`;
         } else { q.style.display = 'none'; }
     }
-
     document.getElementById('submit-order').addEventListener('submit', function(e) {
         e.preventDefault();
         const b = document.getElementById('sbtn');
@@ -282,7 +272,6 @@
         let status = (pay === 'Online') ? "Prepaid - Pending" : "COD - Confirmed";
         b.innerText = "Processing Order..."; b.disabled = true;
         const data = { "Timestamp": new Date().toLocaleString('en-IN'), "Name": document.getElementById('name').value, "Phone": document.getElementById('phone').value, "Package": `Gel: ${cart.gel}, Tab: ${cart.tab}`, "Bill": "₹" + total, "Address": document.getElementById('addr').value, "Method": status };
-        
         Promise.all([
             fetch('https://sheetdb.io/api/v1/2qqhwik4r33j0', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({data: [data]}) }),
             fetch('https://formspree.io/f/xeeazdpz', { method: 'POST', body: JSON.stringify(data), headers: {'Accept': 'application/json', 'Content-Type': 'application/json'} })
