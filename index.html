@@ -40,12 +40,13 @@
         .ls-2 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('smile_image.jpeg'); }
         .ls-content h2 { font-size: clamp(35px, 7vw, 60px); color: var(--gold); text-transform: uppercase; margin-bottom: 20px; text-shadow: 2px 2px 10px #000; }
 
+        /* ELITE PERFORMANCE SECTION (AS PER YOUR ORIGINAL CODE) */
         .elite-section { display: flex; align-items: center; justify-content: space-around; padding: 100px 10%; background: #000; flex-wrap: wrap; gap: 50px; }
         .elite-text { flex: 1; min-width: 300px; }
         .elite-text h2 { color: var(--gold); font-size: 40px; margin-bottom: 20px; }
         .elite-img img { width: 100%; max-width: 500px; border-radius: 15px; border: 2px solid var(--gold); box-shadow: 0 0 20px rgba(212,175,55,0.2); }
 
-        /* Store Section with Slider */
+        /* STORE SECTION WITH SLIDER */
         .store { padding: 100px 10%; text-align: center; background: #080808; }
         .grid { 
             display: flex; 
@@ -127,7 +128,7 @@
 
 <section class="store" id="store">
     <h2 style="color: var(--gold); font-size: 40px; text-transform: uppercase; letter-spacing: 2px;">Premium Selection</h2>
-    <p style="margin-bottom: 50px; color: #888;">(Slide sideways to view all products | Tap card for details)</p>
+    <p style="margin-bottom: 50px; color: #888;">(Slide sideways to view all | Tap card for details)</p>
     <div class="grid">
         <div class="card" onclick="toggleDetails('gel-info')">
             <div class="product-img-box"><img src="gel-1.png" id="main-gel" alt="Gel"></div>
@@ -176,7 +177,6 @@
             <div class="thumb-container" onclick="event.stopPropagation()">
                 <img src="booster-pills-1.png" class="thumb" onclick="changeImage('main-p3', 'booster-pills-1.png')">
                 <img src="booster-pills-2.png" class="thumb" onclick="changeImage('main-p3', 'booster-pills-2.png')">
-                <img src="booster-pills-3.png" class="thumb" onclick="changeImage('main-p3', 'booster-pills-3.png')">
             </div>
             <h3 style="color: var(--gold);">Booster 3X Pills</h3>
             <p style="font-size: 24px; font-weight: 700;">₹2,590</p>
@@ -185,7 +185,7 @@
                 <span id="p3-v" style="font-weight:700;">0</span>
                 <button class="qty-btn" onclick="qty('p3-v', 1)">+</button>
             </div>
-            <div id="p3-info" class="details-box">Performance booster for peak energy and power.</div>
+            <div id="p3-info" class="details-box">Advanced herbal pills for peak stamina.</div>
             <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px;">Add to Cart</button>
         </div>
 
@@ -194,7 +194,6 @@
             <div class="thumb-container" onclick="event.stopPropagation()">
                 <img src="booster-cream-1.png" class="thumb" onclick="changeImage('main-p4', 'booster-cream-1.png')">
                 <img src="booster-cream-2.png" class="thumb" onclick="changeImage('main-p4', 'booster-cream-2.png')">
-                <img src="booster-cream-3.png" class="thumb" onclick="changeImage('main-p4', 'booster-cream-3.png')">
             </div>
             <h3 style="color: var(--gold);">Booster Cream</h3>
             <p style="font-size: 24px; font-weight: 700;">₹2,590</p>
@@ -203,7 +202,7 @@
                 <span id="p4-v" style="font-weight:700;">0</span>
                 <button class="qty-btn" onclick="qty('p4-v', 1)">+</button>
             </div>
-            <div id="p4-info" class="details-box">Helps in tightness and instant energy boost.</div>
+            <div id="p4-info" class="details-box">Special cream for immediate effectiveness.</div>
             <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px;">Add to Cart</button>
         </div>
     </div>
