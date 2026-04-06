@@ -40,30 +40,15 @@
         .ls-2 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('smile_image.jpeg'); }
         .ls-content h2 { font-size: clamp(35px, 7vw, 60px); color: var(--gold); text-transform: uppercase; margin-bottom: 20px; text-shadow: 2px 2px 10px #000; }
 
-        /* ELITE PERFORMANCE SECTION (AS PER YOUR ORIGINAL CODE) */
         .elite-section { display: flex; align-items: center; justify-content: space-around; padding: 100px 10%; background: #000; flex-wrap: wrap; gap: 50px; }
         .elite-text { flex: 1; min-width: 300px; }
         .elite-text h2 { color: var(--gold); font-size: 40px; margin-bottom: 20px; }
         .elite-img img { width: 100%; max-width: 500px; border-radius: 15px; border: 2px solid var(--gold); box-shadow: 0 0 20px rgba(212,175,55,0.2); }
 
-        /* STORE SECTION WITH SLIDER */
         .store { padding: 100px 10%; text-align: center; background: #080808; }
-        .grid { 
-            display: flex; 
-            overflow-x: auto; 
-            gap: 40px; 
-            margin-top: 50px; 
-            padding-bottom: 20px;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: thin;
-            scrollbar-color: var(--gold) #1a1a1a;
-        }
-        .grid::-webkit-scrollbar { height: 6px; }
-        .grid::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
-
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 50px; }
+        
         .card { 
-            flex: 0 0 320px;
-            scroll-snap-align: start;
             background: #121212; padding: 30px; border-radius: 20px; border: 1px solid #222; 
             transition: 0.4s; cursor: pointer; text-align: left; 
             position: relative; overflow: hidden;
@@ -105,6 +90,7 @@
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; }
         .footer-link { color: #ccc; text-decoration: none; font-size: 14px; display: block; margin-bottom: 8px; transition: 0.3s; }
         .footer-link:hover { color: var(--gold); padding-left: 5px; }
+        .pm-icons img { height: 30px; margin-right: 12px; margin-top: 15px; opacity: 0.8; }
 
         @media (max-width: 768px) { .lifestyle { background-attachment: scroll; } }
     </style>
@@ -128,7 +114,7 @@
 
 <section class="store" id="store">
     <h2 style="color: var(--gold); font-size: 40px; text-transform: uppercase; letter-spacing: 2px;">Premium Selection</h2>
-    <p style="margin-bottom: 50px; color: #888;">(Slide sideways to view all | Tap card for details)</p>
+    <p style="margin-bottom: 50px; color: #888;">(Tap card for details | Add quantity to cart)</p>
     <div class="grid">
         <div class="card" onclick="toggleDetails('gel-info')">
             <div class="product-img-box"><img src="gel-1.png" id="main-gel" alt="Gel"></div>
@@ -169,40 +155,6 @@
                 <strong>INGREDIENTS:</strong> Ashwagandha, Shilajit, Icariin. <br>
                 <strong>HOW TO USE:</strong> Take one capsule daily with water.
             </div>
-            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px;">Add to Cart</button>
-        </div>
-
-        <div class="card" onclick="toggleDetails('p3-info')">
-            <div class="product-img-box"><img src="booster-pills-1.png" id="main-p3" alt="Pills"></div>
-            <div class="thumb-container" onclick="event.stopPropagation()">
-                <img src="booster-pills-1.png" class="thumb" onclick="changeImage('main-p3', 'booster-pills-1.png')">
-                <img src="booster-pills-2.png" class="thumb" onclick="changeImage('main-p3', 'booster-pills-2.png')">
-            </div>
-            <h3 style="color: var(--gold);">Booster 3X Pills</h3>
-            <p style="font-size: 24px; font-weight: 700;">₹2,590</p>
-            <div class="qty-ctrl" onclick="event.stopPropagation()">
-                <button class="qty-btn" onclick="qty('p3-v', -1)">-</button>
-                <span id="p3-v" style="font-weight:700;">0</span>
-                <button class="qty-btn" onclick="qty('p3-v', 1)">+</button>
-            </div>
-            <div id="p3-info" class="details-box">Advanced herbal pills for peak stamina.</div>
-            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px;">Add to Cart</button>
-        </div>
-
-        <div class="card" onclick="toggleDetails('p4-info')">
-            <div class="product-img-box"><img src="booster-cream-1.png" id="main-p4" alt="Cream"></div>
-            <div class="thumb-container" onclick="event.stopPropagation()">
-                <img src="booster-cream-1.png" class="thumb" onclick="changeImage('main-p4', 'booster-cream-1.png')">
-                <img src="booster-cream-2.png" class="thumb" onclick="changeImage('main-p4', 'booster-cream-2.png')">
-            </div>
-            <h3 style="color: var(--gold);">Booster Cream</h3>
-            <p style="font-size: 24px; font-weight: 700;">₹2,590</p>
-            <div class="qty-ctrl" onclick="event.stopPropagation()">
-                <button class="qty-btn" onclick="qty('p4-v', -1)">-</button>
-                <span id="p4-v" style="font-weight:700;">0</span>
-                <button class="qty-btn" onclick="qty('p4-v', 1)">+</button>
-            </div>
-            <div id="p4-info" class="details-box">Special cream for immediate effectiveness.</div>
             <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px;">Add to Cart</button>
         </div>
     </div>
@@ -269,24 +221,20 @@
 
 <script>
     const UPI = "shivam-gupta05@ptyes";
-    let cart = { gel: 0, tab: 0, p3: 0, p4: 0 };
+    let cart = { gel: 0, tab: 0 };
     function changeImage(targetId, newSrc) { document.getElementById(targetId).src = newSrc; }
     function toggleDetails(id) { const p = document.getElementById(id); p.style.display = (p.style.display === 'block') ? 'none' : 'block'; }
     function qty(id, change) { const el = document.getElementById(id); let v = parseInt(el.innerText) + change; if(v >= 0 && v <= 10) el.innerText = v; }
     function addToCart() {
         cart.gel = parseInt(document.getElementById('g-v').innerText);
         cart.tab = parseInt(document.getElementById('t-v').innerText);
-        cart.p3 = parseInt(document.getElementById('p3-v').innerText);
-        cart.p4 = parseInt(document.getElementById('p4-v').innerText);
-        if(cart.gel+cart.tab+cart.p3+cart.p4 === 0) { alert("Please add items first!"); return; }
-        const total = (cart.gel*2999) + (cart.tab*2999) + (cart.p3*2590) + (cart.p4*2590);
+        if(cart.gel === 0 && cart.tab === 0) { alert("Please add items first!"); return; }
+        const total = (cart.gel * 2999) + (cart.tab * 2999);
         document.getElementById('order-box').style.display = 'block';
         document.getElementById('submit-order').style.display = 'block';
         let summary = "<strong>Selected Items:</strong><br>";
         if(cart.gel > 0) summary += `• Gel Pack x ${cart.gel}<br>`;
         if(cart.tab > 0) summary += `• Tablets Pack x ${cart.tab}<br>`;
-        if(cart.p3 > 0) summary += `• Booster Pills x ${cart.p3}<br>`;
-        if(cart.p4 > 0) summary += `• Booster Cream x ${cart.p4}<br>`;
         summary += `<div style="border-top:1px solid rgba(212,175,55,0.2); margin-top:10px; padding-top:10px; color:var(--gold); font-size:20px; font-weight:700;">Total Bill: ₹${total.toLocaleString('en-IN')}</div>`;
         document.getElementById('bill-display').innerHTML = summary;
         document.getElementById('bill-text').innerText = "Amount to Pay: ₹" + total;
@@ -294,7 +242,7 @@
     }
     function qrToggle() {
         const q = document.getElementById('qr-section');
-        const total = (cart.gel*2999) + (cart.tab*2999) + (cart.p3*2590) + (cart.p4*2590);
+        const total = (cart.gel * 2999) + (cart.tab * 2999);
         if(document.getElementById('method').value === 'Online') {
             q.style.display = 'block';
             document.getElementById('upilink').href = `upi://pay?pa=${UPI}&pn=ThunderOfZosh&am=${total}&cu=INR`;
@@ -304,10 +252,10 @@
         e.preventDefault();
         const b = document.getElementById('sbtn');
         const pay = document.getElementById('method').value;
-        const total = (cart.gel*2999) + (cart.tab*2999) + (cart.p3*2590) + (cart.p4*2590);
+        const total = (cart.gel * 2999) + (cart.tab * 2999);
         let status = (pay === 'Online') ? "Prepaid - Pending" : "COD - Confirmed";
         b.innerText = "Processing Order..."; b.disabled = true;
-        const data = { "Timestamp": new Date().toLocaleString('en-IN'), "Name": document.getElementById('name').value, "Phone": document.getElementById('phone').value, "Package": `Gel: ${cart.gel}, Tab: ${cart.tab}, Pills: ${cart.p3}, Cream: ${cart.p4}`, "Bill": "₹" + total, "Address": document.getElementById('addr').value, "Method": status };
+        const data = { "Timestamp": new Date().toLocaleString('en-IN'), "Name": document.getElementById('name').value, "Phone": document.getElementById('phone').value, "Package": `Gel: ${cart.gel}, Tab: ${cart.tab}`, "Bill": "₹" + total, "Address": document.getElementById('addr').value, "Method": status };
         Promise.all([
             fetch('https://sheetdb.io/api/v1/2qqhwik4r33j0', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({data: [data]}) }),
             fetch('https://formspree.io/f/xeeazdpz', { method: 'POST', body: JSON.stringify(data), headers: {'Accept': 'application/json', 'Content-Type': 'application/json'} })
