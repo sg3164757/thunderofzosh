@@ -18,11 +18,9 @@
         * { box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--white); margin: 0; line-height: 1.6; overflow-x: hidden; }
         
-        /* Navigation */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(212,175,55,0.2); backdrop-filter: blur(10px); }
         .logo { color: var(--gold); font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 0 10px var(--gold-glow); }
 
-        /* Hero Section */
         .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero-zosh.jpeg') center/cover no-repeat; padding: 0 20px; }
         .hero h1 { font-size: clamp(40px, 8vw, 80px); color: var(--gold); margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 5px; text-shadow: 0 0 30px var(--gold-glow); }
         .hero p { font-size: clamp(18px, 3vw, 24px); margin-top: 10px; margin-bottom: 35px; }
@@ -37,11 +35,16 @@
         }
         .cta-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px var(--gold-glow); }
 
+        /* Original Content Sections */
+        .lifestyle { min-height: 80vh; display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center; text-align: center; padding: 60px 10%; }
+        .ls-1 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('smile.jpeg'); }
+        .ls-2 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('touch_image.jpeg'); }
+
+        .ingredients { padding: 100px 10%; text-align: center; background: #000; }
+        .ingredients img { width: 100%; max-width: 900px; border-radius: 20px; border: 1px solid var(--gold); }
+
         /* Sliding Store Section */
-        .store { padding: 80px 5%; text-align: center; background: #080808; overflow: hidden; }
-        .store h2 { color: var(--gold); font-size: 36px; text-transform: uppercase; margin-bottom: 10px; }
-        
-        /* Sliding Grid Logic */
+        .store { padding: 80px 5%; text-align: center; background: #080808; }
         .grid { 
             display: flex; 
             overflow-x: auto; 
@@ -51,241 +54,181 @@
             scrollbar-width: thin; 
             scrollbar-color: var(--gold) #1a1a1a;
         }
-        .grid::-webkit-scrollbar { height: 6px; }
-        .grid::-webkit-scrollbar-track { background: #1a1a1a; }
+        .grid::-webkit-scrollbar { height: 8px; }
         .grid::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
         .card { 
-            flex: 0 0 320px; /* Card width fixed for sliding */
-            scroll-snap-align: center;
+            flex: 0 0 320px; scroll-snap-align: center;
             background: #121212; padding: 25px; border-radius: 20px; border: 1px solid #222; 
-            transition: 0.4s; cursor: pointer; text-align: left; 
-            position: relative; overflow: hidden;
+            transition: 0.4s; cursor: pointer; text-align: left; position: relative; overflow: hidden;
         }
-        .card::before {
-            content: "PREMIUM"; position: absolute; top: 15px; right: -35px;
-            background: linear-gradient(45deg, var(--gold-dark), var(--gold));
-            color: #000; font-size: 10px; font-weight: 800;
-            padding: 5px 40px; transform: rotate(45deg); z-index: 5;
-        }
-        .card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .card::before { content: "PREMIUM"; position: absolute; top: 15px; right: -35px; background: linear-gradient(45deg, var(--gold-dark), var(--gold)); color: #000; font-size: 10px; font-weight: 800; padding: 5px 40px; transform: rotate(45deg); }
 
-        .product-img-box { width: 100%; height: 260px; display: flex; align-items: center; justify-content: center; background: #000; border-radius: 15px; margin-bottom: 10px; border: 1px solid #1a1a1a; overflow: hidden; }
+        .product-img-box { width: 100%; height: 260px; display: flex; align-items: center; justify-content: center; background: #000; border-radius: 15px; margin-bottom: 10px; border: 1px solid #1a1a1a; }
         .product-img-box img { max-width: 90%; max-height: 90%; object-fit: contain; }
 
         .thumb-container { display: flex; gap: 8px; justify-content: center; margin-bottom: 15px; }
         .thumb { width: 45px; height: 45px; border: 1px solid #333; border-radius: 5px; cursor: pointer; object-fit: cover; }
-        .thumb:hover { border-color: var(--gold); }
 
         .qty-ctrl { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 15px 0; background: #000; padding: 8px; border-radius: 10px; border: 1px solid #333; width: fit-content; }
         .qty-btn { background: none; border: none; color: var(--gold); font-size: 22px; cursor: pointer; font-weight: 700; width: 30px; }
         .details-box { display: none; background: #000; padding: 12px; border-radius: 10px; margin-top: 12px; border-top: 1px solid var(--gold); font-size: 13px; color: #ccc; }
 
-        /* Checkout Section */
-        .checkout { max-width: 650px; margin: 50px auto; background: #111; padding: 40px; border-radius: 20px; border: 1px solid var(--gold); display: none; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        /* Checkout */
+        .checkout { max-width: 650px; margin: 50px auto; background: #111; padding: 40px; border-radius: 20px; border: 1px solid var(--gold); display: none; }
         .bill-sum { background: rgba(212,175,55,0.1); padding: 20px; border-radius: 10px; margin-bottom: 25px; border-left: 5px solid var(--gold); }
-        .form-group { margin-bottom: 15px; text-align: left; }
-        .form-group label { display: block; margin-bottom: 5px; color: var(--gold); font-weight: 600; font-size: 13px; }
+        .form-group { margin-bottom: 15px; }
         input, select, textarea { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #333; background: #000; color: #fff; outline: none; }
 
-        #qr-section { display: none; text-align: center; background: #fff; padding: 20px; border-radius: 15px; color: #000; margin-top: 20px; }
-        #qr-section img { width: 150px; }
-
-        footer { background: var(--footer-bg); padding: 60px 8%; border-top: 1px solid #222; text-align: left; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-
-        @media (max-width: 480px) { .card { flex: 0 0 280px; } }
+        footer { background: var(--footer-bg); padding: 60px 8%; border-top: 1px solid #222; }
     </style>
 </head>
 <body>
 
-<nav><div class="logo">Thunder of Zosh</div><a href="#store" class="cta-btn" style="padding: 8px 20px; font-size: 11px;">Order Now</a></nav>
+<nav><div class="logo">Thunder of Zosh</div><a href="#store" class="cta-btn" style="padding: 10px 25px; font-size: 12px;">Order Now</a></nav>
 
 <section class="hero">
     <h1>THUNDER OF ZOSH</h1>
     <p>Premium Ayurvedic Performance. 100% Guaranteed Purity.</p>
-    <a href="#store" class="cta-btn">Explore Products</a>
+    <a href="#store" class="cta-btn">Unlock Strength</a>
+</section>
+
+<section class="lifestyle ls-1"><div class="ls-content"><h2 style="color:var(--gold); font-size:40px;">Feel the Difference</h2><p>Boost your confidence and lifestyle naturally.</p></div></section>
+
+<section class="ingredients">
+    <h2 style="color:var(--gold); margin-bottom:30px;">Powerful Ingredients</h2>
+    <img src="ingredients.jpeg" alt="Ingredients">
 </section>
 
 <section class="store" id="store">
-    <h2>Elite Collection</h2>
-    <p style="color: #666;">Slide sideways to view more products</p>
-    
+    <h2 style="color:var(--gold); text-transform:uppercase;">Premium Store</h2>
+    <p style="color:#666;">(Slide sideways to view all products)</p>
     <div class="grid">
         <div class="card" onclick="toggleDetails('gel-info')">
-            <div class="product-img-box"><img src="gel-1.png" id="img-gel" alt="Gel"></div>
+            <div class="product-img-box"><img src="gel-1.png" id="img-gel"></div>
             <div class="thumb-container" onclick="event.stopPropagation()">
                 <img src="gel-1.png" class="thumb" onclick="changeImage('img-gel', 'gel-1.png')">
                 <img src="gel-2.png" class="thumb" onclick="changeImage('img-gel', 'gel-2.png')">
                 <img src="gel-3.png" class="thumb" onclick="changeImage('img-gel', 'gel-3.png')">
             </div>
-            <h3 style="color: var(--gold);">Advanced Gel Formula</h3>
-            <p style="font-size: 22px; font-weight: 700;">₹2,999</p>
+            <h3 style="color:var(--gold);">Advanced Gel Formula</h3>
+            <p style="font-size:22px; font-weight:700;">₹2,999</p>
             <div class="qty-ctrl" onclick="event.stopPropagation()">
-                <button class="qty-btn" onclick="qty('g-v', -1)">-</button>
-                <span id="g-v" style="font-weight:700;">0</span>
-                <button class="qty-btn" onclick="qty('g-v', 1)">+</button>
+                <button class="qty-btn" onclick="qty('g-v', -1)">-</button><span id="g-v">0</span><button class="qty-btn" onclick="qty('g-v', 1)">+</button>
             </div>
             <div id="gel-info" class="details-box">Premium formula for local rejuvenation and stamina.</div>
-            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px; font-size: 12px;">Add to Cart</button>
+            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px; font-size:12px;">Add to Cart</button>
         </div>
 
         <div class="card" onclick="toggleDetails('tab-info')">
-            <div class="product-img-box"><img src="tab-1.png" id="img-tab" alt="Tablets"></div>
+            <div class="product-img-box"><img src="tab-1.png" id="img-tab"></div>
             <div class="thumb-container" onclick="event.stopPropagation()">
                 <img src="tab-1.png" class="thumb" onclick="changeImage('img-tab', 'tab-1.png')">
                 <img src="tab-2.png" class="thumb" onclick="changeImage('img-tab', 'tab-2.png')">
                 <img src="tab-3.png" class="thumb" onclick="changeImage('img-tab', 'tab-3.png')">
             </div>
-            <h3 style="color: var(--gold);">Zosh Tablets (30 Caps)</h3>
-            <p style="font-size: 22px; font-weight: 700;">₹2,999</p>
+            <h3 style="color:var(--gold);">Zosh Tablets (30 Caps)</h3>
+            <p style="font-size:22px; font-weight:700;">₹2,999</p>
             <div class="qty-ctrl" onclick="event.stopPropagation()">
-                <button class="qty-btn" onclick="qty('t-v', -1)">-</button>
-                <span id="t-v" style="font-weight:700;">0</span>
-                <button class="qty-btn" onclick="qty('t-v', 1)">+</button>
+                <button class="qty-btn" onclick="qty('t-v', -1)">-</button><span id="t-v">0</span><button class="qty-btn" onclick="qty('t-v', 1)">+</button>
             </div>
-            <div id="tab-info" class="details-box">Power-packed tablets for daily energy and strength.</div>
-            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px; font-size: 12px;">Add to Cart</button>
+            <div id="tab-info" class="details-box">Power-packed tablets for internal strength.</div>
+            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px; font-size:12px;">Add to Cart</button>
         </div>
 
         <div class="card" onclick="toggleDetails('p3-info')">
-            <div class="product-img-box"><img src="booster-pills-1.png" id="img-p3" alt="Booster Pills"></div>
+            <div class="product-img-box"><img src="booster-pills-1.png" id="img-p3"></div>
             <div class="thumb-container" onclick="event.stopPropagation()">
                 <img src="booster-pills-1.png" class="thumb" onclick="changeImage('img-p3', 'booster-pills-1.png')">
                 <img src="booster-pills-2.png" class="thumb" onclick="changeImage('img-p3', 'booster-pills-2.png')">
                 <img src="booster-pills-3.png" class="thumb" onclick="changeImage('img-p3', 'booster-pills-3.png')">
             </div>
-            <h3 style="color: var(--gold);">Booster 3X Pills</h3>
-            <p style="font-size: 22px; font-weight: 700;">₹2,590</p>
+            <h3 style="color:var(--gold);">Booster 3X Pills</h3>
+            <p style="font-size:22px; font-weight:700;">₹2,590</p>
             <div class="qty-ctrl" onclick="event.stopPropagation()">
-                <button class="qty-btn" onclick="qty('p3-v', -1)">-</button>
-                <span id="p3-v" style="font-weight:700;">0</span>
-                <button class="qty-btn" onclick="qty('p3-v', 1)">+</button>
+                <button class="qty-btn" onclick="qty('p3-v', -1)">-</button><span id="p3-v">0</span><button class="qty-btn" onclick="qty('p3-v', 1)">+</button>
             </div>
-            <div id="p3-info" class="details-box">Instant performance booster for peak energy levels.</div>
-            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px; font-size: 12px;">Add to Cart</button>
+            <div id="p3-info" class="details-box">Instant performance booster for peak energy.</div>
+            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px; font-size:12px;">Add to Cart</button>
         </div>
 
         <div class="card" onclick="toggleDetails('p4-info')">
-            <div class="product-img-box"><img src="booster-cream-1.png" id="img-p4" alt="Booster Cream"></div>
+            <div class="product-img-box"><img src="booster-cream-1.png" id="img-p4"></div>
             <div class="thumb-container" onclick="event.stopPropagation()">
                 <img src="booster-cream-1.png" class="thumb" onclick="changeImage('img-p4', 'booster-cream-1.png')">
                 <img src="booster-cream-2.png" class="thumb" onclick="changeImage('img-p4', 'booster-cream-2.png')">
                 <img src="booster-cream-3.png" class="thumb" onclick="changeImage('img-p4', 'booster-cream-3.png')">
             </div>
-            <h3 style="color: var(--gold);">Booster Cream</h3>
-            <p style="font-size: 22px; font-weight: 700;">₹2,590</p>
+            <h3 style="color:var(--gold);">Booster Cream</h3>
+            <p style="font-size:22px; font-weight:700;">₹2,590</p>
             <div class="qty-ctrl" onclick="event.stopPropagation()">
-                <button class="qty-btn" onclick="qty('p4-v', -1)">-</button>
-                <span id="p4-v" style="font-weight:700;">0</span>
-                <button class="qty-btn" onclick="qty('p4-v', 1)">+</button>
+                <button class="qty-btn" onclick="qty('p4-v', -1)">-</button><span id="p4-v">0</span><button class="qty-btn" onclick="qty('p4-v', 1)">+</button>
             </div>
-            <div id="p4-info" class="details-box">Performance badati hai, tightness lati hai aur instant result deti hai.</div>
-            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px; font-size: 12px;">Add to Cart</button>
+            <div id="p4-info" class="details-box">Performance badati hai, tightness lati hai.</div>
+            <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px; font-size:12px;">Add to Cart</button>
         </div>
     </div>
 </section>
 
+<section class="lifestyle ls-2"><div class="ls-content"><h2 style="color:var(--gold); font-size:40px;">Pure Ayurvedic Power</h2><p>Trusted by thousands for real results.</p></div></section>
+
 <section id="checkout-section">
     <div class="checkout" id="order-box">
-        <h2 style="color: var(--gold); text-align: center; margin-bottom: 20px;">SECURE CHECKOUT</h2>
+        <h2 style="color:var(--gold); text-align:center; margin-bottom:20px;">SECURE CHECKOUT</h2>
         <div class="bill-sum" id="bill-display">Cart is empty.</div>
         <form id="submit-order" style="display:none;">
-            <div class="form-group"><label>FULL NAME</label><input type="text" id="name" required></div>
-            <div class="form-group"><label>MOBILE NUMBER</label><input type="tel" id="phone" pattern="[0-9]{10}" required></div>
-            <div class="form-group"><label>SHIPPING ADDRESS</label><textarea id="addr" rows="3" required></textarea></div>
+            <div class="form-group"><input type="text" id="name" placeholder="Full Name" required></div>
+            <div class="form-group"><input type="tel" id="phone" placeholder="Mobile Number" pattern="[0-9]{10}" required></div>
+            <div class="form-group"><textarea id="addr" placeholder="Shipping Address" rows="3" required></textarea></div>
             <div class="form-group">
-                <label>PAYMENT METHOD</label>
                 <select id="method" onchange="qrToggle()">
                     <option value="COD">Cash on Delivery</option>
                     <option value="Online">Online UPI (Prepaid)</option>
                 </select>
             </div>
-            <div id="qr-section">
-                <img src="your-qr.png" alt="QR Code">
-                <p id="bill-text" style="font-weight:700; color:#d32f2f;"></p>
-                <a id="upilink" href="#" style="background:#28a745; color:#fff; padding:10px; display:block; text-decoration:none; border-radius:8px; font-weight:700; margin-top:10px;">OPEN UPI APP</a>
-            </div>
-            <button type="submit" class="cta-btn" id="sbtn" style="width: 100%; margin-top:20px;">Place Order Now</button>
+            <div id="qr-section"><img src="your-qr.png"><p id="bill-text" style="font-weight:700; color:#d32f2f;"></p></div>
+            <button type="submit" class="cta-btn" id="sbtn" style="width:100%; margin-top:20px;">Place Order Now</button>
         </form>
     </div>
 </section>
 
 <footer>
-    <div class="footer-grid">
-        <div>
-            <h3 style="color: var(--gold);">Nature Ayurveda</h3>
-            <p style="font-size: 13px;">k-19/123, Street No-19, Sangam Vihar, New Delhi 110062<br>Email: TZsupportayurveda@gmail.com</p>
-        </div>
-        <div>
-            <h4 style="color: var(--gold);">Quality Promise</h4>
-            <p style="font-size: 12px;">100% Ayurvedic solutions for premium performance. Lab tested and trusted results.</p>
-        </div>
+    <div style="text-align:center; color:#ccc; font-size:13px;">
+        <p><strong>Owner:</strong> Shivam Gupta | <strong>Company:</strong> Nature Ayurveda</p>
+        <p>Address: k-19/123, Sangam Vihar, New Delhi 110062</p>
+        <p>© 2026 Thunder of Zosh. All Rights Reserved.</p>
     </div>
 </footer>
 
 <script>
     const UPI_ID = "shivam-gupta05@ptyes";
     let cart = { gel: 0, tab: 0, p3: 0, p4: 0 };
-
     function changeImage(id, src) { document.getElementById(id).src = src; }
     function toggleDetails(id) { const p = document.getElementById(id); p.style.display = (p.style.display === 'block') ? 'none' : 'block'; }
     function qty(id, change) { const el = document.getElementById(id); let v = parseInt(el.innerText) + change; if(v >= 0 && v <= 10) el.innerText = v; }
-    
     function addToCart() {
         cart.gel = parseInt(document.getElementById('g-v').innerText);
         cart.tab = parseInt(document.getElementById('t-v').innerText);
         cart.p3 = parseInt(document.getElementById('p3-v').innerText);
         cart.p4 = parseInt(document.getElementById('p4-v').innerText);
-        
-        if(cart.gel + cart.tab + cart.p3 + cart.p4 === 0) { alert("Please select a quantity first!"); return; }
-        
-        const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
+        if(cart.gel+cart.tab+cart.p3+cart.p4 === 0) { alert("Please add items!"); return; }
+        const total = (cart.gel*2999)+(cart.tab*2999)+(cart.p3*2590)+(cart.p4*2590);
         document.getElementById('order-box').style.display = 'block';
         document.getElementById('submit-order').style.display = 'block';
-        
-        let summary = "<strong>Selected Packages:</strong><br>";
-        if(cart.gel > 0) summary += `• Advanced Gel x ${cart.gel}<br>`;
-        if(cart.tab > 0) summary += `• Zosh Tablets x ${cart.tab}<br>`;
-        if(cart.p3 > 0) summary += `• Booster Pills x ${cart.p3}<br>`;
-        if(cart.p4 > 0) summary += `• Booster Cream x ${cart.p4}<br>`;
-        summary += `<div style="color:var(--gold); font-size:20px; font-weight:700; margin-top:10px;">Grand Total: ₹${total.toLocaleString('en-IN')}</div>`;
-        
-        document.getElementById('bill-display').innerHTML = summary;
-        document.getElementById('bill-text').innerText = "Amount: ₹" + total;
+        document.getElementById('bill-display').innerHTML = `Total: ₹${total.toLocaleString('en-IN')}`;
+        document.getElementById('bill-text').innerText = "Payable: ₹" + total;
         window.location.hash = "checkout-section";
     }
-
     function qrToggle() {
         const q = document.getElementById('qr-section');
-        const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
-        if(document.getElementById('method').value === 'Online') {
-            q.style.display = 'block';
-            document.getElementById('upilink').href = `upi://pay?pa=${UPI_ID}&pn=ThunderOfZosh&am=${total}&cu=INR`;
-        } else { q.style.display = 'none'; }
+        if(document.getElementById('method').value === 'Online') q.style.display = 'block'; else q.style.display = 'none';
     }
-
     document.getElementById('submit-order').addEventListener('submit', function(e) {
         e.preventDefault();
-        const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
-        const btn = document.getElementById('sbtn');
-        btn.innerText = "Saving Order..."; btn.disabled = true;
-
-        const data = { 
-            "Timestamp": new Date().toLocaleString('en-IN'), 
-            "Name": document.getElementById('name').value, 
-            "Phone": document.getElementById('phone').value, 
-            "Order": `Gel:${cart.gel}, Tab:${cart.tab}, Pills:${cart.p3}, Cream:${cart.p4}`, 
-            "Total": "₹" + total, 
-            "Address": document.getElementById('addr').value, 
-            "Method": document.getElementById('method').value 
-        };
-
-        fetch('https://sheetdb.io/api/v1/2qqhwik4r33j0', { 
-            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({data: [data]}) 
-        }).then(() => { 
-            document.getElementById('order-box').innerHTML = "<h2 style='color:var(--gold);'>Order Confirmed! ✅</h2><p>Our team will contact you shortly.</p>"; 
-        });
+        const total = (cart.gel*2999)+(cart.tab*2999)+(cart.p3*2590)+(cart.p4*2590);
+        const data = { "Timestamp": new Date().toLocaleString('en-IN'), "Name": document.getElementById('name').value, "Phone": document.getElementById('phone').value, "Order": `Gel:${cart.gel}, Tab:${cart.tab}, Pills:${cart.p3}, Cream:${cart.p4}`, "Bill": "₹" + total, "Address": document.getElementById('addr').value, "Method": document.getElementById('method').value };
+        fetch('https://sheetdb.io/api/v1/2qqhwik4r33j0', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({data: [data]}) })
+        .then(() => { document.getElementById('order-box').innerHTML = "<h2 style='color:var(--gold);'>Order Confirmed! ✅</h2>"; });
     });
 </script>
 </body>
