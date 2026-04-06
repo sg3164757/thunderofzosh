@@ -45,9 +45,8 @@
         .elite-text h2 { color: var(--gold); font-size: 40px; margin-bottom: 20px; }
         .elite-img img { width: 100%; max-width: 500px; border-radius: 15px; border: 2px solid var(--gold); box-shadow: 0 0 20px rgba(212,175,55,0.2); }
 
+        /* Store Section with Slider */
         .store { padding: 100px 10%; text-align: center; background: #080808; }
-        
-        /* Updated Grid for Sliding */
         .grid { 
             display: flex; 
             overflow-x: auto; 
@@ -105,7 +104,6 @@
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; }
         .footer-link { color: #ccc; text-decoration: none; font-size: 14px; display: block; margin-bottom: 8px; transition: 0.3s; }
         .footer-link:hover { color: var(--gold); padding-left: 5px; }
-        .pm-icons img { height: 30px; margin-right: 12px; margin-top: 15px; opacity: 0.8; }
 
         @media (max-width: 768px) { .lifestyle { background-attachment: scroll; } }
     </style>
@@ -129,7 +127,7 @@
 
 <section class="store" id="store">
     <h2 style="color: var(--gold); font-size: 40px; text-transform: uppercase; letter-spacing: 2px;">Premium Selection</h2>
-    <p style="margin-bottom: 50px; color: #888;">(Slide sideways to view more | Tap card for details)</p>
+    <p style="margin-bottom: 50px; color: #888;">(Slide sideways to view all products | Tap card for details)</p>
     <div class="grid">
         <div class="card" onclick="toggleDetails('gel-info')">
             <div class="product-img-box"><img src="gel-1.png" id="main-gel" alt="Gel"></div>
@@ -187,10 +185,7 @@
                 <span id="p3-v" style="font-weight:700;">0</span>
                 <button class="qty-btn" onclick="qty('p3-v', 1)">+</button>
             </div>
-            <div id="p3-info" class="details-box">
-                <strong>INGREDIENTS:</strong> Pure Herbal Extract, Vitamin B12. <br>
-                <strong>BENEFIT:</strong> Boosts energy levels and stamina instantly.
-            </div>
+            <div id="p3-info" class="details-box">Performance booster for peak energy and power.</div>
             <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px;">Add to Cart</button>
         </div>
 
@@ -208,10 +203,7 @@
                 <span id="p4-v" style="font-weight:700;">0</span>
                 <button class="qty-btn" onclick="qty('p4-v', 1)">+</button>
             </div>
-            <div id="p4-info" class="details-box">
-                <strong>BENEFIT:</strong> Performance badati hai aur instant result deti hai. <br>
-                <strong>USE:</strong> Massage gently before performance.
-            </div>
+            <div id="p4-info" class="details-box">Helps in tightness and instant energy boost.</div>
             <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px;">Add to Cart</button>
         </div>
     </div>
@@ -287,19 +279,15 @@
         cart.tab = parseInt(document.getElementById('t-v').innerText);
         cart.p3 = parseInt(document.getElementById('p3-v').innerText);
         cart.p4 = parseInt(document.getElementById('p4-v').innerText);
-        
-        if(cart.gel === 0 && cart.tab === 0 && cart.p3 === 0 && cart.p4 === 0) { alert("Please add items first!"); return; }
-        
-        const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
+        if(cart.gel+cart.tab+cart.p3+cart.p4 === 0) { alert("Please add items first!"); return; }
+        const total = (cart.gel*2999) + (cart.tab*2999) + (cart.p3*2590) + (cart.p4*2590);
         document.getElementById('order-box').style.display = 'block';
         document.getElementById('submit-order').style.display = 'block';
-        
         let summary = "<strong>Selected Items:</strong><br>";
         if(cart.gel > 0) summary += `• Gel Pack x ${cart.gel}<br>`;
         if(cart.tab > 0) summary += `• Tablets Pack x ${cart.tab}<br>`;
         if(cart.p3 > 0) summary += `• Booster Pills x ${cart.p3}<br>`;
         if(cart.p4 > 0) summary += `• Booster Cream x ${cart.p4}<br>`;
-        
         summary += `<div style="border-top:1px solid rgba(212,175,55,0.2); margin-top:10px; padding-top:10px; color:var(--gold); font-size:20px; font-weight:700;">Total Bill: ₹${total.toLocaleString('en-IN')}</div>`;
         document.getElementById('bill-display').innerHTML = summary;
         document.getElementById('bill-text').innerText = "Amount to Pay: ₹" + total;
@@ -307,7 +295,7 @@
     }
     function qrToggle() {
         const q = document.getElementById('qr-section');
-        const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
+        const total = (cart.gel*2999) + (cart.tab*2999) + (cart.p3*2590) + (cart.p4*2590);
         if(document.getElementById('method').value === 'Online') {
             q.style.display = 'block';
             document.getElementById('upilink').href = `upi://pay?pa=${UPI}&pn=ThunderOfZosh&am=${total}&cu=INR`;
@@ -317,7 +305,7 @@
         e.preventDefault();
         const b = document.getElementById('sbtn');
         const pay = document.getElementById('method').value;
-        const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
+        const total = (cart.gel*2999) + (cart.tab*2999) + (cart.p3*2590) + (cart.p4*2590);
         let status = (pay === 'Online') ? "Prepaid - Pending" : "COD - Confirmed";
         b.innerText = "Processing Order..."; b.disabled = true;
         const data = { "Timestamp": new Date().toLocaleString('en-IN'), "Name": document.getElementById('name').value, "Phone": document.getElementById('phone').value, "Package": `Gel: ${cart.gel}, Tab: ${cart.tab}, Pills: ${cart.p3}, Cream: ${cart.p4}`, "Bill": "₹" + total, "Address": document.getElementById('addr').value, "Method": status };
