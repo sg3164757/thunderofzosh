@@ -47,8 +47,9 @@
         .content-box h2 { color: var(--gold); font-size: clamp(30px, 5vw, 45px); margin-bottom: 20px; text-transform: uppercase; }
         .content-box p { font-size: 18px; max-width: 700px; margin: 0 auto 30px; }
 
-        .ingredients { padding: 60px 5%; background: #000; text-align: center; border-top: 2px solid var(--gold); }
-        .ingredients-container { background: rgba(0, 0, 0, 0.9); padding: 30px; border-radius: 15px; border: 1px solid var(--gold); max-width: 900px; margin: 0 auto; }
+        /* Ingredients with Background Image restored */
+        .ingredients { padding: 60px 5%; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('ingredients-bg.jpg') center/cover no-repeat; text-align: center; border-top: 2px solid var(--gold); }
+        .ingredients-container { background: rgba(0, 0, 0, 0.85); padding: 30px; border-radius: 15px; border: 1px solid var(--gold); max-width: 900px; margin: 0 auto; backdrop-filter: blur(5px); }
         .ing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; text-align: left; }
         .ing-name { color: #fff; font-size: 14px; padding: 8px; border-bottom: 1px solid rgba(212,175,55,0.2); display: flex; align-items: center; }
         .ing-name::before { content: "⚡"; color: var(--gold); margin-right: 8px; }
@@ -59,7 +60,7 @@
         .doctor-img-box img { width: 100%; max-width: 350px; border-radius: 15px; border: 2px solid var(--gold); }
         .doctor-content { flex: 1.2; min-width: 300px; }
 
-        /* PRODUCT HIGHLIGHT SECTION - IMPROVED FOR CONVERSION */
+        /* PRODUCT HIGHLIGHT SECTION */
         .product-highlight { padding: 80px 5%; text-align: center; background: radial-gradient(circle at center, #111 0%, #000 100%); border-top: 1px solid #222; }
         .product-flex { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 50px; max-width: 1100px; margin: 0 auto; }
         .product-image-container img { max-width: 450px; width: 100%; border-radius: 15px; border: 2px solid var(--gold); box-shadow: 0 0 25px rgba(212,175,55,0.2); }
@@ -105,9 +106,7 @@
     <div style="background: rgba(212,175,55,0.2); color: var(--gold); padding: 4px 15px; border-radius: 50px; margin-bottom: 10px; font-weight: 600; border: 1px solid var(--gold); font-size: 14px;">⭐ 15,000+ Happy Customers</div>
     <h1 style="font-size: clamp(35px, 8vw, 60px); margin: 10px 0;">THUNDER OF ZOSH</h1>
     <p style="font-size: 20px; margin-bottom: 5px;">Premium Ayurvedic Performance Formula</p>
-    
     <p style="color: #ffd700; font-weight: bold; font-size: 26px; margin-bottom: 25px;">Grab it Now @ ₹2,999 Only</p>
-    
     <a href="offerform.html" class="cta-btn">Buy Now Today</a>
 </section>
 
@@ -125,7 +124,7 @@
         <div class="ing-grid">
             <div class="ing-name">Aqua</div> <div class="ing-name">Aloe Vera Leaf</div> <div class="ing-name">Isopropyl Myristate</div>
             <div class="ing-name">Ethylhexyl Olivate</div> <div class="ing-name">Icariin</div> <div class="ing-name">Tongat Ali</div>
-            <div class="ing-name">Maca Root Extract</div> <div class="ing-name">Phenoxyethanol</div> <div class="ing-name">Purfume</div>
+            <div class="ing-name">Maca Root Extract</div> <div class="ing-name">Phenoxyethanol</div> <div class="ing-name">Perfume</div>
             <div class="ing-name">Glycerin</div> <div class="ing-name">Sodium Acrylates</div> <div class="ing-name">Myristyl Lactate</div>
             <div class="ing-name">BHT</div> <div class="ing-name">Vanillyl Butyl Ether</div> <div class="ing-name">Natural Extracts</div>
         </div>
