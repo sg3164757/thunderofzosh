@@ -107,6 +107,27 @@
         .pm-icons img { height: 30px; margin-right: 12px; margin-top: 15px; opacity: 0.8; }
 
         @media (max-width: 768px) { .lifestyle { background-attachment: scroll; } }
+        /* Product Detail Popup Design */
+.modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95); z-index: 2000; overflow-y: auto; padding: 20px;
+}
+.modal-content {
+    background: #111; max-width: 900px; margin: 40px auto; border-radius: 20px;
+    border: 1px solid var(--gold); display: flex; flex-wrap: wrap; position: relative;
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+}
+.close-modal {
+    position: absolute; top: 15px; right: 20px; font-size: 35px; color: var(--gold);
+    cursor: pointer; z-index: 10;
+}
+.modal-left { flex: 1; min-width: 300px; padding: 30px; text-align: center; }
+.modal-right { flex: 1; min-width: 300px; padding: 30px; border-left: 1px solid #222; }
+.zoom-container { overflow: hidden; border-radius: 15px; background: #000; cursor: zoom-in; margin-bottom: 15px; }
+.zoom-container img { width: 100%; transition: transform 0.5s ease; }
+.zoom-container:hover img { transform: scale(1.5); }
+.detail-tag { color: var(--gold); font-weight: 700; margin-top: 20px; display: block; border-bottom: 1px solid #333; padding-bottom: 5px; text-transform: uppercase; }
+.result-box { background: rgba(212,175,55,0.1); padding: 15px; border-radius: 10px; margin-top: 20px; border: 1px dashed var(--gold); }
     </style>
 </head>
 <body>
@@ -130,7 +151,7 @@
     <h2 style="color: var(--gold); font-size: 40px; text-transform: uppercase; letter-spacing: 2px;">Premium Selection</h2>
     <p style="margin-bottom: 10px; color: #888;">(Slide sideways to see more products ➔)</p>
     <div class="grid">
-        <div class="card" onclick="toggleDetails('gel-info')">
+        <div class="card" onclick="openProduct('gel')">
             <div class="product-img-box"><img src="gel-1.png" id="main-gel" alt="Gel"></div>
             <div class="thumb-container" onclick="event.stopPropagation()">
                 <img src="gel-1.png" class="thumb" onclick="changeImage('main-gel', 'gel-1.png')">
@@ -145,14 +166,10 @@
                 <span id="g-v" style="font-weight:700;">0</span>
                 <button class="qty-btn" onclick="qty('g-v', 1)">+</button>
             </div>
-            <div id="gel-info" class="details-box">
-                <strong>INGREDIENTS:</strong> Icariin, Maca root, Aloe Vera. <br>
-                <strong>HOW TO USE:</strong> Apply around genital area for rejuvenation.
-            </div>
             <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px;">Add to Cart</button>
         </div>
 
-        <div class="card" onclick="toggleDetails('tab-info')">
+        <div class="card" onclick="openProduct('tab')">
             <div class="product-img-box"><img src="tab-1.png" id="main-tab" alt="Tablets"></div>
             <div class="thumb-container" onclick="event.stopPropagation()">
                 <img src="tab-1.png" class="thumb" onclick="changeImage('main-tab', 'tab-1.png')">
@@ -167,14 +184,10 @@
                 <span id="t-v" style="font-weight:700;">0</span>
                 <button class="qty-btn" onclick="qty('t-v', 1)">+</button>
             </div>
-            <div id="tab-info" class="details-box">
-                <strong>INGREDIENTS:</strong> Ashwagandha, Shilajit, Icariin. <br>
-                <strong>HOW TO USE:</strong> Take one capsule daily with water.
-            </div>
             <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px;">Add to Cart</button>
         </div>
 
-        <div class="card" onclick="toggleDetails('p3-info')">
+        <div class="card" onclick="openProduct('p3')">
             <div class="product-img-box"><img src="booster-pills-1.png" id="main-p3" alt="Pills"></div>
             <div class="thumb-container" onclick="event.stopPropagation()">
                 <img src="booster-pills-1.png" class="thumb" onclick="changeImage('main-p3', 'booster-pills-1.png')">
@@ -189,11 +202,10 @@
                 <span id="p3-v" style="font-weight:700;">0</span>
                 <button class="qty-btn" onclick="qty('p3-v', 1)">+</button>
             </div>
-            <div id="p3-info" class="details-box">Advanced herbal pills for peak stamina.</div>
             <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px;">Add to Cart</button>
         </div>
 
-        <div class="card" onclick="toggleDetails('p4-info')">
+        <div class="card" onclick="openProduct('p4')">
             <div class="product-img-box"><img src="booster-cream-1.png" id="main-p4" alt="Cream"></div>
             <div class="thumb-container" onclick="event.stopPropagation()">
                 <img src="booster-cream-1.png" class="thumb" onclick="changeImage('main-p4', 'booster-cream-1.png')">
@@ -208,7 +220,6 @@
                 <span id="p4-v" style="font-weight:700;">0</span>
                 <button class="qty-btn" onclick="qty('p4-v', 1)">+</button>
             </div>
-            <div id="p4-info" class="details-box">Special cream for immediate effectiveness.</div>
             <button class="cta-btn" onclick="addToCart()" style="width:100%; margin-top:10px;">Add to Cart</button>
         </div>
     </div>
@@ -289,9 +300,96 @@
         © 2026 Thunder of Zosh | TZ Nature Ayurveda. All Rights Reserved.
     </div>
 </footer>
-
+<div id="productModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeProduct()">&times;</span>
+        <div class="modal-left">
+            <div class="zoom-container"><img id="modalMainImg" src="" alt="Product"></div>
+            <div id="modalThumbs" class="thumb-container"></div>
+        </div>
+        <div class="modal-right">
+            <h2 id="modalTitle" style="color: var(--gold); margin: 0;"></h2>
+            <div id="modalRating" class="rating" style="color: #ffcc00; margin: 10px 0;"></div>
+            <p id="modalPrice" style="font-size: 28px; font-weight: 700; color: #fff; margin: 10px 0;"></p>
+            
+            <span class="detail-tag">Product Jankari:</span>
+            <p id="modalDesc" style="color: #ccc; font-size: 14px; line-height: 1.6;"></p>
+            
+            <span class="detail-tag">Kaise Use Karein:</span>
+            <p id="modalUsage" style="color: #ccc; font-size: 14px; line-height: 1.6;"></p>
+            
+            <div class="result-box">
+                <strong style="color: var(--gold);">Fast Results:</strong>
+                <p id="modalEffect" style="margin: 5px 0 0; font-size: 13px; color: #fff;"></p>
+            </div>
+            <button class="cta-btn" onclick="closeProduct(); addToCart();" style="width: 100%; margin-top: 20px;">Order Now</button>
+        </div>
+    </div>
+</div>
 <script>
     const UPI = "shivam-gupta05@ptyes";
+    const productData = {
+    'gel': {
+        title: "Advanced Gel Formula",
+        rating: "★★★★½ 4.8 (12,849 Reviews)",
+        price: "₹2,999",
+        desc: "Ye gel skin ke tissues ko relax karta hai aur blood circulation ko turant badhata hai.",
+        usage: "Halke haath se 2-minute massage karein. Ise dhone ki zarurat nahi hai.",
+        effect: "Pehle 3-5 dinon mein hi aapko tightness aur freshness mehsoos hone lagegi.",
+        imgs: ["gel-1.png", "gel-2.png", "gel-3.png"]
+    },
+    'tab': {
+        title: "Zosh Tablets (30 Caps)",
+        rating: "★★★★½ 4.8 (11,263 Reviews)",
+        price: "₹2,999",
+        desc: "Energy aur stamina badhane ke liye shuddh Ayurvedic tablets.",
+        usage: "Rozana ek tablet raat ko gungune doodh ya paani ke saath lein.",
+        effect: "10 dinon mein stamina aur energy mein bada izafa hota hai.",
+        imgs: ["tab-1.png", "tab-2.png", "tab-3.png"]
+    },
+    'p3': {
+        title: "Booster 3X Pills",
+        rating: "★★★★½ 4.8 (9,852 Reviews)",
+        price: "₹2,590",
+        desc: "High intensity endurance ke liye 3X concentrate formula.",
+        usage: "Zarurat ke hisab se 1 goli lein.",
+        effect: "Istemal ke 30 minute ke andar hi asar dikhana shuru hota hai.",
+        imgs: ["booster-pills-1.png", "booster-pills-2.png", "booster-pills-3.png"]
+    },
+    'p4': {
+        title: "Booster Cream",
+        rating: "★★★★½ 4.8 (10,471 Reviews)",
+        price: "₹2,590",
+        desc: "Sensitive areas ki strength badhane ke liye external use cream.",
+        usage: "Thodi cream lein aur absorb hone tak massage karein.",
+        effect: "Turant cooling aur long-term strength ke liye 1 mahine ka course.",
+        imgs: ["booster-cream-1.png", "booster-cream-2.png", "booster-cream-3.png"]
+    }
+};
+
+function openProduct(type) {
+    const data = productData[type];
+    document.getElementById('modalTitle').innerText = data.title;
+    document.getElementById('modalRating').innerHTML = data.rating;
+    document.getElementById('modalPrice').innerText = data.price;
+    document.getElementById('modalDesc').innerText = data.desc;
+    document.getElementById('modalUsage').innerText = data.usage;
+    document.getElementById('modalEffect').innerText = data.effect;
+    document.getElementById('modalMainImg').src = data.imgs[0];
+    
+    let thumbHtml = '';
+    data.imgs.forEach(img => {
+        thumbHtml += `<img src="${img}" style="width:60px; height:60px; margin:5px; cursor:pointer; border:1px solid #333; border-radius:5px;" onclick="document.getElementById('modalMainImg').src='${img}'">`;
+    });
+    document.getElementById('modalThumbs').innerHTML = thumbHtml;
+    document.getElementById('productModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProduct() {
+    document.getElementById('productModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
     let cart = { gel: 0, tab: 0, p3: 0, p4: 0 };
     function changeImage(targetId, newSrc) { document.getElementById(targetId).src = newSrc; }
     function toggleDetails(id) { const p = document.getElementById(id); p.style.display = (p.style.display === 'block') ? 'none' : 'block'; }
