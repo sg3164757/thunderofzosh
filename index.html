@@ -322,47 +322,46 @@
                 <strong style="color: var(--gold);">Fast Results:</strong>
                 <p id="modalEffect" style="margin: 5px 0 0; font-size: 13px; color: #fff;"></p>
             </div>
-            <button class="cta-btn" onclick="closeProduct(); addToCart();" style="width: 100%; margin-top: 20px;">Order Now</button>
+            <button id="popupOrderBtn" class="cta-btn" style="width: 100%; margin-top: 20px;">Order Now</button>
         </div>
     </div>
 </div>
 <script>
-    const UPI = "shivam-gupta05@ptyes";
     const productData = {
     'gel': {
         title: "Advanced Gel Formula",
         rating: "★★★★½ 4.8 (12,849 Reviews)",
         price: "₹2,999",
-        desc: "Ye gel skin ke tissues ko relax karta hai aur blood circulation ko turant badhata hai.",
-        usage: "Halke haath se 2-minute massage karein. Ise dhone ki zarurat nahi hai.",
-        effect: "Pehle 3-5 dinon mein hi aapko tightness aur freshness mehsoos hone lagegi.",
+        desc: "This advanced formula is designed to rejuvenate skin tissues and improve micro-circulation for peak performance.",
+        usage: "Gently massage a small amount for 2 minutes until fully absorbed. No need to wash off.",
+        effect: "Visible improvements in vitality and texture within 3-5 days of consistent use.",
         imgs: ["gel-1.png", "gel-2.png", "gel-3.png"]
     },
     'tab': {
         title: "Zosh Tablets (30 Caps)",
         rating: "★★★★½ 4.8 (11,263 Reviews)",
         price: "₹2,999",
-        desc: "Energy aur stamina badhane ke liye shuddh Ayurvedic tablets.",
-        usage: "Rozana ek tablet raat ko gungune doodh ya paani ke saath lein.",
-        effect: "10 dinon mein stamina aur energy mein bada izafa hota hai.",
+        desc: "Formulated with premium Ashwagandha and Shilajit to boost natural energy and overall stamina.",
+        usage: "Consume one tablet daily with lukewarm milk or water after dinner.",
+        effect: "Enhanced energy levels and reduced fatigue within 10 days of the course.",
         imgs: ["tab-1.png", "tab-2.png", "tab-3.png"]
     },
     'p3': {
         title: "Booster 3X Pills",
         rating: "★★★★½ 4.8 (9,852 Reviews)",
         price: "₹2,590",
-        desc: "High intensity endurance ke liye 3X concentrate formula.",
-        usage: "Zarurat ke hisab se 1 goli lein.",
-        effect: "Istemal ke 30 minute ke andar hi asar dikhana shuru hota hai.",
+        desc: "A high-potency concentrate for individuals seeking maximum endurance and strength.",
+        usage: "Take 1 pill as required or follow the prescribed 15-day recovery cycle.",
+        effect: "Fast-acting formula designed to show impact within 30-45 minutes.",
         imgs: ["booster-pills-1.png", "booster-pills-2.png", "booster-pills-3.png"]
     },
     'p4': {
         title: "Booster Cream",
         rating: "★★★★½ 4.8 (10,471 Reviews)",
         price: "₹2,590",
-        desc: "Sensitive areas ki strength badhane ke liye external use cream.",
-        usage: "Thodi cream lein aur absorb hone tak massage karein.",
-        effect: "Turant cooling aur long-term strength ke liye 1 mahine ka course.",
+        desc: "Topical application cream for immediate skin conditioning and long-term strength support.",
+        usage: "Apply thin layer to the targeted area and massage until dry.",
+        effect: "Immediate cooling effect followed by long-term rejuvenation over 4 weeks.",
         imgs: ["booster-cream-1.png", "booster-cream-2.png", "booster-cream-3.png"]
     }
 };
@@ -384,6 +383,23 @@ function openProduct(type) {
     document.getElementById('modalThumbs').innerHTML = thumbHtml;
     document.getElementById('productModal').style.display = 'block';
     document.body.style.overflow = 'hidden';
+    document.getElementById('popupOrderBtn').onclick = function() {
+        const qtyId = type === 'gel' ? 'g-v' : type === 'tab' ? 't-v' : type === 'p3' ? 'p3-v' : 'p4-v';
+        let currentQty = parseInt(document.getElementById(qtyId).innerText);
+        
+        if (currentQty === 0) { 
+            document.getElementById(qtyId).innerText = "1"; 
+        }
+        
+        addToCart(); 
+        closeProduct();
+        
+        // Form par scroll karne ke liye
+        const orderForm = document.getElementById('order');
+        if(orderForm) {
+            orderForm.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 }
 
 function closeProduct() {
