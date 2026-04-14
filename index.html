@@ -82,6 +82,10 @@
         .thumb { width: 45px; height: 45px; border: 1px solid #333; border-radius: 5px; cursor: pointer; object-fit: cover; transition: 0.3s; }
         .thumb:hover { border-color: var(--gold); }
 
+        /* Rating Style */
+        .rating { color: var(--gold); margin-bottom: 5px; font-size: 14px; display: flex; align-items: center; gap: 5px; }
+        .rating span { color: #888; font-size: 12px; }
+
         .qty-ctrl { display: flex; align-items: center; justify-content: center; gap: 20px; margin: 15px 0; background: #000; padding: 10px; border-radius: 10px; border: 1px solid #333; width: fit-content; }
         .qty-btn { background: none; border: none; color: var(--gold); font-size: 24px; cursor: pointer; width: 40px; font-weight: 700; }
         .details-box { display: none; background: #000; padding: 15px; border-radius: 10px; margin-top: 15px; border-top: 1px solid var(--gold); font-size: 14px; color: #ccc; }
@@ -133,7 +137,8 @@
                 <img src="gel-2.png" class="thumb" onclick="changeImage('main-gel', 'gel-2.png')">
                 <img src="gel-3.png" class="thumb" onclick="changeImage('main-gel', 'gel-3.png')">
             </div>
-            <h3 style="color: var(--gold);">Advanced Gel Formula</h3>
+            <h3 style="color: var(--gold); margin-bottom: 5px;">Advanced Gel Formula</h3>
+            <div class="rating">★★★★½ 4.8 <span>(12,849 Reviews)</span></div>
             <p style="font-size: 24px; font-weight: 700;">₹2,999</p>
             <div class="qty-ctrl" onclick="event.stopPropagation()">
                 <button class="qty-btn" onclick="qty('g-v', -1)">-</button>
@@ -154,7 +159,8 @@
                 <img src="tab-2.png" class="thumb" onclick="changeImage('main-tab', 'tab-2.png')">
                 <img src="tab-3.png" class="thumb" onclick="changeImage('main-tab', 'tab-3.png')">
             </div>
-            <h3 style="color: var(--gold);">Zosh Tablets (30 Caps)</h3>
+            <h3 style="color: var(--gold); margin-bottom: 5px;">Zosh Tablets (30 Caps)</h3>
+            <div class="rating">★★★★½ 4.8 <span>(11,263 Reviews)</span></div>
             <p style="font-size: 24px; font-weight: 700;">₹2,999</p>
             <div class="qty-ctrl" onclick="event.stopPropagation()">
                 <button class="qty-btn" onclick="qty('t-v', -1)">-</button>
@@ -175,7 +181,8 @@
                 <img src="booster-pills-2.png" class="thumb" onclick="changeImage('main-p3', 'booster-pills-2.png')">
                 <img src="booster-pills-3.png" class="thumb" onclick="changeImage('main-p3', 'booster-pills-3.png')">
             </div>
-            <h3 style="color: var(--gold);">Booster 3X Pills</h3>
+            <h3 style="color: var(--gold); margin-bottom: 5px;">Booster 3X Pills</h3>
+            <div class="rating">★★★★½ 4.8 <span>(9,852 Reviews)</span></div>
             <p style="font-size: 24px; font-weight: 700;">₹2,590</p>
             <div class="qty-ctrl" onclick="event.stopPropagation()">
                 <button class="qty-btn" onclick="qty('p3-v', -1)">-</button>
@@ -193,7 +200,8 @@
                 <img src="booster-cream-2.png" class="thumb" onclick="changeImage('main-p4', 'booster-cream-2.png')">
                 <img src="booster-cream-3.png" class="thumb" onclick="changeImage('main-p4', 'booster-cream-3.png')">
             </div>
-            <h3 style="color: var(--gold);">Booster Cream</h3>
+            <h3 style="color: var(--gold); margin-bottom: 5px;">Booster Cream</h3>
+            <div class="rating">★★★★½ 4.8 <span>(10,471 Reviews)</span></div>
             <p style="font-size: 24px; font-weight: 700;">₹2,590</p>
             <div class="qty-ctrl" onclick="event.stopPropagation()">
                 <button class="qty-btn" onclick="qty('p4-v', -1)">-</button>
