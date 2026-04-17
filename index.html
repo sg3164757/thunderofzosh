@@ -39,12 +39,14 @@
     min-height: 100%;
     width: auto;
     height: auto;
-    z-index: -0;
+    z-index: 0; /* Isse video background mein rahegi */
     transform: translate(-50%, -50%);
     object-fit: cover;
 }
+
 .hero-content {
-    z-index: 1;
+    position: relative; /* Ye line add karna zaroori hai */
+    z-index: 1; /* Isse text video ke upar dikhega */
 }
 .hero h1 { font-size: clamp(40px, 8vw, 80px); color: var(--gold); margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 5px; text-shadow: 0 0 30px var(--gold-glow); }
 .hero p { font-size: clamp(18px, 3vw, 24px); margin-top: 10px; margin-bottom: 35px; color: white; }
@@ -272,11 +274,12 @@
                     <option value="Online">Online UPI (Prepaid)</option>
                 </select>
             </div>
-            <div id="qr-section">
-                <img src="your-qr.png">
-                <p id="bill-text" style="font-weight:700; color:#d32f2f; font-size:18px;"></p>
-                <a id="upilink" href="#" style="background:#28a745; color:#fff; padding:12px; display:block; text-decoration:none; border-radius:8px; font-weight:700; margin-top:10px;">PAY VIA UPI APP</a>
-            </div>
+            <div id="qr-section" style="display:none; text-align:center; margin-top: 20px; border: 1px dashed var(--gold); padding: 15px;">
+    <p style="color:var(--gold); margin-bottom:10px;">Scan QR to Pay</p>
+    <img src="your-qr.png" style="width:200px; border-radius:10px;">
+    <p id="bill-text" style="font-weight:700; color:#fff; font-size:18px; margin:10px 0;"></p>
+    <a id="upilink" href="#" style="background:#28a745; color:#fff; padding:12px; display:block; text-decoration:none; border-radius:8px; font-weight:700;">PAY NOW VIA UPI</a>
+</div>
             <button type="submit" class="cta-btn" id="sbtn" style="width: 100%; margin-top:25px;">Place Order Now</button>
         </form>
     </div>
@@ -499,6 +502,14 @@ function closeProduct() {
             document.getElementById('order-box').innerHTML = "<h2 style='color:var(--gold); text-align:center;'>Order Successful! ✅</h2><p style='text-align:center;'>We will contact you soon for confirmation.</p>";
         });
     });
+    function qrToggle() {
+        const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
+        const q = document.getElementById('qr-section');
+        if(document.getElementById('method').value === 'Online') {
+            q.style.display = 'block';
+            document.getElementById('upilink').href = "upi://pay?pa=shivamgupta@okaxis&pn=ThunderOfZosh&am=" + total + "&cu=INR";
+        } else { q.style.display = 'none'; }
+    }
 </script>
 </body>
 </html>
