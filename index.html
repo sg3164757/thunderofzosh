@@ -526,13 +526,12 @@ function closeProduct() {
     };
 
     // 3. Sabhi jagah data bhejte hain (CRM, Sheets, Formspree)
-    Promise.all([
-        // Yahan 'YOUR_CRM_API_URL' ki jagah apna CRM link paste karein
-        fetch('YOUR_CRM_API_URL', { 
-            method: 'POST', 
-            headers: {'Content-Type': 'application/json'}, 
-            body: JSON.stringify(crmData) 
-        }),
+Promise.all([
+    fetch('https://nutraflowcrm.vercel.app/api/webhook/lead', {
+        method: 'POST', 
+        headers: {'Content-Type': 'application/json'}, 
+        body: JSON.stringify(crmData) 
+    }),
         fetch('https://sheetdb.io/api/v1/2qqhwik4r33j0', { 
             method: 'POST', 
             headers: {'Content-Type': 'application/json'}, 
