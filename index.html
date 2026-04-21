@@ -378,90 +378,92 @@
     </div>
 </div>
 <script>
+ <script>
     const productData = {
-    'gel': {
-        title: "Advanced Gel Formula",
-        rating: "★★★★½ 4.8 (12,849 Reviews)",
-        price: "₹2,999",
-        desc: "This advanced formula is designed to rejuvenate skin tissues and improve micro-circulation for peak performance.",
-        usage: "Gently massage a small amount for 2 minutes until fully absorbed. No need to wash off.",
-        effect: "Visible improvements in vitality and texture within 3-5 days of consistent use.",
-        imgs: ["gel-1.png", "gel-2.png", "gel-3.png"]
-    },
-    'tab': {
-        title: "Zosh Tablets (30 Caps)",
-        rating: "★★★★½ 4.8 (11,263 Reviews)",
-        price: "₹2,999",
-        desc: "Formulated with premium Ashwagandha and Shilajit to boost natural energy and overall stamina.",
-        usage: "Consume one tablet daily with lukewarm milk or water after dinner.",
-        effect: "Enhanced energy levels and reduced fatigue within 10 days of the course.",
-        imgs: ["tab-1.png", "tab-2.png", "tab-3.png"]
-    },
-    'p3': {
-        title: "Booster 3X Pills",
-        rating: "★★★★½ 4.8 (9,852 Reviews)",
-        price: "₹2,590",
-        desc: "A high-potency concentrate for individuals seeking maximum endurance and strength.",
-        usage: "Take 1 pill as required or follow the prescribed 15-day recovery cycle.",
-        effect: "Fast-acting formula designed to show impact within 30-45 minutes.",
-        imgs: ["booster-pills-1.png", "booster-pills-2.png", "booster-pills-3.png"]
-    },
-    'p4': {
-        title: "Booster Cream",
-        rating: "★★★★½ 4.8 (10,471 Reviews)",
-        price: "₹2,590",
-        desc: "Topical application cream for immediate skin conditioning and long-term strength support.",
-        usage: "Apply thin layer to the targeted area and massage until dry.",
-        effect: "Immediate cooling effect followed by long-term rejuvenation over 4 weeks.",
-        imgs: ["booster-cream-1.png", "booster-cream-2.png", "booster-cream-3.png"]
-    }
-};
-
-function openProduct(type) {
-    const data = productData[type];
-    document.getElementById('modalTitle').innerText = data.title;
-    document.getElementById('modalRating').innerHTML = data.rating;
-    document.getElementById('modalPrice').innerText = data.price;
-    document.getElementById('modalDesc').innerText = data.desc;
-    document.getElementById('modalUsage').innerText = data.usage;
-    document.getElementById('modalEffect').innerText = data.effect;
-    document.getElementById('modalMainImg').src = data.imgs[0];
-    
-    let thumbHtml = '';
-    data.imgs.forEach(img => {
-        thumbHtml += `<img src="${img}" style="width:60px; height:60px; margin:5px; cursor:pointer; border:1px solid #333; border-radius:5px;" onclick="document.getElementById('modalMainImg').src='${img}'">`;
-    });
-    document.getElementById('modalThumbs').innerHTML = thumbHtml;
-    document.getElementById('productModal').style.display = 'block';
-    document.body.style.overflow = 'hidden';
-    document.getElementById('popupOrderBtn').onclick = function() {
-        const qtyId = type === 'gel' ? 'g-v' : type === 'tab' ? 't-v' : type === 'p3' ? 'p3-v' : 'p4-v';
-        let currentQty = parseInt(document.getElementById(qtyId).innerText);
-        
-        if (currentQty === 0) { 
-            document.getElementById(qtyId).innerText = "1"; 
-        }
-        
-        addToCart(); 
-        closeProduct();
-        
-        // Form par scroll karne ke liye
-        const orderForm = document.getElementById('order');
-        if(orderForm) {
-            orderForm.scrollIntoView({ behavior: 'smooth' });
+        'gel': {
+            title: "Advanced Gel Formula",
+            rating: "★★★★½ 4.8 (12,849 Reviews)",
+            price: "₹2,999",
+            desc: "This advanced formula is designed to rejuvenate skin tissues and improve micro-circulation for peak performance.",
+            usage: "Gently massage a small amount for 2 minutes until fully absorbed. No need to wash off.",
+            effect: "Visible improvements in vitality and texture within 3-5 days of consistent use.",
+            imgs: ["gel-1.png", "gel-2.png", "gel-3.png"]
+        },
+        'tab': {
+            title: "Zosh Tablets (30 Caps)",
+            rating: "★★★★½ 4.8 (11,263 Reviews)",
+            price: "₹2,999",
+            desc: "Formulated with premium Ashwagandha and Shilajit to boost natural energy and overall stamina.",
+            usage: "Consume one tablet daily with lukewarm milk or water after dinner.",
+            effect: "Enhanced energy levels and reduced fatigue within 10 days of the course.",
+            imgs: ["tab-1.png", "tab-2.png", "tab-3.png"]
+        },
+        'p3': {
+            title: "Booster 3X Pills",
+            rating: "★★★★½ 4.8 (9,852 Reviews)",
+            price: "₹2,590",
+            desc: "A high-potency concentrate for individuals seeking maximum endurance and strength.",
+            usage: "Take 1 pill as required or follow the prescribed 15-day recovery cycle.",
+            effect: "Fast-acting formula designed to show impact within 30-45 minutes.",
+            imgs: ["booster-pills-1.png", "booster-pills-2.png", "booster-pills-3.png"]
+        },
+        'p4': {
+            title: "Booster Cream",
+            rating: "★★★★½ 4.8 (10,471 Reviews)",
+            price: "₹2,590",
+            desc: "Topical application cream for immediate skin conditioning and long-term strength support.",
+            usage: "Apply thin layer to the targeted area and massage until dry.",
+            effect: "Immediate cooling effect followed by long-term rejuvenation over 4 weeks.",
+            imgs: ["booster-cream-1.png", "booster-cream-2.png", "booster-cream-3.png"]
         }
     };
-}
 
-function closeProduct() {
-    document.getElementById('productModal').style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
     let cart = { gel: 0, tab: 0, p3: 0, p4: 0 };
-    function changeImage(targetId, newSrc) { document.getElementById(targetId).src = newSrc; }
-    function toggleDetails(id) { const p = document.getElementById(id); p.style.display = (p.style.display === 'block') ? 'none' : 'block'; }
-    function qty(id, change) { const el = document.getElementById(id); let v = parseInt(el.innerText) + change; if(v >= 0 && v <= 10) el.innerText = v; }
-    
+
+    function changeImage(targetId, newSrc) { 
+        document.getElementById(targetId).src = newSrc; 
+    }
+
+    function qty(id, change) { 
+        const el = document.getElementById(id); 
+        let v = parseInt(el.innerText) + change; 
+        if(v >= 0 && v <= 10) el.innerText = v; 
+    }
+
+    function openProduct(type) {
+        const data = productData[type];
+        document.getElementById('modalTitle').innerText = data.title;
+        document.getElementById('modalRating').innerHTML = data.rating;
+        document.getElementById('modalPrice').innerText = data.price;
+        document.getElementById('modalDesc').innerText = data.desc;
+        document.getElementById('modalUsage').innerText = data.usage;
+        document.getElementById('modalEffect').innerText = data.effect;
+        document.getElementById('modalMainImg').src = data.imgs[0];
+        
+        let thumbHtml = '';
+        data.imgs.forEach(img => {
+            thumbHtml += `<img src="${img}" style="width:60px; height:60px; margin:5px; cursor:pointer; border:1px solid #333; border-radius:5px;" onclick="document.getElementById('modalMainImg').src='${img}'">`;
+        });
+        document.getElementById('modalThumbs').innerHTML = thumbHtml;
+        document.getElementById('productModal').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+
+        document.getElementById('popupOrderBtn').onclick = function() {
+            const qtyId = type === 'gel' ? 'g-v' : type === 'tab' ? 't-v' : type === 'p3' ? 'p3-v' : 'p4-v';
+            let currentQty = parseInt(document.getElementById(qtyId).innerText);
+            if (currentQty === 0) document.getElementById(qtyId).innerText = "1"; 
+            
+            addToCart(); 
+            closeProduct();
+            document.getElementById('checkout-section').scrollIntoView({ behavior: 'smooth' });
+        };
+    }
+
+    function closeProduct() {
+        document.getElementById('productModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
     function addToCart() {
         cart.gel = parseInt(document.getElementById('g-v').innerText);
         cart.tab = parseInt(document.getElementById('t-v').innerText);
@@ -491,71 +493,71 @@ function closeProduct() {
         const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
         if(document.getElementById('method').value === 'Online') {
             q.style.display = 'block';
-            document.getElementById('upilink').href = `upi://pay?pa=${UPI}&pn=ThunderOfZosh&am=${total}&cu=INR`;
-        } else { q.style.display = 'none'; }
+            document.getElementById('upilink').href = `upi://pay?pa=shivamgupta@okaxis&pn=ThunderOfZosh&am=${total}&cu=INR`;
+        } else { 
+            q.style.display = 'none'; 
+        }
     }
 
     document.getElementById('submit-order').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const b = document.getElementById('sbtn');
-    
-    // 1. Product aur Quantity identify karna (CRM Mapping)
-    let prodName = "Thunder of Zosh Combo"; 
-    let qty = 1;
-    if(cart.gel > 0) { prodName = "Thunder of Zosh Gel"; qty = cart.gel; }
-    else if(cart.tab > 0) { prodName = "Thunder of Zosh Tablets"; qty = cart.tab; }
-    else if(cart.p3 > 0) { prodName = "Booster 3X Pills"; qty = cart.p3; }
-    else if(cart.p4 > 0) { prodName = "Booster Cream"; qty = cart.p4; }
+        e.preventDefault();
+        const b = document.getElementById('sbtn');
+        
+        let packages = [];
+        if(cart.gel > 0) packages.push(`Gel: ${cart.gel}`);
+        if(cart.tab > 0) packages.push(`Tab: ${cart.tab}`);
+        if(cart.p3 > 0) packages.push(`Pills: ${cart.p3}`);
+        if(cart.p4 > 0) packages.push(`Cream: ${cart.p4}`);
 
-    const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
-    const urlParams = new URLSearchParams(window.location.search);
-    b.innerText = "Processing Order..."; b.disabled = true;
+        const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        b.innerText = "Processing Order..."; 
+        b.disabled = true;
 
-    // 2. CRM Payload (Wahi structure jo aapne manga tha)
-    const crmData = {
-        "name": document.getElementById('name').value,
-        "phone": document.getElementById('phone').value,
-        "email": document.getElementById('email').value,
-        "address": document.getElementById('addr').value,
-        "city": document.getElementById('city').value,
-        "pincode": document.getElementById('pincode').value,
-        "product": prodName,
-        "quantity": qty,
-        "source": urlParams.get('utm_source') || "Website",
-        "affiliateId": urlParams.get('aff') || "DIRECT"
-    };
+        const crmData = {
+            "name": document.getElementById('name').value,
+            "phone": document.getElementById('phone').value,
+            "email": document.getElementById('email').value,
+            "address": document.getElementById('addr').value,
+            "city": document.getElementById('city').value,
+            "pincode": document.getElementById('pincode').value,
+            "product": packages.join(", "),
+            "quantity": cart.gel + cart.tab + cart.p3 + cart.p4,
+            "bill": "₹" + total,
+            "method": document.getElementById('method').value,
+            "source": urlParams.get('utm_source') || "Website",
+            "affiliateId": urlParams.get('aff') || "DIRECT"
+        };
 
-    // 3. Sabhi jagah data bhejte hain (CRM, Sheets, Formspree)
-// 3. CRM और बाकी जगह डेटा भेजें
-Promise.all([
-    // यह आपके नए CRM से कनेक्ट करेगा
-    fetch('https://ais-dev-mva2a3sydgwye2dzqck4zk-250604477237.asia-southeast1.run.app/api/webhook/lead', {
-        method: 'POST', 
-        headers: {'Content-Type': 'application/json'}, 
-        body: JSON.stringify(crmData) 
-    }),
-    
-    // आपकी Google Sheets के लिए
-    fetch('https://sheetdb.io/api/v1/2qqhwik4r33j0', { 
-        method: 'POST', 
-        headers: {'Content-Type': 'application/json'}, 
-        body: JSON.stringify({data: [crmData]}) 
-    }),
-    
-    // आपके Formspree के लिए
-    fetch('https://formspree.io/f/xeeazdpz', { 
-        method: 'POST', 
-        body: JSON.stringify(crmData), 
-        headers: {'Accept': 'application/json', 'Content-Type': 'application/json'} 
-    })
-]).then(() => {
-    document.getElementById('order-box').innerHTML = "<h2 style='color:var(--gold); text-align:center;'>Order Successful! ✅</h2><p style='text-align:center;'>We will contact you soon for confirmation.</p>";
-}).catch(err => {
-    console.error("Error:", err);
-    alert("Ordering System Error! Data saved but confirmation might take time.");
-    b.disabled = false;
-    b.innerText = "Place Order Now";
-});
+        Promise.all([
+            // CRM Webhook
+            fetch('https://ais-dev-mva2a3sydgwye2dzqck4zk-250604477237.asia-southeast1.run.app/api/webhook/lead', {
+                method: 'POST', 
+                headers: {'Content-Type': 'application/json'}, 
+                body: JSON.stringify(crmData) 
+            }),
+            // Google Sheets
+            fetch('https://sheetdb.io/api/v1/2qqhwik4r33j0', { 
+                method: 'POST', 
+                headers: {'Content-Type': 'application/json'}, 
+                body: JSON.stringify({data: [crmData]}) 
+            }),
+            // Formspree
+            fetch('https://formspree.io/f/xeeazdpz', { 
+                method: 'POST', 
+                body: JSON.stringify(crmData), 
+                headers: {'Accept': 'application/json', 'Content-Type': 'application/json'} 
+            })
+        ]).then(() => {
+            document.getElementById('order-box').innerHTML = "<h2 style='color:var(--gold); text-align:center;'>Order Successful! ✅</h2><p style='text-align:center;'>We will contact you soon for confirmation.</p>";
+        }).catch(err => {
+            console.error("Error:", err);
+            alert("Error placing order. Please try again.");
+            b.disabled = false;
+            b.innerText = "Place Order Now";
+        });
+    });
     function qrToggle() {
         const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
         const q = document.getElementById('qr-section');
