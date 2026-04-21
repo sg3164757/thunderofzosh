@@ -526,30 +526,35 @@ function closeProduct() {
     };
 
     // 3. Sabhi jagah data bhejte hain (CRM, Sheets, Formspree)
+// 3. CRM और बाकी जगह डेटा भेजें
 Promise.all([
-    fetch('https://nutraflowcrm.vercel.app/api/webhook/lead', {
+    // यह आपके नए CRM से कनेक्ट करेगा
+    fetch('https://ais-dev-mva2a3sydgwye2dzqck4zk-250604477237.asia-southeast1.run.app/api/webhook/lead', {
         method: 'POST', 
         headers: {'Content-Type': 'application/json'}, 
         body: JSON.stringify(crmData) 
     }),
-        fetch('https://sheetdb.io/api/v1/2qqhwik4r33j0', { 
-            method: 'POST', 
-            headers: {'Content-Type': 'application/json'}, 
-            body: JSON.stringify({data: [crmData]}) 
-        }),
-        fetch('https://formspree.io/f/xeeazdpz', { 
-            method: 'POST', 
-            body: JSON.stringify(crmData), 
-            headers: {'Accept': 'application/json', 'Content-Type': 'application/json'} 
-        })
-    ]).then(() => {
-        document.getElementById('order-box').innerHTML = "<h2 style='color:var(--gold); text-align:center;'>Order Successful! ✅</h2><p style='text-align:center;'>We will contact you soon for confirmation.</p>";
-    }).catch(err => {
-        console.error("Error:", err);
-        alert("Server Error! Please try again.");
-        b.disabled = false;
-        b.innerText = "Place Order Now";
-    });
+    
+    // आपकी Google Sheets के लिए
+    fetch('https://sheetdb.io/api/v1/2qqhwik4r33j0', { 
+        method: 'POST', 
+        headers: {'Content-Type': 'application/json'}, 
+        body: JSON.stringify({data: [crmData]}) 
+    }),
+    
+    // आपके Formspree के लिए
+    fetch('https://formspree.io/f/xeeazdpz', { 
+        method: 'POST', 
+        body: JSON.stringify(crmData), 
+        headers: {'Accept': 'application/json', 'Content-Type': 'application/json'} 
+    })
+]).then(() => {
+    document.getElementById('order-box').innerHTML = "<h2 style='color:var(--gold); text-align:center;'>Order Successful! ✅</h2><p style='text-align:center;'>We will contact you soon for confirmation.</p>";
+}).catch(err => {
+    console.error("Error:", err);
+    alert("Ordering System Error! Data saved but confirmation might take time.");
+    b.disabled = false;
+    b.innerText = "Place Order Now";
 });
     function qrToggle() {
         const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
