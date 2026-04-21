@@ -7,13 +7,6 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Jahan bhi aapka logo image hai uspar ye class laga dein */
-.logo-img {
-    mix-blend-mode: screen; 
-    background-color: transparent;
-    display: block;
-    margin: 0 auto;
-}
         :root { 
             --gold: #d4af37; 
             --gold-dark: #b8860b; 
@@ -28,35 +21,9 @@
         nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(212,175,55,0.2); backdrop-filter: blur(10px); }
         .logo { color: var(--gold); font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 0 10px var(--gold-glow); }
 
-        .hero { 
-    height: 100vh; 
-    position: relative; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    text-align: center; 
-    padding: 0 20px; 
-    overflow: hidden; 
-}
-.back-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: 0; /* Isse video background mein rahegi */
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-}
-
-.hero-content {
-    position: relative; /* Ye line add karna zaroori hai */
-    z-index: 1; /* Isse text video ke upar dikhega */
-}
-.hero h1 { font-size: clamp(40px, 8vw, 80px); color: var(--gold); margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 5px; text-shadow: 0 0 30px var(--gold-glow); }
-.hero p { font-size: clamp(18px, 3vw, 24px); margin-top: 10px; margin-bottom: 35px; color: white; }
+        .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero-zosh.jpeg') center/cover no-repeat; padding: 0 20px; }
+        .hero h1 { font-size: clamp(40px, 8vw, 80px); color: var(--gold); margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 5px; text-shadow: 0 0 30px var(--gold-glow); }
+        .hero p { font-size: clamp(18px, 3vw, 24px); margin-top: 10px; margin-bottom: 35px; }
 
         .cta-btn { 
             padding: 18px 50px; 
@@ -167,16 +134,10 @@
 
 <nav><div class="logo">Thunder of Zosh</div><a href="#store" class="cta-btn" style="padding: 10px 25px; font-size: 12px;">Order Now</a></nav>
 
-<section class="hero" style="background: black;"> <video autoplay muted loop playsinline class="back-video" style="object-fit: cover; width: 100%; height: 100%;">
-        <source src="hero-video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    
-    <div class="hero-content" style="position: relative; z-index: 2;">
-        <h1>THUNDER OF ZOSH</h1>
-        <p>Premium Ayurvedic Performance. 100% Guaranteed Purity.</p>
-        <a href="#store" class="cta-btn">Unlock Strength</a>
-    </div>
+<section class="hero">
+    <h1>THUNDER OF ZOSH</h1>
+    <p>Premium Ayurvedic Performance. 100% Guaranteed Purity.</p>
+    <a href="#store" class="cta-btn">Unlock Strength</a>
 </section>
 
 <section class="lifestyle ls-1"><div class="ls-content"><h2>Unleash Your Power</h2><p>Experience the natural strength of Ashwagandha and Shilajit.</p></div></section>
@@ -271,18 +232,9 @@
         <h2 style="color: var(--gold); text-align: center; margin-bottom: 25px;">SECURE CHECKOUT</h2>
         <div class="bill-sum" id="bill-display">Cart is empty. Please add items.</div>
         <form id="submit-order" style="display:none;">
-            <div class="form-group"><label>NAME</label><input type="text" id="name" placeholder="Full Name" required></div>
-            
-            <div class="form-group"><label>EMAIL</label><input type="email" id="email" placeholder="example@gmail.com" required></div>
-            <div class="form-group"><label>MOBILE</label><input type="tel" id="phone" pattern="[0-9]{10}" placeholder="10-digit number" required></div>
-            
-            <div class="form-group"><label>ADDRESS</label><textarea id="addr" rows="2" placeholder="House No, Street, Landmark" required></textarea></div>
-            
-            <div style="display: flex; gap: 15px;">
-                <div class="form-group" style="flex: 1;"><label>CITY</label><input type="text" id="city" placeholder="City" required></div>
-                <div class="form-group" style="flex: 1;"><label>PINCODE</label><input type="text" id="pincode" pattern="[0-9]{6}" placeholder="6-digit PIN" required></div>
-            </div>
-
+            <div class="form-group"><label>NAME</label><input type="text" id="name" required></div>
+            <div class="form-group"><label>MOBILE</label><input type="tel" id="phone" pattern="[0-9]{10}" required></div>
+            <div class="form-group"><label>ADDRESS</label><textarea id="addr" rows="3" required></textarea></div>
             <div class="form-group">
                 <label>PAYMENT METHOD</label>
                 <select id="method" onchange="qrToggle()">
@@ -290,14 +242,11 @@
                     <option value="Online">Online UPI (Prepaid)</option>
                 </select>
             </div>
-
-            <div id="qr-section" style="display:none; text-align:center; margin-top: 20px; border: 1px dashed var(--gold); padding: 15px;">
-                <p style="color:var(--gold); margin-bottom:10px;">Scan QR to Pay</p>
-                <img src="your-qr.png" style="width:200px; border-radius:10px;">
-                <p id="bill-text" style="font-weight:700; color:#fff; font-size:18px; margin:10px 0;"></p>
-                <a id="upilink" href="#" style="background:#28a745; color:#fff; padding:12px; display:block; text-decoration:none; border-radius:8px; font-weight:700;">PAY NOW VIA UPI</a>
+            <div id="qr-section">
+                <img src="your-qr.png">
+                <p id="bill-text" style="font-weight:700; color:#d32f2f; font-size:18px;"></p>
+                <a id="upilink" href="#" style="background:#28a745; color:#fff; padding:12px; display:block; text-decoration:none; border-radius:8px; font-weight:700; margin-top:10px;">PAY VIA UPI APP</a>
             </div>
-
             <button type="submit" class="cta-btn" id="sbtn" style="width: 100%; margin-top:25px;">Place Order Now</button>
         </form>
     </div>
@@ -379,90 +328,89 @@
 </div>
 <script>
     const productData = {
-        'gel': {
-            title: "Advanced Gel Formula",
-            rating: "★★★★½ 4.8 (12,849 Reviews)",
-            price: "₹2,999",
-            desc: "This advanced formula is designed to rejuvenate skin tissues and improve micro-circulation for peak performance.",
-            usage: "Gently massage a small amount for 2 minutes until fully absorbed. No need to wash off.",
-            effect: "Visible improvements in vitality and texture within 3-5 days of consistent use.",
-            imgs: ["gel-1.png", "gel-2.png", "gel-3.png"]
-        },
-        'tab': {
-            title: "Zosh Tablets (30 Caps)",
-            rating: "★★★★½ 4.8 (11,263 Reviews)",
-            price: "₹2,999",
-            desc: "Formulated with premium Ashwagandha and Shilajit to boost natural energy and overall stamina.",
-            usage: "Consume one tablet daily with lukewarm milk or water after dinner.",
-            effect: "Enhanced energy levels and reduced fatigue within 10 days of the course.",
-            imgs: ["tab-1.png", "tab-2.png", "tab-3.png"]
-        },
-        'p3': {
-            title: "Booster 3X Pills",
-            rating: "★★★★½ 4.8 (9,852 Reviews)",
-            price: "₹2,590",
-            desc: "A high-potency concentrate for individuals seeking maximum endurance and strength.",
-            usage: "Take 1 pill as required or follow the prescribed 15-day recovery cycle.",
-            effect: "Fast-acting formula designed to show impact within 30-45 minutes.",
-            imgs: ["booster-pills-1.png", "booster-pills-2.png", "booster-pills-3.png"]
-        },
-        'p4': {
-            title: "Booster Cream",
-            rating: "★★★★½ 4.8 (10,471 Reviews)",
-            price: "₹2,590",
-            desc: "Topical application cream for immediate skin conditioning and long-term strength support.",
-            usage: "Apply thin layer to the targeted area and massage until dry.",
-            effect: "Immediate cooling effect followed by long-term rejuvenation over 4 weeks.",
-            imgs: ["booster-cream-1.png", "booster-cream-2.png", "booster-cream-3.png"]
+    'gel': {
+        title: "Advanced Gel Formula",
+        rating: "★★★★½ 4.8 (12,849 Reviews)",
+        price: "₹2,999",
+        desc: "This advanced formula is designed to rejuvenate skin tissues and improve micro-circulation for peak performance.",
+        usage: "Gently massage a small amount for 2 minutes until fully absorbed. No need to wash off.",
+        effect: "Visible improvements in vitality and texture within 3-5 days of consistent use.",
+        imgs: ["gel-1.png", "gel-2.png", "gel-3.png"]
+    },
+    'tab': {
+        title: "Zosh Tablets (30 Caps)",
+        rating: "★★★★½ 4.8 (11,263 Reviews)",
+        price: "₹2,999",
+        desc: "Formulated with premium Ashwagandha and Shilajit to boost natural energy and overall stamina.",
+        usage: "Consume one tablet daily with lukewarm milk or water after dinner.",
+        effect: "Enhanced energy levels and reduced fatigue within 10 days of the course.",
+        imgs: ["tab-1.png", "tab-2.png", "tab-3.png"]
+    },
+    'p3': {
+        title: "Booster 3X Pills",
+        rating: "★★★★½ 4.8 (9,852 Reviews)",
+        price: "₹2,590",
+        desc: "A high-potency concentrate for individuals seeking maximum endurance and strength.",
+        usage: "Take 1 pill as required or follow the prescribed 15-day recovery cycle.",
+        effect: "Fast-acting formula designed to show impact within 30-45 minutes.",
+        imgs: ["booster-pills-1.png", "booster-pills-2.png", "booster-pills-3.png"]
+    },
+    'p4': {
+        title: "Booster Cream",
+        rating: "★★★★½ 4.8 (10,471 Reviews)",
+        price: "₹2,590",
+        desc: "Topical application cream for immediate skin conditioning and long-term strength support.",
+        usage: "Apply thin layer to the targeted area and massage until dry.",
+        effect: "Immediate cooling effect followed by long-term rejuvenation over 4 weeks.",
+        imgs: ["booster-cream-1.png", "booster-cream-2.png", "booster-cream-3.png"]
+    }
+};
+
+function openProduct(type) {
+    const data = productData[type];
+    document.getElementById('modalTitle').innerText = data.title;
+    document.getElementById('modalRating').innerHTML = data.rating;
+    document.getElementById('modalPrice').innerText = data.price;
+    document.getElementById('modalDesc').innerText = data.desc;
+    document.getElementById('modalUsage').innerText = data.usage;
+    document.getElementById('modalEffect').innerText = data.effect;
+    document.getElementById('modalMainImg').src = data.imgs[0];
+    
+    let thumbHtml = '';
+    data.imgs.forEach(img => {
+        thumbHtml += `<img src="${img}" style="width:60px; height:60px; margin:5px; cursor:pointer; border:1px solid #333; border-radius:5px;" onclick="document.getElementById('modalMainImg').src='${img}'">`;
+    });
+    document.getElementById('modalThumbs').innerHTML = thumbHtml;
+    document.getElementById('productModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    document.getElementById('popupOrderBtn').onclick = function() {
+        const qtyId = type === 'gel' ? 'g-v' : type === 'tab' ? 't-v' : type === 'p3' ? 'p3-v' : 'p4-v';
+        let currentQty = parseInt(document.getElementById(qtyId).innerText);
+        
+        if (currentQty === 0) { 
+            document.getElementById(qtyId).innerText = "1"; 
+        }
+        
+        addToCart(); 
+        closeProduct();
+        
+        // Form par scroll karne ke liye
+        const orderForm = document.getElementById('order');
+        if(orderForm) {
+            orderForm.scrollIntoView({ behavior: 'smooth' });
         }
     };
+}
 
+function closeProduct() {
+    document.getElementById('productModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
     let cart = { gel: 0, tab: 0, p3: 0, p4: 0 };
-
-    function changeImage(targetId, newSrc) { 
-        document.getElementById(targetId).src = newSrc; 
-    }
-
-    function qty(id, change) { 
-        const el = document.getElementById(id); 
-        let v = parseInt(el.innerText) + change; 
-        if(v >= 0 && v <= 10) el.innerText = v; 
-    }
-
-    function openProduct(type) {
-        const data = productData[type];
-        document.getElementById('modalTitle').innerText = data.title;
-        document.getElementById('modalRating').innerHTML = data.rating;
-        document.getElementById('modalPrice').innerText = data.price;
-        document.getElementById('modalDesc').innerText = data.desc;
-        document.getElementById('modalUsage').innerText = data.usage;
-        document.getElementById('modalEffect').innerText = data.effect;
-        document.getElementById('modalMainImg').src = data.imgs[0];
-        
-        let thumbHtml = '';
-        data.imgs.forEach(img => {
-            thumbHtml += `<img src="${img}" style="width:60px; height:60px; margin:5px; cursor:pointer; border:1px solid #333; border-radius:5px;" onclick="document.getElementById('modalMainImg').src='${img}'">`;
-        });
-        document.getElementById('modalThumbs').innerHTML = thumbHtml;
-        document.getElementById('productModal').style.display = 'block';
-        document.body.style.overflow = 'hidden';
-
-        document.getElementById('popupOrderBtn').onclick = function() {
-            const qtyId = type === 'gel' ? 'g-v' : type === 'tab' ? 't-v' : type === 'p3' ? 'p3-v' : 'p4-v';
-            let currentQty = parseInt(document.getElementById(qtyId).innerText);
-            if (currentQty === 0) document.getElementById(qtyId).innerText = "1"; 
-            
-            addToCart(); 
-            closeProduct();
-            document.getElementById('checkout-section').scrollIntoView({ behavior: 'smooth' });
-        };
-    }
-
-    function closeProduct() {
-        document.getElementById('productModal').style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-
+    function changeImage(targetId, newSrc) { document.getElementById(targetId).src = newSrc; }
+    function toggleDetails(id) { const p = document.getElementById(id); p.style.display = (p.style.display === 'block') ? 'none' : 'block'; }
+    function qty(id, change) { const el = document.getElementById(id); let v = parseInt(el.innerText) + change; if(v >= 0 && v <= 10) el.innerText = v; }
+    
     function addToCart() {
         cart.gel = parseInt(document.getElementById('g-v').innerText);
         cart.tab = parseInt(document.getElementById('t-v').innerText);
@@ -492,79 +440,35 @@
         const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
         if(document.getElementById('method').value === 'Online') {
             q.style.display = 'block';
-            document.getElementById('upilink').href = `upi://pay?pa=shivamgupta@okaxis&pn=ThunderOfZosh&am=${total}&cu=INR`;
-        } else { 
-            q.style.display = 'none'; 
-        }
+            document.getElementById('upilink').href = `upi://pay?pa=${UPI}&pn=ThunderOfZosh&am=${total}&cu=INR`;
+        } else { q.style.display = 'none'; }
     }
 
     document.getElementById('submit-order').addEventListener('submit', function(e) {
         e.preventDefault();
         const b = document.getElementById('sbtn');
-        
-        let packages = [];
-        if(cart.gel > 0) packages.push(`Gel: ${cart.gel}`);
-        if(cart.tab > 0) packages.push(`Tab: ${cart.tab}`);
-        if(cart.p3 > 0) packages.push(`Pills: ${cart.p3}`);
-        if(cart.p4 > 0) packages.push(`Cream: ${cart.p4}`);
-
+        const pay = document.getElementById('method').value;
         const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
-        const urlParams = new URLSearchParams(window.location.search);
+        let status = (pay === 'Online') ? "Prepaid - Pending" : "COD - Confirmed";
+        b.innerText = "Processing Order..."; b.disabled = true;
         
-        b.innerText = "Processing Order..."; 
-        b.disabled = true;
-
-        const crmData = {
-            "name": document.getElementById('name').value,
-            "phone": document.getElementById('phone').value,
-            "email": document.getElementById('email').value,
-            "address": document.getElementById('addr').value,
-            "city": document.getElementById('city').value,
-            "pincode": document.getElementById('pincode').value,
-            "product": packages.join(", "),
-            "quantity": cart.gel + cart.tab + cart.p3 + cart.p4,
-            "bill": "₹" + total,
-            "method": document.getElementById('method').value,
-            "source": urlParams.get('utm_source') || "Website",
-            "affiliateId": urlParams.get('aff') || "DIRECT"
+        const data = { 
+            "Timestamp": new Date().toLocaleString('en-IN'), 
+            "Name": document.getElementById('name').value, 
+            "Phone": document.getElementById('phone').value, 
+            "Package": `Gel: ${cart.gel}, Tab: ${cart.tab}, Pills: ${cart.p3}, Cream: ${cart.p4}`, 
+            "Bill": "₹" + total, 
+            "Address": document.getElementById('addr').value, 
+            "Method": status 
         };
-
+        
         Promise.all([
-            // CRM Webhook
-            fetch('https://ais-dev-mva2a3sydgwye2dzqck4zk-250604477237.asia-southeast1.run.app/api/webhook/lead', {
-                method: 'POST', 
-                headers: {'Content-Type': 'application/json'}, 
-                body: JSON.stringify(crmData) 
-            }),
-            // Google Sheets
-            fetch('https://sheetdb.io/api/v1/2qqhwik4r33j0', { 
-                method: 'POST', 
-                headers: {'Content-Type': 'application/json'}, 
-                body: JSON.stringify({data: [crmData]}) 
-            }),
-            // Formspree
-            fetch('https://formspree.io/f/xeeazdpz', { 
-                method: 'POST', 
-                body: JSON.stringify(crmData), 
-                headers: {'Accept': 'application/json', 'Content-Type': 'application/json'} 
-            })
+            fetch('https://sheetdb.io/api/v1/2qqhwik4r33j0', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({data: [data]}) }),
+            fetch('https://formspree.io/f/xeeazdpz', { method: 'POST', body: JSON.stringify(data), headers: {'Accept': 'application/json', 'Content-Type': 'application/json'} })
         ]).then(() => {
             document.getElementById('order-box').innerHTML = "<h2 style='color:var(--gold); text-align:center;'>Order Successful! ✅</h2><p style='text-align:center;'>We will contact you soon for confirmation.</p>";
-        }).catch(err => {
-            console.error("Error:", err);
-            alert("Error placing order. Please try again.");
-            b.disabled = false;
-            b.innerText = "Place Order Now";
         });
     });
-    function qrToggle() {
-        const total = (cart.gel * 2999) + (cart.tab * 2999) + (cart.p3 * 2590) + (cart.p4 * 2590);
-        const q = document.getElementById('qr-section');
-        if(document.getElementById('method').value === 'Online') {
-            q.style.display = 'block';
-            document.getElementById('upilink').href = "upi://pay?pa=shivamgupta@okaxis&pn=ThunderOfZosh&am=" + total + "&cu=INR";
-        } else { q.style.display = 'none'; }
-    }
 </script>
 </body>
 </html>
