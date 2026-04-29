@@ -89,7 +89,48 @@
         .safety-item { font-size: 13px; color: var(--green); font-weight: bold; text-transform: uppercase; }
 
         footer { padding: 40px; text-align: center; background: #000; font-size: 12px; color: #666; }
-
+/* Product Gallery Slider Style */
+.product-gallery {
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 1px solid rgba(226, 194, 117, 0.2);
+    background: #000;
+    margin: 0 auto;
+}
+.gallery-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.gallery-slide {
+    min-width: 100%;
+}
+.gallery-slide img {
+    width: 100%;
+    display: block;
+    object-fit: contain;
+}
+.gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+.gallery-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #333;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.gallery-dot.active {
+    background: var(--gold);
+    width: 20px;
+    border-radius: 4px;
+}
       @media (max-width: 768px) {
     /* Sabse pehle ye overflow fix add karein */
     html, body {
@@ -222,9 +263,27 @@
 <section class="product-highlight" id="order">
     <div class="product-flex">
         <div class="product-image-container">
-            <img src="product-capsule.jpg" alt="Thunder of Zosh Product">
-            <p style="color: var(--gold); margin-top: 15px; font-weight: bold; font-size: 14px;">📦 100% PRIVATE & DISCREET PACKAGING</p>
+    <div class="product-gallery" id="productGallery">
+        <div class="gallery-wrapper" id="galleryWrapper">
+            <div class="gallery-slide">
+                <img src="product-capsule.jpg" alt="Thunder of Zosh Main">
+            </div>
+            <div class="gallery-slide">
+                <img src="product-capsule-2.jpg" alt="Label Details">
+            </div>
+            <div class="gallery-slide">
+                <img src="product-capsule-3.jpg" alt="Manufacturing View">
+            </div>
         </div>
+        
+        <div class="gallery-dots">
+            <span class="gallery-dot active" onclick="currentSlide(0)"></span>
+            <span class="gallery-dot" onclick="currentSlide(1)"></span>
+            <span class="gallery-dot" onclick="currentSlide(2)"></span>
+        </div>
+    </div>
+    <p style="color: var(--gold); margin-top: 15px; font-weight: bold; font-size: 14px;">📦 100% PRIVATE & DISCREET PACKAGING</p>
+</div>
         <div class="product-details-container">
             <h2 style="font-size: 35px;">Permanent Strength & Confidence</h2>
             <div class="price-box">
@@ -293,6 +352,46 @@
 </div>
 
 <style>
+   </style> 
+
+<script>
+    let galleryIdx = 0;
+    const galleryWrapper = document.getElementById('galleryWrapper');
+    const galleryDots = document.querySelectorAll('.gallery-dot');
+
+    function updateGallery() {
+        if (!galleryWrapper) return;
+        galleryWrapper.style.transform = `translateX(-${galleryIdx * 100}%)`;
+        galleryDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === galleryIdx);
+        });
+    }
+
+    function currentSlide(n) {
+        galleryIdx = n;
+        updateGallery();
+    }
+
+    // Touch Swipe Support for Mobile
+    let startTouchX = 0;
+    const galleryContainer = document.getElementById('productGallery');
+
+    if (galleryContainer) {
+        galleryContainer.addEventListener('touchstart', (e) => {
+            startTouchX = e.touches[0].clientX;
+        }, {passive: true});
+
+        galleryContainer.addEventListener('touchend', (e) => {
+            let endTouchX = e.changedTouches[0].clientX;
+            if (startTouchX - endTouchX > 50) { 
+                galleryIdx = (galleryIdx + 1) % galleryDots.length;
+            } else if (endTouchX - startTouchX > 50) { 
+                galleryIdx = (galleryIdx - 1 + galleryDots.length) % galleryDots.length;
+            }
+            updateGallery();
+        }, {passive: true});
+    }
+</script>
     .footer-section { background: #000; padding: 60px 5% 30px; border-top: 1px solid #222; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; text-align: left; }
     .footer-col h4 { color: var(--gold); text-transform: uppercase; margin-bottom: 20px; font-size: 16px; letter-spacing: 1px; }
