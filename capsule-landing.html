@@ -24,10 +24,14 @@
     </script>
 
     <style>
-        :root { --gold: #d4af37; --gold-dark: #b8860b; --white: #ffffff; --dark: #0a0a0a; --red: #e74c3c; --green: #2ecc71; }
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--white); margin: 0; line-height: 1.6; overflow-x: hidden; }
-        
+        :root { 
+    --gold: #e2c275; /* Soft Champagne Gold */
+    --gold-dark: #b8860b; 
+    --white: #f8f8f8; 
+    --dark: #050505; /* Deep Black */
+    --red: #ff4d4d; 
+    --green: #00fa9a; 
+}
         nav { display: flex; justify-content: space-between; align-items: center; padding: 12px 5%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
         .logo { color: var(--gold); font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: 2px; }
 
@@ -104,7 +108,10 @@
     <div class="discount-badge">BUY 1<br>GET 1 FREE</div>
     
     <div style="background: rgba(212,175,55,0.2); color: var(--gold); padding: 4px 15px; border-radius: 50px; margin-bottom: 10px; font-weight: 600; border: 1px solid var(--gold); font-size: 14px; display: inline-block;">⭐ 50,000+ Happy Customers</div>
-    
+    <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 10px;">
+    <span style="font-size: 11px; color: var(--green); border: 1px solid rgba(0,250,154,0.3); padding: 2px 8px; border-radius: 4px; background: rgba(0,250,154,0.05);">✓ FSSAI APPROVED</span>
+    <span style="font-size: 11px; color: var(--green); border: 1px solid rgba(0,250,154,0.3); padding: 2px 8px; border-radius: 4px; background: rgba(0,250,154,0.05);">✓ AYUSH REGISTERED</span>
+</div>
     <h1 style="font-size: clamp(30px, 8vw, 60px); margin: 10px 0;">THUNDER OF ZOSH CAPSULES</h1>
     
     <p style="font-size: 20px; margin-bottom: 5px;">Premium Ayurvedic Performance Formula</p>
@@ -129,11 +136,11 @@
     <h2 style="color: var(--gold); font-size: 36px; text-transform: uppercase; margin-bottom: 40px;">POWERFUL COMPOSITION</h2>
     <div class="ingredients-container">
         <div class="ing-grid">
-            <div class="ing-name">Shilajit Extract</div> <div class="ing-name">Ashwagandha</div> <div class="ing-name">Safed Musli</div>
-            <div class="ing-name">Tribulus Terrestris</div> <div class="ing-name">Kaunch Beej</div> <div class="ing-name">Ginseng Root</div>
-            <div class="ing-name">Maca Root Extract</div> <div class="ing-name">Saffron (Kesar)</div> <div class="ing-name">L-Arginine</div>
-            <div class="ing-name">Yohimbine</div> <div class="ing-name">Zinc</div> <div class="ing-name">Vitamin B12</div>
-        </div>
+    <div class="ing-name">Shilajit <small style="display:block; font-size:10px; color:var(--gold); opacity:0.8;">(Stamina & Strength)</small></div>
+    <div class="ing-name">Ashwagandha <small style="display:block; font-size:10px; color:var(--gold); opacity:0.8;">(Stress Relief)</small></div>
+    <div class="ing-name">Safed Musli <small style="display:block; font-size:10px; color:var(--gold); opacity:0.8;">(Vitality Boost)</small></div>
+    <div class="ing-name">Saffron (Kesar) <small style="display:block; font-size:10px; color:var(--gold); opacity:0.8;">(Mood Enhancer)</small></div>
+</div>
     </div>
 </section>
 
