@@ -90,22 +90,48 @@
 
         footer { padding: 40px; text-align: center; background: #000; font-size: 12px; color: #666; }
 
-        @media (max-width: 768px) {
+      @media (max-width: 768px) {
+    /* Sabse pehle ye overflow fix add karein */
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
     .hero { height: auto; min-height: 80vh; padding: 40px 20px; }
-    .hero h1 { font-size: 36px !important; line-height: 1.1; } /* Heading size fix */
+    .hero h1 { font-size: 32px !important; line-height: 1.2; }
     .hero p { font-size: 16px !important; }
-    
+
     .discount-badge { width: 70px; height: 70px; font-size: 14px; padding: 12px; top: 5%; right: 5%; }
-    
+
     .full-page-section { min-height: 60vh; padding: 30px 20px; background-attachment: scroll; }
-    .content-box h2 { font-size: 28px !important; }
+    .content-box h2 { font-size: 26px !important; }
+
+    .doctor-flex, .product-flex { 
+        flex-direction: column; 
+        text-align: center; 
+        gap: 30px; 
+        width: 100%; 
+        box-sizing: border-box; 
+    }
     
-    .doctor-flex, .product-flex { flex-direction: column; text-align: center; gap: 30px; }
-    .product-details-container { text-align: center; }
-    
-    .review-card { width: 100%; max-width: 100%; } /* Cards phone screen par fit honge */
-    
-    .ing-grid { grid-template-columns: 1fr 1fr; gap: 10px; } /* Ingredients 2 column mein */
+    .product-details-container { 
+        text-align: center; 
+        width: 100%; 
+        padding: 0 10px; 
+    }
+
+    /* Button ko screen ke andar fit karne ke liye */
+    .cta-btn {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    .review-card { width: 100%; max-width: 100%; box-sizing: border-box; }
+
+    .ing-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
     .ing-name { font-size: 13px; }
 }
     </style>
