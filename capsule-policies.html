@@ -3,58 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Policies | Thunder of Zosh</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Company Policies | Thunder of Zosh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --dark: #0a0a0a; --white: #ffffff; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: #ccc; line-height: 1.8; margin: 0; padding: 0; }
-        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
-        header { text-align: center; margin-bottom: 50px; border-bottom: 1px solid #222; padding-bottom: 20px; }
-        h1, h2 { color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
-        section { margin-bottom: 50px; padding: 30px; background: #111; border-radius: 10px; border: 1px solid #222; }
-        p { margin-bottom: 15px; font-size: 15px; }
-        .back-btn { display: inline-block; margin-top: 20px; padding: 10px 25px; background: var(--gold); color: #000; text-decoration: none; font-weight: 700; border-radius: 5px; }
-        strong { color: var(--gold); }
+        :root {
+            --gold: #e2c275;
+            --gold-dark: #b8860b;
+            --white: #f8f8f8;
+            --dark: #050505;
+            --grey-box: #111111;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-color: var(--dark); 
+            color: var(--white); 
+            line-height: 1.7; 
+            overflow-x: hidden; 
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: rgba(0,0,0,0.95);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo { color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; }
+        .back-link { color: var(--gold); text-decoration: none; font-size: 14px; border: 1px solid var(--gold); padding: 5px 15px; border-radius: 4px; transition: 0.3s; }
+        .back-link:hover { background: var(--gold); color: #000; }
+
+        .container { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+
+        h1 { color: var(--gold); font-size: clamp(28px, 5vw, 42px); text-align: center; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 3px; }
+        
+        section {
+            background: var(--grey-box);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid #222;
+            transition: 0.3s;
+        }
+        section:hover { border-color: var(--gold-dark); }
+
+        h2 { color: var(--gold); margin-bottom: 20px; font-size: 22px; text-transform: uppercase; border-left: 3px solid var(--gold); padding-left: 15px; }
+        p { margin-bottom: 15px; color: #bbb; font-size: 15px; }
+        
+        .list { list-style: none; padding: 0; }
+        .list li { position: relative; padding-left: 25px; margin-bottom: 12px; color: #ccc; font-size: 14px; }
+        .list li::before { content: "→"; position: absolute; left: 0; color: var(--gold); }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            background: #000;
+            border-top: 1px solid #222;
+            margin-top: 60px;
+        }
+        .footer-brand { color: var(--gold); font-weight: 700; margin-bottom: 10px; font-size: 18px; }
+        .footer-copy { color: #555; font-size: 12px; }
+
+        @media (max-width: 768px) {
+            section { padding: 25px; }
+            nav { padding: 10px 5%; }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>Legal & Company Info</h1>
-        <p>Thunder of Zosh | TZ Nature Ayurveda</p>
-        <a href="capsule-landing.html" class="back-btn">← Back to Home</a>
-    </header>
+    <nav>
+        <a href="index.html" class="logo">Thunder of Zosh</a>
+        <a href="index.html" class="back-link">Back to Shop</a>
+    </nav>
 
-    <section id="about">
-        <h2>About Us</h2>
-        <p><strong>Thunder of Zosh</strong> is a premium Ayurvedic wellness brand dedicated to enhancing male vitality and strength. Our mission is to combine ancient Ayurvedic wisdom with modern science to provide 100% natural and safe health solutions.</p>
-        <p>Under <strong>TZ Nature Ayurveda</strong>, we formulate our products with pure herbs and certified processes to ensure the highest quality and effective results for our customers.</p>
-    </section>
+    <div class="container">
+        <h1>Official Policies</h1>
 
-    <section id="privacy">
-        <h2>Privacy Policy</h2>
-        <p>Your privacy is of utmost importance to us. We collect and use your personal data (Name, Address, Phone Number) exclusively for order fulfillment and customer support purposes. We do not sell or share your information with any unauthorized third parties.</p>
-        <p>Our website uses cookies to enhance your browsing experience and ensure secure transactions.</p>
-    </section>
+        <section id="about">
+            <h2>About Us</h2>
+            <p><strong>Thunder of Zosh (TZ Nature Ayurveda)</strong> is a premium wellness brand committed to restoring male vitality and confidence through the power of authentic Ayurveda.</p>
+            <p>Our products are expertly manufactured at the <strong>Sri Herbasia Biotech Pvt. Ltd.</strong> facility, which is a Central FSSAI and Ayush licensed unit, ensuring the highest standards of purity and safety.</p>
+        </section>
 
-    <section id="terms">
-        <h2>Terms & Conditions</h2>
-        <p>1. Thunder of Zosh products are intended for use by individuals aged <strong>18 years and older</strong>.</p>
-        <p>2. The information provided on this website is for educational purposes and should not be considered a substitute for professional medical advice.</p>
-        <p>3. The company is not responsible for delivery delays caused by incorrect or incomplete address details provided by the customer.</p>
-    </section>
+        <section id="privacy">
+            <h2>Privacy Policy</h2>
+            <p>Your privacy is our priority. We handle your data with 100% confidentiality:</p>
+            <ul class="list">
+                <li>We only collect essential details like name and address for order fulfillment.</li>
+                <li>Personal information is never shared or sold to third-party marketing agencies.</li>
+                <li>Our checkout process is secured with 256-bit encryption for safe transactions.</li>
+            </ul>
+        </section>
 
-    <section id="refund">
-        <h2>Refund & Return Policy</h2>
-        <p>We strive for your complete satisfaction. If you receive a product in a damaged condition, please contact our support team within <strong>48 hours</strong> of delivery.</p>
-        <p><strong>Conditions:</strong> Returns are only accepted if the product seal remains intact and it is in its original packaging. The refund process typically takes 7-10 business days.</p>
-    </section>
+        <section id="terms">
+            <h2>Terms & Conditions</h2>
+            <p>By using our website, you agree to the following terms:</p>
+            <ul class="list">
+                <li>Products are natural supplements; results may vary based on individual health and lifestyle.</li>
+                <li>All orders are subject to a verification call before dispatch.</li>
+                <li>The content on this site is for educational purposes and should not replace professional medical advice.</li>
+            </ul>
+        </section>
 
-    <footer style="text-align: center; color: #555; font-size: 12px;">
-        &copy; 2026 TZ Nature Ayurveda. All Rights Reserved.
+        <section id="refund">
+            <h2>Refund & Return Policy</h2>
+            <p>We strive for complete customer satisfaction. Please note our return criteria:</p>
+            <ul class="list">
+                <li>Damaged products must be reported within 24 hours of delivery.</li>
+                <li>An unboxing video is mandatory for all refund or replacement requests.</li>
+                <li>Due to health and safety regulations, we cannot accept returns for opened or used bottles.</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-brand">THUNDER OF ZOSH | TZ Nature Ayurveda</div>
+        <p style="color: #888; font-size: 13px; margin-bottom: 10px;">
+            Manufacturing Partner: Sri Herbasia Biotech Pvt. Ltd.
+        </p>
+        <div class="footer-copy">© 2026 All Rights Reserved.</div>
     </footer>
-</div>
 
 </body>
 </html>
